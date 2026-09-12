@@ -73,3 +73,5 @@ while True:
 
 # -----7-----
 #Sort of already implemented it where it was necessary in 6.
+#Can be argued that the "else" statement could have only had a "continue", 
+#but I rather wanted to clarify for the user that their input is incorrect.
