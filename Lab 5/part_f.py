@@ -5,14 +5,23 @@
 # -----1, 2 & 3-----
 #These basically go together, as not all of these are an implementation step, I notice.
 def create_report(title, *sections, **metadata):
+
+    #For question 7
+    expected_metadata = ["author", "department", "version", "confidential", "date"]
+    
     report = {"title" : title, "sections" : []}
 
     for section in sections:
         report["sections"].append(section)
 
-    #could be nice to do a check here of things that really are allowed to belong in here.
     for key, value in metadata.items():
         report[key] = value
+        if key in expected_metadata:
+            expected_metadata.remove(key)
+
+    #For question 7
+    if len(expected_metadata) > 0:
+        print(f"metadata not provided: {expected_metadata}")
 
     return report
 
@@ -30,16 +39,24 @@ print(summarize_report(report))
 
 # -----5-----
 def count_words(*sections):
-    count = 0
-    
+    total = 0
+
     for section in sections:
-        words = section.split(" ")
-        for word in words:
-            count += 1
+        total += len(section.split())
+    
+    return total
 
-    return count
-
-print(count_words(report["sections"]))
+#Proof for myself.
+print(count_words(*report["sections"]))
 
 # -----6-----
-#here the prefined data can be done, and that i am already familiar with.
+metadata_one = {"author" : "adolf silfver", "department" : "nordic linguistics", "version" : 3, "confidential" : True, "date" : "06/01/2011"}
+metadata_two = {"author" : "rob kaufmann", "department" : "paganism", "version" : 1, "confidential" : False, "date" : "15/09/2026"}
+
+#Proof for myself.
+print(create_report("a synopsis of the north germanic tribes' languages", "proto-traits", "extinct branches, and their barriers" "unique case: icelandic", **metadata_one))
+print(create_report("the one true religious answer: paganism", "dominant truth", "response against hate", "why you're wrong", **metadata_two))
+
+# -----7-----
+print(create_report("all about letters", "a", "b", confidential=False))
+#All the metadata that is not inserted - but implicitly expected - get printed out as a side effect of the function.
