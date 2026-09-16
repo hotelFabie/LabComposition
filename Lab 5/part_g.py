@@ -16,12 +16,23 @@ print(merge_settings(default, bravo=47, delta=65))
 
 # -----2-----
 def call_summary(function_name, *args, **kwargs):
-    return f"The function {function_name} is called, taking {args} as normal arguments, and {kwargs} as keyword arguments"
+    call = f"{function_name}("
+
+    for arg in args:
+        if arg != args[0]:
+            call += f", {arg}"
+        else:
+            call += f"{arg}"
+
+    for key, value in kwargs.items():
+        call += f", {key}={value}"
+
+    call += ")"
+
+    return call
 
 #Proof for myself.
-call_summary("deteriorate()", )
-
-#WIP: Gotta ask the teacher what this is even supposed to mean. 
+print(call_summary("deteriorate", "health", "mind", endurance=0.65, physical_strength=0.5))
 
 # -----3-----
 def num_statistics(*numbers):
