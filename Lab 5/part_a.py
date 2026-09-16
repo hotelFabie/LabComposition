@@ -1,7 +1,6 @@
 #Part A
 
 # -----1-----
-'''
 course_name = "Python & AI"
 
 def create_course():
@@ -46,7 +45,6 @@ def increment(number):
 global_number = increment(global_number)
 print(global_number)
 #Here we pass the value directly into the function and reassign it to the variable we took it from, and it works fine.
-'''
 
 # -----4-----
 def outer_function():
@@ -76,4 +74,3 @@ def maximum(a : int, b : int):
     else:
         #Accounts for them being of equal value too
         return b
-    

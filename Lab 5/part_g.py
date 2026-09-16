@@ -57,4 +57,74 @@ def num_statistics(*numbers):
 print(num_statistics(3, 5, 7, 9, 11, 13, 15))
 
 # -----4-----
+'''
+#[1] What will be returned on the last line?
+def total(a, b):
+    total += a
+    total += b
+    return total
+    
+total += 1
 
+#Assuming nothing, because the local variable 'total' will die out, and so we're not adding onto anything.
+
+#And it was correct! :D 
+'''
+
+#[2]
+result = 0
+
+def exponentiate(x, y):
+    global result
+    result += x ** y
+    return result
+    
+result += 0.0001
+
+#Assuming we'll get the exponentiation with 0.0001 added, because it is a global variable now.
+print(exponentiate(2, 4))
+
+#And it worked! :D
+
+#[3]
+def jammy_radio():
+    sound = "beeeep. x)"
+    
+    def make_noise():
+        return sound
+
+    return make_noise()
+
+#What will the function return?
+print(jammy_radio())
+
+#I assume the sound: 'beeeep. x)'
+
+#[4]
+def inform():
+    warning = "zzzzzzm"
+    
+    def megaphonize():
+        warning = "ZWOOP! ZWOOP! ZWOOP!"
+
+    megaphonize()
+    print(warning)
+
+#What will happen?
+inform()
+
+#The warning will never be changed, and it will only print out first warning.
+#The internal variable will not be associated with anything.
+
+#Correct! x)
+
+#[5]
+list = [1,2,3,4,5]
+
+#Will this actually work?
+new_list = list((1,2,3,4,5,6))
+print(new_list)
+
+#Most likely not, because we have "overwritten" a built-in word, so it will not work.
+
+#Yeah, it was as expected.
