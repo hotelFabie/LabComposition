@@ -99,14 +99,28 @@ r, g, b = rgb
 #Proof
 print(f"R: {r}, G: {g}, B: {b}")
 
-#[3] Swapping : Not needing an intermediary temporary variable, super readablee
+#[3] Swapping : Not needing an intermediary temporary variable, super readable
 pole_one = "Positive"
 pole_two = "Negative"
 pole_one, pole_two = pole_two, pole_one
 
+#Proof
 print(pole_one, pole_two)
 
-#[4]
+#[4] Set Operations : Does not require explicit method calling, really has both sentence- and math-like structure
+climbers = {"jake", "madison", "ashley", "drew", "carly"}
+bowlers = {"jake", "mason", "aaron", "britney", "ashley"}
 
+common_people = climbers & bowlers
 
-#[5]
+#Proof
+print(f"Both climbers and bowlers: {common_people}")
+
+#[5] Lambda : Useful in areas where you don't want to create and insert a function, but rather just do a short operation 
+#right where the main logic is happening.
+numbers = [1, 2, 3, 4]
+
+squares = list(map(lambda n : n ** 2, numbers))
+
+#Proof
+print(f"Numbers {numbers} have their respective squares {squares}.")
