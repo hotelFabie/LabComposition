@@ -79,3 +79,34 @@ print(f"Q1: {has_amazing_score}")
 print(f"Q2: {has_everyone_passed}")
 
 # -----5-----
+#[1] List Comprehension : Fewer lines for same action as a for loop iteration of a list
+employees = [
+    {"name" : "Janet", "age": 60},
+    {"name" : "Marilyn", "age": 23},
+    {"name" : "Monica", "age": 54},
+    {"name" : "Tanya", "age": 27},
+]
+
+older_employees = [employee for employee in employees if employee["age"] >= 50]
+
+#Proof
+print(older_employees)
+
+#[2] Unpacking : Not needing to look at every single index to assign multiple variables
+rgb = (51, 51, 255)
+r, g, b = rgb
+
+#Proof
+print(f"R: {r}, G: {g}, B: {b}")
+
+#[3] Swapping : Not needing an intermediary temporary variable, super readablee
+pole_one = "Positive"
+pole_two = "Negative"
+pole_one, pole_two = pole_two, pole_one
+
+print(pole_one, pole_two)
+
+#[4]
+
+
+#[5]
