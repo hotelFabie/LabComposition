@@ -121,7 +121,7 @@ def calculate_order(customer, *prices, **settings):
     #To create the final total value, we'll need the value of the subtotal first to apply additional calculations.
     final_total = sub_total
     
-    #Adding shipping
+    #Adding discount and shipping
     for setting, setting_value in settings.items():
         if setting == "discount":
             final_total *= (1 - (setting_value / 100))
