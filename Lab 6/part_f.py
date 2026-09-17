@@ -63,12 +63,50 @@ for rank, product in enumerate(descending_value_products, start=1):
     print(f"{rank}. {product['name']} ({product['category']}) | stock: {product['stock']}, price: {product['price']}")
     
 # -----8-----
-#use zip to combine at least one pair of separate derived lists in a meaningful way.
-#we could make four lists, and then add it to this thing.
-name = []
-category = []
-stock = []
-price = []
+#Combining them related to this assignment.
+name = ["multi-purpose room speaker", "hockey puck"]
+category = ["miscellaneous", "ball"]
+stock = [3, 30]
+price = [459.99, 7.99]
+
+additional_products = [
+    {"name" : n, "category" : c, "stock" : s, "price" : p} 
+    for n, c, s, p in zip(name, category, stock, price)
+]
+
+#Proof
+for product in additional_products:
+    print(product)
 
 # -----9-----
+# an overly complicated, and a clear one.
+#first, we need something to iterate over...
+#needs to be a list, at least
+shapes = [
+    {"name" : "triangle", "corners" : 3, "weight" : 38},
+    {"name" : "square", "corners" : 4, "weight" : 40},
+    {"name" : "pentagon", "corners" : 5, "weight" : 53},
+    {"name" : "hexagon", "corners" : 6, "weight" : 60},
+    {"name" : "heptagon", "corners" : 7, "weight" : 75},
+    {"name" : "octagon", "corners" : 8, "weight" : 80},
+    {"name" : "nonagon", "corners" : 9, "weight" : 90},
+    {"name" : "decagon", "corners" : 10, "weight" : 102},
+]
 
+#put everything on the same line later on so it is harder to read.
+over_complicated = [{"name" : shape["name"], "corners" : shape["corners"], "weight" : shape["weight"]} for shape in shapes if shape["corners"] > 0 and shape["weight"] != 0 and len(shape["name"]) > -1+1 and shape["weight"] % shape["corners"] == 0 and int(str(shape["weight"])[0]) == shape["corners"]]
+
+clear = [
+    shape 
+    for shape in shapes
+    if shape["weight"] > 0
+    and shape["weight"] % shape["corners"] == 0 
+]
+
+#Proof (Comparison to see that they give the same result)
+print(over_complicated)
+print(clear)
+
+#The clear one does not need extract information it already can get quickly, 
+#and does not have too many unnecessary invalidation checks, with the checks being in a clear order.
+#Furthermore, breaking it down into several lines makes it more readable.
