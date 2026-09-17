@@ -79,9 +79,6 @@ for product in additional_products:
     print(product)
 
 # -----9-----
-# an overly complicated, and a clear one.
-#first, we need something to iterate over...
-#needs to be a list, at least
 shapes = [
     {"name" : "triangle", "corners" : 3, "weight" : 38},
     {"name" : "square", "corners" : 4, "weight" : 40},
@@ -93,7 +90,6 @@ shapes = [
     {"name" : "decagon", "corners" : 10, "weight" : 102},
 ]
 
-#put everything on the same line later on so it is harder to read.
 over_complicated = [{"name" : shape["name"], "corners" : shape["corners"], "weight" : shape["weight"]} for shape in shapes if shape["corners"] > 0 and shape["weight"] != 0 and len(shape["name"]) > -1+1 and shape["weight"] % shape["corners"] == 0 and int(str(shape["weight"])[0]) == shape["corners"]]
 
 clear = [

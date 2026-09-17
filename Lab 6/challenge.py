@@ -18,3 +18,6 @@ players = [
     {"name" : "Caps   ", "team" : "G2 Esports", "country" : "Denmark", "score": 0, "matches" : 0, "wins" : 37, "active" : True},
     {"name" : "   HaNs SaMA", "team" : "G2 Esports", "country" : "France", "score": 0, "matches" : 0, "wins" : 0, "active" : True},
 ]
+
+#Part 2
+#Feel like I should start with the cleaning right away, I feel like I am not making enough progress with this manual labour.
