@@ -92,12 +92,29 @@ older_employees = [employee for employee in employees if employee["age"] >= 50]
 #Proof
 print(older_employees)
 
+#Boilerplate alternative:
+older_employees_b = []
+for employee in employees:
+    if employee["age"] >= 50:
+        older_employees_b.append(employee)
+
+#Proof
+print(older_employees_b)
+
 #[2] Unpacking : Not needing to look at every single index to assign multiple variables
 rgb = (51, 51, 255)
 r, g, b = rgb
 
 #Proof
 print(f"R: {r}, G: {g}, B: {b}")
+
+#Boilerplate alternative:
+r_b = rgb[0]
+g_b = rgb[1]
+b_b = rgb[2]
+
+#Proof
+print(f"R: {r_b}, G: {g_b}, B: {b_b}")
 
 #[3] Swapping : Not needing an intermediary temporary variable, super readable
 pole_one = "Positive"
@@ -106,6 +123,17 @@ pole_one, pole_two = pole_two, pole_one
 
 #Proof
 print(pole_one, pole_two)
+
+#Boilerplate alternative:
+pole_one_b = "Positive"
+pole_two_b = "Negative"
+
+temp = pole_two_b
+pole_two_b = pole_one_b
+pole_one_b = temp
+
+#Proof
+print(pole_one_b, pole_two_b)
 
 #[4] Set Operations : Does not require explicit method calling, really has both sentence- and math-like structure
 climbers = {"jake", "madison", "ashley", "drew", "carly"}
@@ -116,6 +144,15 @@ common_people = climbers & bowlers
 #Proof
 print(f"Both climbers and bowlers: {common_people}")
 
+#Boilerplate alternative:
+common_people_b = set()
+for climber in climbers:
+    if climber in bowlers:
+        common_people_b.add(climber)
+
+#Proof
+print(f"Both climbers and bowlers: {common_people_b}")
+
 #[5] Lambda : Useful in areas where you don't want to create and insert a function, but rather just do a short operation 
 #right where the main logic is happening.
 numbers = [1, 2, 3, 4]
@@ -124,3 +161,12 @@ squares = list(map(lambda n : n ** 2, numbers))
 
 #Proof
 print(f"Numbers {numbers} have their respective squares {squares}.")
+
+#Boilerplate alternative:
+squares_b = []
+for number in numbers:
+    square = number ** 2
+    squares_b.append(square)
+
+#Proof
+print(f"Numbers {numbers} have their respective squares {squares_b}.")
