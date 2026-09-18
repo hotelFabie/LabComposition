@@ -70,7 +70,7 @@ sorted_two = sorted(word_collection, key=lambda word:len(word))
 print(sorted_one)
 print(sorted_two)
 
-#While this is a very simple example, function used as a kay in my opinion makes it clearer in simple cases.
+#While this is a very simple example, function used as a key - in my opinion - makes it clearer in simple cases.
 #Lambda here does not benefit the readability, but it would be beneficial if it was a more complex case where it can't 
 #be described properly with just like three words fitting into a variable.
 #It really seems to depend on how deep and many conditions that will be applied, but generally I'd like

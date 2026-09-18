@@ -46,7 +46,6 @@ passing_students = [
 print(passing_students)
 
 # -----4-----
-#first solve with loops, not loop comprehension
 more_scores = [50, 70, 90, 40, 55, 65, 75, 85, 95]
 
 #[With for loops]

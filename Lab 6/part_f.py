@@ -1,8 +1,6 @@
 #Part F
 
 # -----1-----
-#i have to distort these a little bit
-
 products = [
     {"name" : "  Tennis bAll  ", "category" : "ball", "price" : 1.99, "stock": 130},
     {"name" : "badMINton bALl ", "category" : "ball", "price" : 1.99, "stock": 80},
