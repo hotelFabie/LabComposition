@@ -73,18 +73,30 @@ print(assign_values(different_values))
 # -----5-----
 #I didn't realize it was not expected to not be done beforehand, so I'll just implement like I have before.
 def add(a : int, b : int) -> int:
-    """Returns the result of two integer arguments."""
+    """
+    Adds two integers together.
+    Takes variables a and b.
+    Returns the addition between a and b. 
+    """
     return a + b
 
-def is_adult(age) -> bool:
-    """Returns True if the person is 18 or older, otherwise False."""
+def is_adult(age : int) -> bool:
+    """
+    Validates if a person if of adult age.
+    Takes age as an integer variable.
+    Returns True if age is 18 or higher, otherwise False.
+    """
     if age >= 18:
         return True
     else: 
         return False
 
 def biggest_number(a: int, b: int, c: int) -> int:
-    """Returns the biggest of three numbers."""
+    """
+    Finds the biggest of three numbers.
+    Takes integers a, b and c as variables.
+    Returns the integer with highest value.
+    """
     biggest_number = 0
     if a > b:
         biggest_number = a
@@ -97,7 +109,11 @@ def biggest_number(a: int, b: int, c: int) -> int:
     return biggest_number
 
 def count_elements(elements: list) -> int:
-    """Returns the amount of numbers in a list."""
+    """
+    Counts the amount of numbers in a list.
+    Takes a list as a variable.
+    Returns a count of all elements.
+    """
     count = 0
     for element in elements:
         count += 1
@@ -105,7 +121,11 @@ def count_elements(elements: list) -> int:
     return count
 
 def half_or_double(value : int) -> int | float:
-    """Returns half of the inserted value if it is under 1000, or double the inserted value if it is over 1000"""
+    """
+    Doubles or halves a value depending on if it is under or above the threshold 1000.
+    Takes one integer variable "value".
+    Returns the value halved if it is under 1000, otherwise the value doubled.
+    """
     if value > 1000:
         return value * 2
     else: 
