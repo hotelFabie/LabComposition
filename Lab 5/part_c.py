@@ -33,7 +33,7 @@ print(first, middle, last)
 
 # -----4-----
 #* in a function definition - e.g. "def add(*args)" means whatever you pass into this function will be turned into 
-#an accumulated tuple, with with you choose internally what do do with each part this will be consisting of.
+#an accumulated tuple, with which you choose internally what do do with each part this will be consisting of.
 
 #* in a function call - e.g. "list = [1, 2, 3], add(*list)" in e.g. "add(a, b, c)" means to unpack the contents 
 #to be filled in as arguments to the expected parameters, before the function does any executions.

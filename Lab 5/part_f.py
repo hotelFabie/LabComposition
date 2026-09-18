@@ -2,6 +2,7 @@
 
 #As discussed with a teacher, validation for types of sections or metadata wasn't required.
 #Went with strings for each section.
+
 # -----1, 2 & 3-----
 #These basically go together, as not all of these are an implementation step, I notice.
 def create_report(title, *sections, **metadata):

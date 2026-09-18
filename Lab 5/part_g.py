@@ -57,7 +57,6 @@ def num_statistics(*numbers):
 print(num_statistics(3, 5, 7, 9, 11, 13, 15))
 
 # -----4-----
-'''
 #[1] What will be returned on the last line?
 def total(a, b):
     total += a
@@ -69,7 +68,6 @@ total += 1
 #Assuming nothing, because the local variable 'total' will die out, and so we're not adding onto anything.
 
 #And it was correct! :D 
-'''
 
 #[2]
 result = 0

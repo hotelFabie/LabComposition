@@ -49,7 +49,6 @@ settings = {"colorSelected" : None, "fontPreference" : "IBM Mono Sans", "homeRet
 print(get_valid_settings(**settings))
 
 # -----5-----
-#normal named parameter function using **dictionary unpacking
 def print_person(name, age, occupation):
     print(f"{name} - {age} years old - works with {occupation}")
 
