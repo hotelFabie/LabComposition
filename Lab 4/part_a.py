@@ -20,17 +20,16 @@ def introduce(name, city) -> None:
     print(f"{name} is from {city}")
 
 # -----3-----
-#Did not specify intended return type here, because both int and float would work...
-def add(a,b) -> int | float:
+def add(a,b):
     return a + b
 
-def subtract(a,b) -> int | float:
+def subtract(a,b):
     return a - b
 
-def multiply(a,b) -> int | float:
+def multiply(a,b):
     return a * b
 
-def divide(a,b) -> int | float:
+def divide(a,b):
     return a / b
 
 # -----4-----
