@@ -166,7 +166,8 @@ print("REMARKS")
 print(f"Remark one: {r1}, Remark two: {r2}, Remark three: {r3}")
 
 #:::Part 6
-#a bunch of enumerations here, so enumerate(players ,start=1)
 
-#とにかくやれ！！！
+#Not really ranked yet... "based on the cleaned player data."
 
+for player in enumerate(players, start=1):
+    print(player)
