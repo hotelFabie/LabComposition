@@ -126,7 +126,7 @@ def half_or_double(value : int) -> int | float:
     Takes one integer variable "value".
     Returns the value halved if it is under 1000, otherwise the value doubled.
     """
-    if value > 1000:
+    if value >= 1000:
         return value * 2
     else: 
         return value / 2
