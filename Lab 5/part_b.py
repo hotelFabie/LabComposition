@@ -13,7 +13,6 @@ print(add_all(1, 2, 3, 4, 5))
 
 # -----2-----
 def average(*numbers):
-    #decide what should happen when no numbers are supplied
     if len(numbers) == 0:
         return "requires at least one value to count an average"
     else:
