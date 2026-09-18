@@ -4,7 +4,7 @@
 def is_even(number) -> bool:
     if number % 2 == 0:
         return True
-    else :
+    else:
         return False
 
 # -----2-----
@@ -16,7 +16,6 @@ def get_larger(a, b) -> int | float:
         return b
         
 # -----3-----
-
 def classify_score(score : int) -> str:
     if score >= 80:
         return "PASS"

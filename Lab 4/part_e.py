@@ -1,7 +1,6 @@
 # Part E 
 
 # -----1-----
-
 def celsius_to_fahrenheit(celsius) -> float: 
     return celsius * 9/5 + 32
 
@@ -59,7 +58,6 @@ def calculate_price(price, quantity=1, discount_percentage=0) :
     return new_price
 
 # -----4-----
-
 def like_main() -> None:
     get_temperature_report(25)
     calculate_small_order(5)

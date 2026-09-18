@@ -3,11 +3,8 @@
 # -----1-----
 #Not sure what defines "normalize" here beyond giving everybody the same conditions.
 def normalize_name(name) -> str:
-    return name.upper().strip()
+    return name.strip().title()
 
-
-
-#WIP: Adhere to Aladdin's explanation later on.
 def validate_age(age) -> bool:
     if age >= 18 and age <= 35:
         return True
@@ -21,7 +18,6 @@ def calculate_reg_fee(age, status) -> int | float:
     if status == 'student':
         fee *= 0.85
     return fee
-
 
 def create_participant_dictionary(name : str, age : int, status : str): 
     if validate_age(age):
@@ -78,7 +74,6 @@ print(get_oldest_participant(participants))
 
 # -----6-----
 def summarize_participant(participant) -> str:
-    #take everything as a string
     return f"{participant['name']} is {participant['age']} years old, and is currently a {participant['status']}."
 
 #Proof for myself

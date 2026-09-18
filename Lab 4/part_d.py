@@ -1,4 +1,4 @@
-# Part 4
+# Part D
 
 #-----1-----
 def calculate_total(numbers) -> float | int:
@@ -9,7 +9,7 @@ def calculate_total(numbers) -> float | int:
     return total
 
 #-----2-----
-def count_even(numbers):
+def count_even(numbers) -> int:
     count = 0
     for number in numbers:
         if number % 2 == 0:
@@ -27,7 +27,6 @@ def get_long_words(words, minimum_length):
     return long_words
 
 #-----4-----
-
 students = [
     {"name" : "James", "age" : 27},
     {"name" : "Melissa", "age" : 29},
@@ -45,7 +44,6 @@ print(find_student(students, "Melissa"))
 print(find_student(students, "Aubrey"))
 
 #-----5-----
-
 graded_students = [
     {"name" : "Hogan", "score" : 57},
     {"name" : "Caramel", "score" : 93},
@@ -63,7 +61,6 @@ def average_score(students) -> int | float:
 print(average_score(graded_students))
 
 #-----6-----
-
 users = [
     {"username" : "enterprise78", "active" : True},
     {"username" : "jamradio39", "active" : False},
