@@ -169,7 +169,6 @@ def order_matches(player):
 
 match_ordering = sorted(players_cleaned, key=order_matches)
 
-#this one should not have reverse ordering, it will be the only one ascending
 print("MATCHES")
 for index, player in enumerate(match_ordering, start=-len(match_ordering)):
     print(f"[{abs(index)}] {player['name']} - {player['matches']}")
@@ -229,5 +228,25 @@ for player in players_extended:
     #Taking the proof here, while we're adding it. Why not. ¯\_(ツ)_/¯
     print(player)
 
+#-----
 #Ranking, top, threshold collection, player-to-performance mapped dict
 #Preferably clear and concise transformations.
+#-----
+
+#---Ranking---
+performance_sorted = sorted(players_extended, key=lambda p: p['performance'], reverse=True)
+
+print("PLAYER PERFORMANCE RANKING (BEST TO WORST)")
+for index, player in enumerate(performance_sorted, start=1):
+    print(f"<{index}> {player['name']}, performance factor: {player['performance']}")
+
+#---Top performers (say, top 3)---
+
+
+#---Above threshold of 15---
+threshold_passing_players = [player for player in players_extended if player["performance"] >= 15]
+print(f"TOP PERFORMERS")
+for player in threshold_passing_players:
+    print(f"{player['name']} with the performance factor: {player['performance']}")
+
+#------
