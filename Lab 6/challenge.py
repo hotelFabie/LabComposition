@@ -244,3 +244,14 @@ inactive_and_significant_players = {player['name'] : player['score'] for player 
 print(f"Inactive and at least significantly scored players (minimum 100 and above: {inactive_and_significant_players}")
 
 #:::Part 9
+#Deciding the performance to be a factor calculated through: [(score / win) + (matches * 0.2)] 
+#(rounded to not overwhelm with insignificant decimals)
+players_extended = players_cleaned.copy()
+
+for player in players_extended:
+    player["performance"] = round((player["score"] / player["matches"]) + (player["wins"] * 0.2), 2)
+        
+    #Taking the proof here, while we're adding it. Why not. ¯\_(ツ)_/¯
+    print(player)
+
+#we'll do like a dict WITH the other values added.
