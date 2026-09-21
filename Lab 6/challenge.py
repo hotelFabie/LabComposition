@@ -31,7 +31,7 @@ players_chaotic = [
     #  "wins" : player["wins"], 
     #  "active" : player["active"]}
 
-players = [
+players_cleaned = [
     {key: value.strip().upper() 
      if key == "name" 
      else value.title() if key == "country" 
@@ -42,36 +42,36 @@ players = [
 ]
 
 #Proof
-print(players)
+print(players_cleaned)
 
 #:::Part 3
 
 #Active players
-active_players = [player for player in players if player["active"]]
+active_players = [player for player in players_cleaned if player["active"]]
 
 #Proof
 print(active_players)
 
 #Players with at least 3 wins
-wins_3_players = [player for player in players if player["wins"] >= 3]
+wins_3_players = [player for player in players_cleaned if player["wins"] >= 3]
 
 #Proof
 print(f"Players with at least 3 wins: {wins_3_players}")
 
 #Players with a score that is at least 80
-score_150_players = [player for player in players if player["score"] >= 150]
+score_150_players = [player for player in players_cleaned if player["score"] >= 150]
 
 #Proof
 print(f"Players with at least 150 in score: {score_150_players}")
 
 #Swedish players
-swedish_players = [player for player in players if player["country"] == "Sweden"]
+swedish_players = [player for player in players_cleaned if player["country"] == "Sweden"]
 
 #Proof
 print(f"Swedish players: {swedish_players}")
 
 #Players meeting two conditions that can be arguable seen as an excellent status.
-excellent_players = [player for player in players if player["score"] >= 200 and player["wins"] >= 50]
+excellent_players = [player for player in players_cleaned if player["score"] >= 200 and player["wins"] >= 50]
 
 #Proof
 print(f"Excellent players: {excellent_players}")
@@ -81,33 +81,33 @@ print(f"Excellent players: {excellent_players}")
 #:::Part 4
 
 #All unique countries
-represented_countries = {player["country"] for player in players}
+represented_countries = {player["country"] for player in players_cleaned}
 
 #Proof
 print(f"All participating countries: {represented_countries}")
 
 #All unique teams
-represented_teams = {player["team"] for player in players}
+represented_teams = {player["team"] for player in players_cleaned}
 
 #Proof
 print(f"All participating teams: {represented_teams}")
 
 #Players and their scores
-players_and_scores = {player["name"] : player["score"] for player in players}
+players_and_scores = {player["name"] : player["score"] for player in players_cleaned}
 
 #Proof
 print(players_and_scores)
 
 #Players and their wins
 #dictionary comprehensions
-players_and_wins = {player["name"] : player["wins"] for player in players}
+players_and_wins = {player["name"] : player["wins"] for player in players_cleaned}
 
 #Proof
 print(players_and_wins)
 
 #Players in a score threshold
 #dictionary comprehension, 150 points
-players_and_150_scores = {player["name"] : player["score"] for player in players if player["score"] >= 150}
+players_and_150_scores = {player["name"] : player["score"] for player in players_cleaned if player["score"] >= 150}
 
 #Proof
 print(players_and_150_scores)
@@ -165,9 +165,49 @@ r1, r2, r3 = remarks
 print("REMARKS")
 print(f"Remark one: {r1}, Remark two: {r2}, Remark three: {r3}")
 
+#In this case, I mostly saw the unpacking the results as just getting each player out as their own unit.
+#Easier to zip it together, so naming the unpacked variables was a bit difficult.
+#They simply got [letter+number]; didn't want to get hooked on this part for too long.
+
 #:::Part 6
 
-#Not really ranked yet... "based on the cleaned player data."
+#---Most wins---
+wins_ordering = sorted(players_cleaned, key=lambda a: a['wins'], reverse=True)
 
-for player in enumerate(players, start=1):
-    print(player)
+print("MOST WINS")
+for index, player in enumerate(wins_ordering, start=1):
+    print(f"[{index}] {player['name']} - {player['wins']}")
+
+#---Highest score---
+def order_scores(player):
+    return player['score']
+
+score_ordering = sorted(players_cleaned, key=order_scores, reverse=True)
+
+print("HIGHEST SCORE")
+for index, player in enumerate(score_ordering, start=1):
+    print(f"[{index}] {player['name']} - {player['wins']}")
+
+#Most matches played
+def order_matches(player):
+    return player['matches']
+
+match_ordering = sorted(players_cleaned, key=order_matches)
+
+#this one should not have reverse ordering, it will be the only one ascending
+print("MATCHES")
+for index, player in enumerate(match_ordering, start=-len(match_ordering)):
+    print(f"[{abs(index)}] {player['name']} - {player['matches']}")
+
+#Player name alphabetically
+alphabetical_ordering = sorted(players_cleaned, key=lambda a: a['name'])
+
+print("ALPHABETICAL ORDERING")
+for index, player in enumerate(alphabetical_ordering, start=1):
+    print(f"[{index}] {player['name']}")
+
+#:::Part 7
+
+#:::Part 8
+
+#:::Part 9
