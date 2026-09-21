@@ -221,7 +221,9 @@ liquid_players = [player['name'] for player in players_cleaned if player['team']
 print(f"Players belonging to Team Liquid are: {liquid_players}") 
 
 #Which teams participate in the tournament?
-teams = 
+teams = {player['team'] for player in players_cleaned}
+
+print(f"All the represented teams: {teams}")
 
 #Which countries are represented WITHIN Team Liquid?
 liquid_countries = {player['country'] for player in players_cleaned if player['team'] == "Team Liquid"}
@@ -229,7 +231,8 @@ liquid_countries = {player['country'] for player in players_cleaned if player['t
 #Proof 
 print(f"Countries represented within Team Liquid: {liquid_countries}")
 
-#ONE WITH PLAYERS HERE...
+#Which players belong to BC.Game Esports?
+bc_players = {key : value for player.items() in players_cleaned if player['team'] == "BC.Game Esports"}
 
 #AT LEAST 5, SO CREATE ANOTHER QUESTION ON MY OWN.
 
