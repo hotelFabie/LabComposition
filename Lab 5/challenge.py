@@ -22,7 +22,7 @@ customers = [
 
 #:::Part 2
 def make_order(id : int, customer_name : str, *products, **optionals) -> dict:
-    #we'll see if it works like this.
+    #gotta test this first...
     if not products:
         return None
     
@@ -30,11 +30,18 @@ def make_order(id : int, customer_name : str, *products, **optionals) -> dict:
     for product in products:
         order['products'].append(product)
 
-    #we must make a failing case as well, to make sure that if a product isn't
+    if optionals:
+        order["optionals"] = {}
+        for option_name, value in optionals.items():
+            order["optionals"][option_name] = value
+
     return order
 
-#Testing it
-print(make_order(customers[0]["id"], customers[0]["name"], products[1], products[4]))
+#Testing a failing one first
+print(make_order(customers[0]["id"], customers[0]["name"]))
+
+#Testing an extensive one
+print(make_order(customers[0]["id"], customers[0]["name"], products[1], products[4], shipping_method="DHL", discount=10))
 
 #:::Part 3
 def calculate_subtotal():
