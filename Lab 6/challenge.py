@@ -125,49 +125,24 @@ matches = [92, 112, 95, 70]
 
 active = [False, True, False]
 
+
 #1: Simple origin information, tuple contained.
-basic_info = [(p, q) for p, q in zip(players, countries)] 
+for p, q in zip(players, countries):
+    print(f"Player: {p}, from: {q}")
 
-#Proof
-print("BASIC INFO")
-print(f"Combination 1: {basic_info}")
+#2: Numeric value focus.
+for p, s, w, m in zip(players, scores, wins, matches):
+    print(f"Player {p}'s statistics show that over {m} matches, they amassed {s} points, with {w} wins.")
 
-b1, b2, b3, b4 = basic_info
-
-#2: Numericals, dictionary contained.
-numerical_info = [
-    {"player" : p,
-    "score" : s,
-    "wins" : w,
-    "matches" : m} 
-    for p, s, w, m in 
-    zip(players, scores, wins, matches)
-]
-
-n1, n2, n3, n4 = numerical_info
-
-#Proof
-print("NUMERICALS")
-print(f"Combination 2: {numerical_info}")
-
-#3: Remarks: Who they are, how much they've won, and if they're still active in the scene.
-remarks = [
-    (p,w,a)
-    for p, w, a in
-    zip(players, wins, active)
-]
+#3: Significance (by wins), based on activity.
+for p, w, a in zip(players, wins, active):
+    if a: 
+        active_worded = "active"
+    else:
+        active_worded = "inactive"
+    print(f"{p} is currently {active_worded}, and has so far reached {w} wins.")
 
 #This will cut into 3 units even when we have 4, because active - the shortest collection we've made - has 3 as length.
-
-r1, r2, r3 = remarks
-
-#Proof
-print("REMARKS")
-print(f"Remark one: {r1}, Remark two: {r2}, Remark three: {r3}")
-
-#In this case, I mostly saw the unpacking the results as just getting each player out as their own unit.
-#Easier to zip it together, so naming the unpacked variables was a bit difficult.
-#They simply got [letter+number]; didn't want to get hooked on this part for too long.
 
 #:::Part 6
 
@@ -254,4 +229,5 @@ for player in players_extended:
     #Taking the proof here, while we're adding it. Why not. ¯\_(ツ)_/¯
     print(player)
 
-#we'll do like a dict WITH the other values added.
+#Ranking, top, threshold collection, player-to-performance mapped dict
+#Preferably clear and concise transformations.
