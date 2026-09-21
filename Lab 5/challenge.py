@@ -22,10 +22,19 @@ customers = [
 
 #:::Part 2
 def make_order(id : int, customer_name : str, *products, **optionals) -> dict:
-    order = {"id" : id, "customer" : customer_name}
-    #prepare it before we insert it, basically go through everything, could we do some comprehension first?
-    products = {}
+    #we'll see if it works like this.
+    if not products:
+        return None
+    
+    order = {"id" : id, "customer" : customer_name, "products" : []}
+    for product in products:
+        order['products'].append(product)
+
+    #we must make a failing case as well, to make sure that if a product isn't
     return order
+
+#Testing it
+print(make_order(customers[0]["id"], customers[0]["name"], products[1], products[4]))
 
 #:::Part 3
 def calculate_subtotal():
