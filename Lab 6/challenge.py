@@ -106,7 +106,6 @@ players_and_wins = {player["name"] : player["wins"] for player in players_cleane
 print(players_and_wins)
 
 #Players in a score threshold
-#dictionary comprehension, 150 points
 players_and_150_scores = {player["name"] : player["score"] for player in players_cleaned if player["score"] >= 150}
 
 #Proof
@@ -258,3 +257,29 @@ performance_mapping = {player['name'] : player['performance'] for player in play
 print("NAME MAPPED TO PERFORMANCE")
 for player, performance in performance_mapping.items():
     print(player, performance)
+
+#Final Challenge
+#Feels like there is a risk that some redundancy will occur here...
+
+#Pythonic Design Challenge
+
+#[1] First one being this:
+excellent_players = [player for player in players_cleaned if player["score"] >= 200 and player["wins"] >= 50]
+#... could have iterated through each player one by one and check if both conditions were passed on one "if" line.
+#In that case, we would have added what passes the condition into a list either standing on its own, or being internal in a function where we return.
+#List comprehension, however, is just more clean; it is literally like a sentence right now.
+
+#[2] Second one:
+players_cleaned = [
+    {key : value.strip().upper() 
+     if key == "name" 
+     else value.title() if key == "country" 
+     else value 
+     for key, value in player.items()
+     }
+    for player in players_chaotic
+]
+#... could have definitely been done way more manually, by both manually writing out the key name to each value,
+#but also lining up every condition a bit more extensively. Comparatively, this is not really a much shorter sequence,
+#but it saves some indentation and gets to the point a little quicker. 
+#Highly likely that dictionary comprehension always will be a little longer than list comprehension.
