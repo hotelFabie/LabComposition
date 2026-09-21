@@ -241,7 +241,9 @@ for index, player in enumerate(performance_sorted, start=1):
     print(f"<{index}> {player['name']}, performance factor: {player['performance']}")
 
 #---Top performers (say, top 3)---
-
+print("TOP 3 PLAYERS")
+for i in range(0,3):
+    print(f"{i+1}. {performance_sorted[i]['name']}")
 
 #---Above threshold of 15---
 threshold_passing_players = [player for player in players_extended if player["performance"] >= 15]
@@ -249,4 +251,10 @@ print(f"TOP PERFORMERS")
 for player in threshold_passing_players:
     print(f"{player['name']} with the performance factor: {player['performance']}")
 
-#------
+#---Names mapped to performance---
+performance_mapping = {player['name'] : player['performance'] for player in players_extended}
+
+#Proof
+print("NAME MAPPED TO PERFORMANCE")
+for player, performance in performance_mapping.items():
+    print(player, performance)
