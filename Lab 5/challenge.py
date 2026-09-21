@@ -1,3 +1,5 @@
+#Lab 5 Challenge
+
 #:::Part 1
 products = [
     {"name" : "NES", "price" : "", "category" : "Game Console"},
@@ -19,10 +21,15 @@ customers = [
 ]
 
 #:::Part 2
-
+def make_order(id : int, customer_name : str, *products, **optionals) -> dict:
+    order = {"id" : id, "customer" : customer_name}
+    #prepare it before we insert it, basically go through everything, could we do some comprehension first?
+    products = {}
+    return order
 
 #:::Part 3
-
+def calculate_subtotal():
+    return ()
 
 #:::Part 4
 
