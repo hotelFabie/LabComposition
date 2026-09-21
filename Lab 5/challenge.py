@@ -52,8 +52,17 @@ order_five = make_order(customers[4]["id"], customers[4]["name"], )
 #expensive one with shipping is 尤も.
 
 #:::Part 3
-def calculate_subtotal():
-    return ()
+def calculate_subtotal(*prices : int | float) -> int | float | None:
+    if not prices:
+        return None
+    
+    subtotal = 0
+    for price in prices:
+        subtotal += price 
+    return subtotal
+
+#Test
+print(calculate_subtotal(59, 139, 79, 199))
 
 #:::Part 4
 
