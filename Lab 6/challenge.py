@@ -214,26 +214,33 @@ for index, player in enumerate(score_ordering, start=1):
 #:::Part 8
 #It feels a bit like this question is just a rephrasing of Part 4.
 
-#Which players belong to Team Liquid?
+#Which players belong to Team Liquid? / 1
 liquid_players = [player['name'] for player in players_cleaned if player['team'] == "Team Liquid"]
 
 #Proof
 print(f"Players belonging to Team Liquid are: {liquid_players}") 
 
-#Which teams participate in the tournament?
+#Which teams participate in the tournament? / 2
 teams = {player['team'] for player in players_cleaned}
 
 print(f"All the represented teams: {teams}")
 
-#Which countries are represented WITHIN Team Liquid?
+#Which countries are represented WITHIN Team Liquid? / 3
 liquid_countries = {player['country'] for player in players_cleaned if player['team'] == "Team Liquid"}
 
 #Proof 
 print(f"Countries represented within Team Liquid: {liquid_countries}")
 
-#Which players belong to BC.Game Esports?
-bc_players = {key : value for player.items() in players_cleaned if player['team'] == "BC.Game Esports"}
+#Which players have between 100 and 150 in scores?
+significant_players = {player['name'] : player['score'] for player in players_cleaned if player['score'] >= 150 and player['score'] <= 200 }
 
-#AT LEAST 5, SO CREATE ANOTHER QUESTION ON MY OWN.
+#Proof
+print(f"Players with a significant score (between 100 and 150): {significant_players}")
+
+#Which inactive players reached at least a significant score?
+inactive_and_significant_players = {player['name'] : player['score'] for player in players_cleaned if not player['active'] and player['score'] >= 100}
+
+#Proof
+print(f"Inactive and at least significantly scored players (minimum 100 and above: {inactive_and_significant_players}")
 
 #:::Part 9
