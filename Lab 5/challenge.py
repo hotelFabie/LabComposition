@@ -2,14 +2,14 @@
 
 #:::Part 1
 products = [
-    {"name" : "NES", "price" : "", "category" : "Game Console"},
-    {"name" : "Switch Controller", "price" : "", "category" : "Controller"},
-    {"name" : "Playstation 5", "price" : "", "category" : "Game Console"},
-    {"name" : "Classic Famicom Controller (JP)", "price" : "", "category" : "Controller"},
-    {"name" : "Switch 2", "price" : "", "category" : "Game Console"},
-    {"name" : "Nintendo 3DS Case (Pink)", "price" : "", "category" : "Case"},
-    {"name" : "Nintendo DS Case (Super Mario 64 DS Edition)", "price" : "", "category" : "Case"},
-    {"name" : "Steam Deck", "price" : "", "category" : "Game Console"}
+    {"name" : "NES", "price" : 179.99, "category" : "Game Console"},
+    {"name" : "Switch Controller", "price" : 79.99, "category" : "Controller"},
+    {"name" : "Playstation 5", "price" : 499.99, "category" : "Game Console"},
+    {"name" : "Classic Famicom Controller (JP)", "price" : 29.99, "category" : "Controller"},
+    {"name" : "Switch 2", "price" : 579.99, "category" : "Game Console"},
+    {"name" : "Nintendo 3DS Case (Pink)", "price" : 19.99, "category" : "Case"},
+    {"name" : "Nintendo DS Case (Super Mario 64 DS Edition)", "price" : 19.99, "category" : "Case"},
+    {"name" : "Steam Deck", "price" : 1199.99, "category" : "Game Console"}
 ]
 
 customers = [
@@ -42,6 +42,12 @@ print(make_order(customers[0]["id"], customers[0]["name"]))
 
 #Testing an extensive one
 print(make_order(customers[0]["id"], customers[0]["name"], products[1], products[4], shipping_method="DHL", discount=10))
+
+order_one = make_order(customers[0]["id"], customers[0]["name"], products[7])
+order_two = make_order(customers[1]["id"], customers[1]["name"], products[6], products[5])
+order_three = make_order(customers[2]["id"], customers[2]["name"], )
+order_four = make_order(customers[3]["id"], customers[3]["name"])
+order_five = make_order(customers[4]["id"], customers[4]["name"])
 
 #:::Part 3
 def calculate_subtotal():
