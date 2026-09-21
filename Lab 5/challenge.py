@@ -41,13 +41,15 @@ def make_order(id : int, customer_name : str, *products, **optionals) -> dict:
 print(make_order(customers[0]["id"], customers[0]["name"]))
 
 #Testing an extensive one
-print(make_order(customers[0]["id"], customers[0]["name"], products[1], products[4], shipping_method="DHL", discount=10))
+print(make_order(customers[0]["id"], customers[0]["name"], products[1], products[4], company="DHL", discount=10))
 
-order_one = make_order(customers[0]["id"], customers[0]["name"], products[7])
+order_one = make_order(customers[0]["id"], customers[0]["name"], products[7], discount=20, priority=True, message="Fun is Key.")
 order_two = make_order(customers[1]["id"], customers[1]["name"], products[6], products[5])
-order_three = make_order(customers[2]["id"], customers[2]["name"], )
-order_four = make_order(customers[3]["id"], customers[3]["name"])
-order_five = make_order(customers[4]["id"], customers[4]["name"])
+order_three = make_order(customers[2]["id"], customers[2]["name"], products[4], company="DB Schenker", shipping="rapid express")
+order_four = make_order(customers[3]["id"], customers[3]["name"], products[0])
+order_five = make_order(customers[4]["id"], customers[4]["name"], )
+#these last three should definitely have some optional things...
+#expensive one with shipping is 尤も.
 
 #:::Part 3
 def calculate_subtotal():
