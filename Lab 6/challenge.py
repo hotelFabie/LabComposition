@@ -207,7 +207,30 @@ for index, player in enumerate(alphabetical_ordering, start=1):
     print(f"[{index}] {player['name']}")
 
 #:::Part 7
+#Reusing the sorting from Part 6, because it is already "provided".
+for index, player in enumerate(score_ordering, start=1):
+    print(f"{index}. {player['name']} - {player['score']} points")
 
 #:::Part 8
+#It feels a bit like this question is just a rephrasing of Part 4.
+
+#Which players belong to Team Liquid?
+liquid_players = [player['name'] for player in players_cleaned if player['team'] == "Team Liquid"]
+
+#Proof
+print(f"Players belonging to Team Liquid are: {liquid_players}") 
+
+#Which teams participate in the tournament?
+teams = 
+
+#Which countries are represented WITHIN Team Liquid?
+liquid_countries = {player['country'] for player in players_cleaned if player['team'] == "Team Liquid"}
+
+#Proof 
+print(f"Countries represented within Team Liquid: {liquid_countries}")
+
+#ONE WITH PLAYERS HERE...
+
+#AT LEAST 5, SO CREATE ANOTHER QUESTION ON MY OWN.
 
 #:::Part 9
