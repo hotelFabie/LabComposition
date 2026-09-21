@@ -65,7 +65,17 @@ def calculate_subtotal(*prices : int | float) -> int | float | None:
 print(calculate_subtotal(59, 139, 79, 199))
 
 #:::Part 4
+#*just assuming right a dictionary is what we'll return, though i'm not sure yet...*
+def configure_order(**optionals) -> dict: 
+    if not optionals:
+        return None
+    configuration = {}
+    for optional, value in optionals.items():
+        configuration[optional] = value
+    return configuration
 
+#Test
+print(configure_order(company="DB Schenker", discount=10))
 
 #:::Part 5
 
