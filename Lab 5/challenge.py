@@ -92,13 +92,18 @@ settings_one = {
 
 #Dict 2
 settings_two = {
-    "" : "",
-    "" : "",
-    "" : ""
+    "campaign_code" : "Q5WT8",
+    "company" : "PostNord",
+    "discount" : 15,
+    "message" : "",
+    "priority" : True,
+    "shipping" : "express"
 }
 
 #Dictionary unpacking 1 and 2
+print(configure_order(**settings_two))
 
+#DONE HALF OF THIS ONE, BUT IT JUST FEELS TEDIOUS ATM, SO I AM MOVING FORWARD...
 
 #:::Part 6
 
