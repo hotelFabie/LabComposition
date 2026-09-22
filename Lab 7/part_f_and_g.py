@@ -3,7 +3,7 @@
 
 #Part F
 
-#1
+#1 <- Is like a description of what the whole challenge is, so it is implemented below.
 
 #2
 class Student:
@@ -60,7 +60,7 @@ class Course:
                 passing_students.append(student)
         return passing_students
 
-        #2 (Part G)
+    #2 (Part G)
     def get_students_passing_threshold(self, threshold: int) -> list[Student]:
         passing_students = []
         for student in self.students:
