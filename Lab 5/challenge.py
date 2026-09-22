@@ -78,6 +78,8 @@ def configure_order(**optionals) -> dict:
 print(configure_order(company="DB Schenker", discount=10))
 
 #:::Part 5
+#ooooh, lmao, of course, it is just unpacking things that are already MADE and inserting them as arguments, 
+#letting the unpacking happen naturally
 
 
 #:::Part 6
