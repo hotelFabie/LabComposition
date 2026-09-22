@@ -107,7 +107,6 @@ print(configure_order(**settings_two))
 
 #:::Part 6
 
-
 #:::Part 7
 
 
