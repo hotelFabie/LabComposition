@@ -66,10 +66,9 @@ print(f"Course name: {course.name}")
 print(f"Course teacher's name: {course.teacher.name}")
 
 #6 (Student adding part)
-course.add_student(Student())
-course.add_student(Student())
-course.add_student(Student())
-#gonna fix this when I move back to part D.
+course.add_student(Student("Jeremiah", 70))
+course.add_student(Student("Ishamel", 90))
+course.add_student(Student("Jacques", 95))
 
 #7
 print("ALL STUDENT NAMES")
