@@ -114,4 +114,5 @@ for student in course.students:
 
 #4 (Part G) Explanation:
 #Added a common school to all courses, because they all (in this case) should belong to the same one,
-#and so should every student and teacher having to do with it.
+#and so should every student and teacher having to do with it. Of course, if we have more schools, 
+#it would be another thing, but now we don't.
