@@ -78,8 +78,26 @@ def configure_order(**optionals) -> dict:
 print(configure_order(company="DB Schenker", discount=10))
 
 #:::Part 5
-#ooooh, lmao, of course, it is just unpacking things that are already MADE and inserting them as arguments, 
-#letting the unpacking happen naturally
+#"... information already exists in collections", so it just happens to be here, I guess?
+prices_one = [79, 99, 159, 199]
+
+#Positional unpacking 1 and 2
+print(calculate_subtotal(*prices_one))
+
+#Dict 1
+settings_one = {
+    "" : "", 
+    "" : ""
+}
+
+#Dict 2
+settings_two = {
+    "" : "",
+    "" : "",
+    "" : ""
+}
+
+#Dictionary unpacking 1 and 2
 
 
 #:::Part 6
