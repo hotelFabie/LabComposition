@@ -32,6 +32,9 @@ class Teacher:
 
 #5
 class Course:
+    #4 (Part G)
+    school = "Awesome School of Seriousness"
+
     def __init__(self, name : str, teacher : Teacher, students : list[Student] = []):
         self.name = name
         self.teacher = teacher
@@ -109,6 +112,6 @@ for student in course.students:
     print(student.name)
 #Names are not the same, hence, they are separate.
 
-
-#4 (Part G)
-
+#4 (Part G) Explanation:
+#Added a common school to all courses, because they all (in this case) should belong to the same one,
+#and so should every student and teacher having to do with it.
