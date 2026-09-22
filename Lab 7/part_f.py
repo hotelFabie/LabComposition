@@ -67,10 +67,15 @@ student6 = Student("Excellenzi", 100)
 course.add_student(student6)
 
 print(course.count_students())
-
 print(course.get_passing_students())
 
 print(course.students[1].get_passing())
 print(course.students[2].get_passing())
 
-#10: Summary print
+#10
+print("[COURSE SUMMARY]")
+print(f"Course: {course.name}\nTeacher: {teacher.name}\nNo. students: {course.count_students()}")
+names = [student.name for student in course.get_passing_students()]
+print("Passing students: ")
+for name in names: 
+    print(name)
