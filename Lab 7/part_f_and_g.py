@@ -1,3 +1,6 @@
+#Kept everything in the same file, since G is an extension of F.
+#1 and 2 of Part G are therefore implemented directly.
+
 #Part F
 
 #1
@@ -7,6 +10,12 @@ class Student:
     def __init__(self, name : str, score : int):
         self.name = name
         self.score = score
+
+    #1 (Part G)
+    def update_score(self, new_score):
+        if new_score < 0 or new_score > 100:
+            raise ValueError("Invalid score, must be between 0-100")
+        self.score = new_score
 
     #3
     def get_passing(self) -> str:
@@ -48,6 +57,14 @@ class Course:
                 passing_students.append(student)
         return passing_students
 
+        #2 (Part G)
+    def get_students_passing_threshold(self, threshold: int) -> list[Student]:
+        passing_students = []
+        for student in self.students:
+            if student.score >= threshold:
+                passing_students.append(student)
+        return passing_students
+
 #9
 student1 = Student("Jüri", 50)
 student2 = Student("Mawa", 65)
@@ -79,3 +96,19 @@ names = [student.name for student in course.get_passing_students()]
 print("Passing students: ")
 for name in names: 
     print(name)
+
+#3 (Part G) 
+additional_course = Course("Astronomy", Teacher("Miss Saturnus"), [Student("Mika", 85), Student("Yumi", 75)])
+
+#Comparison of students between this and the first course:
+print(f"Additional course's students:")
+for student in additional_course.students:
+    print(student.name)
+print(f"First course's students:")
+for student in course.students:
+    print(student.name)
+#Names are not the same, hence, they are separate.
+
+
+#4 (Part G)
+
