@@ -262,9 +262,13 @@ for player, performance in performance_mapping.items():
 #Final Challenge
 print("FINAL REPORT")
 print(f"No. players: {len(players_cleaned)}\n No. active players: {len(active_players)}\n Unique teams: {represented_teams}\n Unique countries: {represented_countries}")
-#NOTICE: Using carriage return - \r - to print on the same line, and not make it as lengthy
+#NOTICE: Wanting to keep it on the same line; introduced 'end'.
+print("Top scores:", end = " ")
 for index, player in enumerate(score_ordering, start = 1):
-    print(f"| [{index}] {player['name']} - {player['score']}", end=" |")
+    print(f"| [{index}] {player['name']} - {player['score']}", end = " |")
+print("\nTop wins:", end = " ")
+for index, player in enumerate(wins_ordering, start = 1):
+    print(f"| [{index}] {player['name']} - {player['wins']}", end = " |")
 
 #Pythonic Design Challenge
 
