@@ -101,7 +101,6 @@ players_and_scores = {player["name"] : player["score"] for player in players_cle
 print(players_and_scores)
 
 #Players and their wins
-#dictionary comprehensions
 players_and_wins = {player["name"] : player["wins"] for player in players_cleaned}
 
 #Proof
@@ -262,8 +261,10 @@ for player, performance in performance_mapping.items():
 
 #Final Challenge
 print("FINAL REPORT")
-print(f"No. players: {len(players_cleaned)}\n No. active players {len(active_players)}")
-
+print(f"No. players: {len(players_cleaned)}\n No. active players: {len(active_players)}\n Unique teams: {represented_teams}\n Unique countries: {represented_countries}")
+#NOTICE: Using carriage return - \r - to print on the same line, and not make it as lengthy
+for index, player in enumerate(score_ordering, start = 1):
+    print(f"[{index}] {player['name']} - {player['score']}, \r")
 
 #Pythonic Design Challenge
 
