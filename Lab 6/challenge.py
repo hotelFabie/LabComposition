@@ -261,7 +261,9 @@ for player, performance in performance_mapping.items():
     print(player, performance)
 
 #Final Challenge
-#Feels like there is a risk that some redundancy will occur here...
+print("FINAL REPORT")
+print(f"No. players: {len(players_cleaned)}\n No. active players {len(active_players)}")
+
 
 #Pythonic Design Challenge
 
