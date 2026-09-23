@@ -264,7 +264,7 @@ print("FINAL REPORT")
 print(f"No. players: {len(players_cleaned)}\n No. active players: {len(active_players)}\n Unique teams: {represented_teams}\n Unique countries: {represented_countries}")
 #NOTICE: Using carriage return - \r - to print on the same line, and not make it as lengthy
 for index, player in enumerate(score_ordering, start = 1):
-    print(f"[{index}] {player['name']} - {player['score']}, \r")
+    print(f"| [{index}] {player['name']} - {player['score']}", end=" |")
 
 #Pythonic Design Challenge
 
