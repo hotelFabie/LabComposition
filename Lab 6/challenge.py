@@ -292,3 +292,12 @@ players_cleaned = [
 #but also lining up every condition a bit more extensively. Comparatively, this is not really a much shorter sequence,
 #but it saves some indentation and gets to the point a little quicker. 
 #Highly likely that dictionary comprehension always will be a little longer than list comprehension.
+
+#[3] Third one:
+for p, q in zip(players, countries):
+    print(f"Player: {p}, from: {q}")
+#Taking something else Pythonic as an example here that is similar, which is actually a built-in function.
+#This could have been made by iteraring with a for loop through both by looking at the same index, and putting
+#them together as one item/tuple, which then could be taken apart or iterated through to print the same values.
+
+#How easy this is read and put together makes it quite obvious why this alternative is more clear.  
