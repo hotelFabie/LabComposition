@@ -7,7 +7,10 @@ class User:
         self.email = email
         
     #3
-    #WIPPY...
+    def change_username(self, new_username):
+        if len(new_username.strip()) < 3 or len(new_username.strip()) > 16:
+            raise ValueError("Username must be between 3 and 16 characters.")
+        self.username = new_username
 
     #6
     def see_metadata(self):
@@ -55,6 +58,19 @@ class PremiumUser(User):
 user = User("eien_mugen", "eien_mugen@mailbox.org")
 premium_user = PremiumUser("valueadvance", "moneytowaste@gmail.com", 10)
 admin_user = AdminUser("naka", "naka@admin.v8.jp", True)
+
+user.change_username("eien_raijuu")
+premium_user.change_username("advanced")
+
+user.see_metadata()
+premium_user.see_metadata()
+admin_user.see_metadata()
+
+premium_user.update_tokens(10)
+print(f"Tokens: {premium_user.tokens}")
+
+admin_user.reassign_super_privileges(False)
+print(f"Admin {admin_user.username} right to super privileges: {admin_user.tokens}")
 
 #10
 #Both AdminUser and PremiumUser have an "is-a" relationship with User, because they inherit everything User has,
