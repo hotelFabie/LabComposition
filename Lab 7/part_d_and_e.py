@@ -48,10 +48,12 @@ class Teacher:
 
 #2
 class Course:
-    def __init__(self, name : str, teacher : Teacher, students : list[Student] = []):
+    #5 - Interpreted it as the Course always being initially empty, and therefore there being no point in keeping it
+    #as an attribute that can be inserted through an argument.
+    def __init__(self, name : str, teacher : Teacher):
         self.name = name
         self.teacher = teacher
-        self.students = students
+        self.students = []
 
     #6 (Method part)
     def add_student(self, student):
@@ -74,4 +76,3 @@ course.add_student(Student("Jacques", 95))
 print("ALL STUDENT NAMES")
 for student in course.students:
     print(student.name)
-
