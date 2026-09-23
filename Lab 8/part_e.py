@@ -12,6 +12,9 @@ class Device:
 
         self.is_active = True
 
+        #5 - Demonstration part
+        print("A device has been instanced.")
+
 #3
 class Laptop(Device):
     def __init__(self, brand : str, year : int, ram_gb : int):
@@ -30,4 +33,4 @@ class GamingConsole(Device):
 laptop = Laptop("ASUS", 2009, 256)
 gamingconsole = GamingConsole("Nintendo", 2025, "Switch 2")
 
-
+#Demonstrated that they are a device by the print, as when both of these instances are made, they both print the same thing.
