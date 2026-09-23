@@ -37,14 +37,14 @@ class PremiumUser(User):
         super().__init__(username, email)
 
         #9
-        if self.tokens < 0:
+        if tokens < 0:
             raise ValueError("Premium user cannot have below 0 tokens.")
 
         self.tokens = tokens
 
     #6 and #7
     def see_metadata(self):
-        return super().see_metadata() + f", premium status with {self.tokens} tokens"
+        print(f"{super().see_metadata()}, premium status with {self.tokens} tokens")
 
     #4 (Own method)
     def update_tokens(self, new_tokens):
@@ -59,9 +59,11 @@ user = User("eien_mugen", "eien_mugen@mailbox.org")
 premium_user = PremiumUser("valueadvance", "moneytowaste@gmail.com", 10)
 admin_user = AdminUser("naka", "naka@admin.v8.jp", True)
 
+
 user.change_username("eien_raijuu")
 premium_user.change_username("advanced")
 
+#Prints will occur within the method.
 user.see_metadata()
 premium_user.see_metadata()
 admin_user.see_metadata()
@@ -70,7 +72,7 @@ premium_user.update_tokens(10)
 print(f"Tokens: {premium_user.tokens}")
 
 admin_user.reassign_super_privileges(False)
-print(f"Admin {admin_user.username} right to super privileges: {admin_user.tokens}")
+print(f"Admin [{admin_user.username}] right to super privileges: {admin_user.super_privileges}")
 
 #10
 #Both AdminUser and PremiumUser have an "is-a" relationship with User, because they inherit everything User has,
