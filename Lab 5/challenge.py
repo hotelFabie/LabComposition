@@ -113,22 +113,22 @@ print(configure_order(**settings_two))
 
 #WIP
 
-def produce_summary(id, customer, *messages, **metadata) -> str:
+def produce_summary(id : int, customer : str, *messages, **metadata) -> str:
     summary = f"id: {id}, customer name: {customer}" 
     
     if messages:
         summary += "messages: "
         for message in message:
-            summary += (message)
+            summary += message
         
     if metadata:
         summary += "metadata: "
-
+        for key, value in metadata.items():
+            summary += (f"[{key}: {value}]")
     return summary
 
-#Test
-#WIP, needs arguments
-print(produce_summary())
+#Test - JUST TESTING THAT IT WORX FIRST B4 PUTTING IN ACTUAL DATA.
+print(produce_summary(6, "jason", "bleep", "bloop", thing="thing", moop="meep"))
 
 #:::Part 7
 

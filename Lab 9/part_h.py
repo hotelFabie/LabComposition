@@ -22,6 +22,7 @@ class ConsoleExporter(Exporter):
     def export(self, data : str):
         print(f"{data} can now be dealt with through the console.")
 
+    #5
     def __str__(self) -> str:
         return "console exporter"
 
@@ -31,8 +32,9 @@ class TextExporter(Exporter):
 
     #4
     def export(self, data : str):
-        print(f"data")
+        print(f"{data}")
 
+    #5
     def __str__(self) -> str:
         return "text exporter"
 
@@ -40,15 +42,16 @@ class SummaryExporter(Exporter):
     def __init__(self):
         super().__init__()
 
+    #4
     def export(self, data : str):
         print(f"SUMMARY\nthis is a {data}.")
 
+    #5
     def __str__(self) -> str:
         return f"summary exporter"
 
 #6
 exporters = [
-    Exporter(),
     ConsoleExporter(),
     TextExporter(),
     SummaryExporter()
@@ -84,5 +87,18 @@ print(isinstance(generic_console_exporter, object))
 #Then, testing that a subclass is not equal to another one.
 print(isinstance(generic_console_exporter, SummaryExporter))
 
-#10
+#10 - Did not want to mess up an earlier instance of a console exporter, so I made one here again.
+class ConsoleExporter(Exporter):
+    def __init__(self, console_option):
+        super().__init__()
 
+        #10 - The console exporter HAS AN option for which console it should adjust the export to.
+        self.console_option = console_option
+
+    #4
+    def export(self, data : str):
+        print(f"{data} can now be dealt with through the console.")
+
+    #5
+    def __str__(self) -> str:
+        return "console exporter"
