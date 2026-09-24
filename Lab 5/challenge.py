@@ -132,7 +132,19 @@ def produce_summary(id : int, customer : str, *messages, **metadata) -> str:
 print(produce_summary(customers[0]["id"], customers[0]["name"], "candy!", "i love sweets!", "oishii!", random_bonus_candy=True))
 
 #:::Part 7
+#Global variable
+store_name = "Yodobashi Akiba"
 
+# def rebrand_store():
+#     store_name = "Yodobashi Akiba EX"
+#This will not work, because we are not passing anything, and so it will be a local variable.
+
+def rebrand_store(new_value):
+    return new_value
+
+store_name = rebrand_store("Yodobashi Akiba EX")
+
+print(store_name)
 
 #:::Part 8
 
