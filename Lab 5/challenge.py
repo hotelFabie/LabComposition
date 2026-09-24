@@ -157,7 +157,7 @@ def use_radio():
     echo()
 
 #:::Part 8
-#Type not specified.
+#Return type not specified.
 def order_process(*products, **settings) -> str:
     order = ""
     subtotal = 0
@@ -175,9 +175,9 @@ def order_process(*products, **settings) -> str:
             shipping = f"shipping cost: {value}"
             order += f"discount: {value} "
 
-    final_total = subtotal * (1 + (discount / 100))
+    final_total = subtotal * (1 + (discount / 100)) + shipping
     order += f"final_total: {final_total}"
 
     return order
 
-#i think in cohesion
+print(order_process(products[0], products[2], discount=10, shipping_cost=199, strange_setting="what?"))
