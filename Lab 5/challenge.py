@@ -139,12 +139,21 @@ store_name = "Yodobashi Akiba"
 #     store_name = "Yodobashi Akiba EX"
 #This will not work, because we are not passing anything, and so it will be a local variable.
 
-def rebrand_store(new_value):
-    return new_value
-
-store_name = rebrand_store("Yodobashi Akiba EX")
+def rebrand_store(store_name):
+    store_name += " EX"
 
 print(store_name)
 
-#:::Part 8
+#Typically you wouldn't want (that many) global variables in the first case, but updating variables "out in the open"
+#means you basically alter logic that should be seen by everything on an unprotected level.
 
+#Enclosing example - Couldn't come up with something more creative for the moment.
+def use_radio():
+    vibration = "zzzzz"
+
+    def echo():
+        print(vibration)
+
+    echo()
+
+#:::Part 8
