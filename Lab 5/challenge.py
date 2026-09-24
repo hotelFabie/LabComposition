@@ -110,9 +110,25 @@ settings_two = {
 print(configure_order(**settings_two))
 
 #:::Part 6
-def produce_summary(id, customer, *messages, **metadata):
-    summary = f"id: {id}, customer name: {customer}" 
 
+#WIP
+
+def produce_summary(id, customer, *messages, **metadata) -> str:
+    summary = f"id: {id}, customer name: {customer}" 
+    
+    if messages:
+        summary += "messages: "
+        for message in message:
+            summary += (message)
+        
+    if metadata:
+        summary += "metadata: "
+
+    return summary
+
+#Test
+#WIP, needs arguments
+print(produce_summary())
 
 #:::Part 7
 
