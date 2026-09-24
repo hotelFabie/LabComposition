@@ -24,4 +24,7 @@ print(computer.cpu.model)
 #While a CPU is the brain of the computer, it highly rarely exists alone. So, a computer HAS A CPU, like how it HAS A GPU, RAM, etc.
 
 #6
-
+#Car has an Engine. [HAS-A]
+#Manager is an Employee. [IS-A]
+#Course has a Teacher. [HAS-A]
+#Phone is a Device. [IS-A]
