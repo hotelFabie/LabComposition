@@ -115,21 +115,21 @@ print(make_order(customers[2]["id"], customers[2]["name"], *more_products, **set
 
 #:::Part 6
 def produce_summary(id : int, customer : str, *messages, **metadata) -> str:
-    summary = f"id: {id}, customer name: {customer}" 
+    summary = f"id: {id}\ncustomer name: {customer}\n" 
     
     if messages:
         summary += "messages: "
         for message in messages:
-            summary += message
+            summary += f"[{message}] "
         
     if metadata:
-        summary += "metadata: "
+        summary += "\nmetadata: "
         for key, value in metadata.items():
             summary += (f"[{key}: {value}]")
     return summary
 
-#Test - DO IT ON ACTUAL DATA INSTEAD.
-print(produce_summary(6, "jason", "bleep", "bloop", thing="thing", moop="meep"))
+#Test
+print(produce_summary(customers[0]["id"], customers[0]["name"], "candy!", "i love sweets!", "oishii!", random_bonus_candy=True))
 
 #:::Part 7
 
