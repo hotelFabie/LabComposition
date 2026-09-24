@@ -183,3 +183,9 @@ def order_process(*products, **settings) -> str:
     return order
 
 print(order_process(products[0], products[2], discount=10, shipping_cost=199, strange_setting="what?"))
+
+#:::Part 9
+#This feels like a repeat.
+
+#:::Final Challenge
+#This one is a bit too redundant
