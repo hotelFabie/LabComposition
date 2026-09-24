@@ -157,3 +157,27 @@ def use_radio():
     echo()
 
 #:::Part 8
+#Type not specified.
+def order_process(*products, **settings) -> str:
+    order = ""
+    subtotal = 0
+    for product in products:
+        subtotal += product["price"]
+    
+    order += f"subtotal: {subtotal}"
+
+    for setting, value in settings.items():
+        if value == "discount":
+            discount = value
+            order += f"discount: {value} "
+            
+        elif value == "shipping_cost":
+            shipping = f"shipping cost: {value}"
+            order += f"discount: {value} "
+
+    final_total = subtotal * (1 + (discount / 100))
+    order += f"final_total: {final_total}"
+
+    return order
+
+#i think in cohesion
