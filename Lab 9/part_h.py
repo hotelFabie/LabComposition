@@ -6,8 +6,8 @@ class Exporter:
         pass
 
     #4
-    def export(data : str):
-        print("[data converted to ???]")
+    def export(self, data : str):
+        print(f"[{data} converted to ???]")
 
     #5
     def __str__(self):
@@ -19,7 +19,7 @@ class ConsoleExporter(Exporter):
         super().__init__()
 
     #4
-    def export(data : str):
+    def export(self, data : str):
         print(f"{data} can now be dealt with through the console.")
 
     def __str__(self) -> str:
@@ -30,7 +30,7 @@ class TextExporter(Exporter):
         super().__init__()
 
     #4
-    def export(data : str):
+    def export(self, data : str):
         print(f"data")
 
     def __str__(self) -> str:
@@ -40,7 +40,7 @@ class SummaryExporter(Exporter):
     def __init__(self):
         super().__init__()
 
-    def export(data : str):
+    def export(self, data : str):
         print(f"SUMMARY\nthis is a {data}.")
 
     def __str__(self) -> str:
@@ -56,21 +56,21 @@ exporters = [
 
 #7
 for exporter in exporters:
-    exporter.export()
+    exporter.export("thing")
 
 #8
 class ThirdPartyService:
     def __init__(self):
         pass    
 
-    def export(data : str):
+    def export(self, data : str):
         print("LMAO you shouldn't have trusted us, good luck.")
 
 #Demonstrating that it can be used by inserting it into the list/collection made above, and then be iterated through (again).
 exporters.append(ThirdPartyService())
 
 for exporter in exporters:
-    exporter.export("pew")
+    exporter.export("modern thing")
 
 #9
 generic_console_exporter = ConsoleExporter()
