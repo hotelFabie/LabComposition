@@ -77,16 +77,12 @@ def configure_order(**optionals) -> dict:
 print(configure_order(company="DB Schenker", discount=10))
 
 #:::Part 5
-#"... information already exists in collections", so it just happens to be here, I guess?
-
-#ONLY ONE IS DONE SO FAR.
-
 prices_one = [79, 99, 159, 199]
 
-#Positional unpacking 1 and 2
+#Positional unpacking 1
 print(calculate_subtotal(*prices_one))
 
-
+#------------------------------
 #Dict 1
 settings_one = {
     "" : "", 
@@ -103,15 +99,21 @@ settings_two = {
     "shipping" : "express"
 }
 
-#ONLY TWO IS DONE SO FAR.
+#List 
+more_products = [
+    {"name" : "Xbox Series X Wireless Controller", "price" : 49.99, "category" : "Game Controller"},
+    {"name" : "Physint", "price" : 79.99, "category" : "Game"},
+    {"name" : "Xbox Series X", "price" : 749.99, "category" : "Game Console"}
+]
+#------------------------------
 
-#Dictionary unpacking 1 and 2
+#Dictionary unpacking 1 
 print(configure_order(**settings_two))
 
+#Positional & dictionary unpacking 2 - Doing both in one (to show a more unique case, and use all methods accessible at this point.)
+print(make_order(customers[2]["id"], customers[2]["name"], *more_products, **settings_one))
+
 #:::Part 6
-
-#WIP
-
 def produce_summary(id : int, customer : str, *messages, **metadata) -> str:
     summary = f"id: {id}, customer name: {customer}" 
     
@@ -126,7 +128,7 @@ def produce_summary(id : int, customer : str, *messages, **metadata) -> str:
             summary += (f"[{key}: {value}]")
     return summary
 
-#Test - JUST TESTING THAT IT WORX FIRST B4 PUTTING IN ACTUAL DATA.
+#Test - DO IT ON ACTUAL DATA INSTEAD.
 print(produce_summary(6, "jason", "bleep", "bloop", thing="thing", moop="meep"))
 
 #:::Part 7
