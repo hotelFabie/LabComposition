@@ -79,10 +79,14 @@ print(configure_order(company="DB Schenker", discount=10))
 
 #:::Part 5
 #"... information already exists in collections", so it just happens to be here, I guess?
+
+#ONLY ONE IS DONE SO FAR.
+
 prices_one = [79, 99, 159, 199]
 
 #Positional unpacking 1 and 2
 print(calculate_subtotal(*prices_one))
+
 
 #Dict 1
 settings_one = {
@@ -100,12 +104,15 @@ settings_two = {
     "shipping" : "express"
 }
 
+#ONLY TWO IS DONE SO FAR.
+
 #Dictionary unpacking 1 and 2
 print(configure_order(**settings_two))
 
-#DONE HALF OF THIS ONE, BUT IT JUST FEELS TEDIOUS ATM, SO I AM MOVING FORWARD...
-
 #:::Part 6
+def produce_summary(id, customer, *messages, **metadata):
+    summary = f"id: {id}, customer name: {customer}" 
+
 
 #:::Part 7
 
