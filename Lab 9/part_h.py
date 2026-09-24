@@ -5,6 +5,7 @@ class Exporter:
     def __init__(self):
         pass
 
+    #4
     def export(data : str):
         print("[data converted to ???]")
 
@@ -17,8 +18,9 @@ class ConsoleExporter(Exporter):
     def __init__(self):
         super().__init__()
 
+    #4
     def export(data : str):
-        print(f"[{data} converted for a console]")
+        print(f"{data} can now be dealt with through the console.")
 
     def __str__(self) -> str:
         return "console exporter"
@@ -27,8 +29,9 @@ class TextExporter(Exporter):
     def __init__(self):
         super().__init__()
 
+    #4
     def export(data : str):
-        print(f"[{data} converted to text]")
+        print(f"data")
 
     def __str__(self) -> str:
         return "text exporter"
@@ -38,11 +41,10 @@ class SummaryExporter(Exporter):
         super().__init__()
 
     def export(data : str):
-        print(f"[{data} converted to a summary]")
+        print(f"SUMMARY\nthis is a {data}.")
 
     def __str__(self) -> str:
         return f"summary exporter"
-
 
 #6
 exporters = [
@@ -64,6 +66,11 @@ class ThirdPartyService:
     def export(data : str):
         print("LMAO you shouldn't have trusted us, good luck.")
 
+#Demonstrating that it can be used by inserting it into the list/collection made above, and then be iterated through (again).
+exporters.append(ThirdPartyService())
+
+for exporter in exporters:
+    exporter.export("pew")
 
 #9
 generic_console_exporter = ConsoleExporter()
@@ -76,3 +83,6 @@ print(isinstance(generic_console_exporter, object))
 
 #Then, testing that a subclass is not equal to another one.
 print(isinstance(generic_console_exporter, SummaryExporter))
+
+#10
+
