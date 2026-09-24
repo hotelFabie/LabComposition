@@ -164,19 +164,21 @@ def order_process(*products, **settings) -> str:
     for product in products:
         subtotal += product["price"]
     
-    order += f"subtotal: {subtotal}"
+    order += f"subtotal: {subtotal}, "
 
     for setting, value in settings.items():
-        if value == "discount":
+        discount = 0
+        shipping = 0
+        if setting == "discount":
             discount = value
-            order += f"discount: {value} "
+            order += f"discount: {value}, "
             
-        elif value == "shipping_cost":
+        elif setting == "shipping_cost":
             shipping = f"shipping cost: {value}"
-            order += f"discount: {value} "
+            order += f"discount: {value}, "
 
     final_total = subtotal * (1 + (discount / 100)) + shipping
-    order += f"final_total: {final_total}"
+    order += f"final total: {final_total}"
 
     return order
 
