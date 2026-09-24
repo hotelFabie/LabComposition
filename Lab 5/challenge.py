@@ -43,13 +43,12 @@ print(make_order(customers[0]["id"], customers[0]["name"]))
 #Testing an extensive one
 print(make_order(customers[0]["id"], customers[0]["name"], products[1], products[4], company="DHL", discount=10))
 
+#Various lengths
 order_one = make_order(customers[0]["id"], customers[0]["name"], products[7], discount=20, priority=True, message="Fun is Key.")
 order_two = make_order(customers[1]["id"], customers[1]["name"], products[6], products[5])
 order_three = make_order(customers[2]["id"], customers[2]["name"], products[4], company="DB Schenker", shipping="rapid express")
 order_four = make_order(customers[3]["id"], customers[3]["name"], products[0])
-order_five = make_order(customers[4]["id"], customers[4]["name"], )
-#these last three should definitely have some optional things...
-#expensive one with shipping is 尤も.
+order_five = make_order(customers[4]["id"], customers[4]["name"], products[1], products[3], products[4], message="Fabi Switch + Accessory Purchase", priority=True, company="PostNord", express="hyper express")
 
 #:::Part 3
 def calculate_subtotal(*prices : int | float) -> int | float | None:
@@ -65,13 +64,13 @@ def calculate_subtotal(*prices : int | float) -> int | float | None:
 print(calculate_subtotal(59, 139, 79, 199))
 
 #:::Part 4
-#*just assuming right a dictionary is what we'll return, though i'm not sure yet...*
 def configure_order(**optionals) -> dict: 
     if not optionals:
         return None
     configuration = {}
     for optional, value in optionals.items():
-        configuration[optional] = value
+        if value != None:
+            configuration[optional] = value
     return configuration
 
 #Test
@@ -118,7 +117,7 @@ def produce_summary(id : int, customer : str, *messages, **metadata) -> str:
     
     if messages:
         summary += "messages: "
-        for message in message:
+        for message in messages:
             summary += message
         
     if metadata:
