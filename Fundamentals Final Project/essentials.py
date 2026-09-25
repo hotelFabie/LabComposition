@@ -7,7 +7,12 @@ from enum import Enum
 #Should be created in a way like this, though I am not sure if I will use this terminology or not:
 
 #These numbers do not really mean anything yet.
-class DifficultyLevel(Enum):
+#BUT, this could also be a sign of using inheritance, though from something built-in this time.
+
+#I assume to far that this will only be for internal use, as it should not really be seen by the user (externals).
+#And privacy does not seem to be possible to enforce in python (if not misunderstood), so I guess we use the standard for classes?
+#"class _Internal", and then these are not imported if this is to be a module.
+class _DifficultyLevel(Enum):
     EASY = 10,
     MEDIUM = 20
     HARD = 30
