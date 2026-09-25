@@ -5,6 +5,16 @@
 
 #We will need to consider the case where the user will be below 0, then we will ask if they want to [r] : restart or [q] : quit.
 
+def start():
+    #Considering it will be able to use the menu(), 
+    #And something else e.g. quit
+    #It will probably only be relevant to have a reset IF we get to the point that a JSON file would be necessary.
+    #Though, it could be a little excessive.
+    
+    #Also, they sort of need to create the character to even get to the point that they should continue.
+    pass
+
+
 def menu():
     """
     Produces a menu of user actions.
