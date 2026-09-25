@@ -28,7 +28,7 @@ def menu():
             case "w":
                 pass
             case "p":
-                #this will probably 
+                #this will probably need a method from the character. and that can be public, as long as you have the character.
                 pass
                 
     
