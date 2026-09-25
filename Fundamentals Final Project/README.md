@@ -21,7 +21,30 @@ Should be able to get some statistics about what they have.
 
 !! Based on what level the user is, a certain difficulty will be applied.
 
+#IDK if it is overkill to have a JSON file with everything, so you could load it in IF there is anything, and DELETE it if you so choose.
 
+# LOGIC
+- Stepping
+* I guess you could have some sort of command to do this logic. 
+* step()
+* For each step, there is a 1/4 chance that you meet a basic enemy.
+* Utilize random(), which takes this relation into account.
+* At every decided milestone, you get a heal/refresh of everything.
+
+# ITEMS
+- One item might regen a tiny bit of HP back.
+- Another might also double turn.
+- And another may reduce damage taken.
+
+!! Should probably have very low chance of drops.
+
+# COMBAT
+- Take turns. 
+- Attack: Do damage
+- Defend: Have damage done by enemy reduced.  
+
+# EXTRAS
+Would be fun to just make it a bit more decorative, e.g. using kaomoji/emoticons.
 
 # CONSIDERATIONS
 There is an incredibly great risk that this could become way too packed. 
