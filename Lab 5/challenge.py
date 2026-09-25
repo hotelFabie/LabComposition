@@ -185,7 +185,8 @@ def order_process(*products, **settings) -> str:
 print(order_process(products[0], products[2], discount=10, shipping_cost=199, strange_setting="what?"))
 
 #:::Part 9
-#This feels like a repeat.
+#This feels like a repeat?
+different_order_1 = make_order()
 
 #:::Final Challenge
-#This one is a bit too redundant
+#This one is a bit too redundant.
