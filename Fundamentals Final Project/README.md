@@ -42,6 +42,7 @@ Should be able to get some statistics about what they have.
 - Take turns. 
 - Attack: Do damage
 - Defend: Have damage done by enemy reduced.  
+- Investigate: See what the enemy can do, and its stats.
 
 # EXTRAS
 Would be fun to just make it a bit more decorative, e.g. using kaomoji/emoticons.

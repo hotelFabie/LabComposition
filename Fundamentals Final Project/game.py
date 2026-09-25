@@ -6,9 +6,9 @@
 
 
 def menu():
-    '''
+    """
     Produces a menu of user actions.
-    '''
+    """
     print(f"CHOOSE ACTION")
     print(f"[c] : inventory")
     print(f"[w] : walk")
