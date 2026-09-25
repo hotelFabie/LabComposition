@@ -12,6 +12,9 @@ class _Difficulty(Enum):
 #What if instead, we give it the player's difficulty level as input - dependency injection - and then compare it to the difficulty level?
 #There maybe probably not be any cleaner way than simply comparing, and I assume that we can do it on the actual name itself?
 
+#We will probably give it similar attacks, except that there is a highly unlikely risk that it does a high dealing attack.
+
+
 class Enemy:
         #I assume this is str
     def __init__(self, character_level : int):
@@ -19,22 +22,23 @@ class Enemy:
         self.difficulty : _Difficulty = self.set_difficulty(character_level)
 
     def set_difficulty(character_level : int) -> str:
+        if character_level < 1:
+            raise ValueError("Character level cannot be under 1.")
+        
         new_difficulty = None
-
-        #Not sure if a ValueError will need to pop up here.
 
         for difficulty in _Difficulty:
             #This logic is not done.
             if character_level <= difficulty.value:
                 new_difficulty = difficulty
+                break
 
         return new_difficulty
 
     #Either a __str__ or a getter method.
 
-    #Test
-
-print(Enemy.set_difficulty(50))
+#Test
+print(Enemy.set_difficulty(7))
 
 
 #------------------
