@@ -3,10 +3,10 @@ import characters
 
 #This difficulty level will be chosen based on a public method that character has to see its level.
 class _Difficulty(Enum):
-    EASY = 10
-    MEDIUM = 20
-    HARD = 30
-    EX = 50
+    EASY = 3
+    MEDIUM = 5
+    HARD = 7
+    EX = 10
 
 class Enemy:
     def __init__(self, character_level : int):
@@ -17,7 +17,7 @@ class Enemy:
 
     def set_difficulty(self, character_level : int) -> str:
         if character_level < 1:
-            raise ValueError("Character level cannot be under 1.")
+            raise ValueError("character level cannot be under 1.")
         
         new_difficulty = None
 
@@ -38,7 +38,7 @@ class Enemy:
     #We'll see if it is something worth polishing later on.
     def attack(self, character : characters.Character):
         character.health -= 2
-        print(f"{self.name} attacked you with 2 damage.")
+        print(f"{self.name} attacked you with 2 damage.  \\(˚☐˚”)/")
 
 #------------------
 

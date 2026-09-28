@@ -33,13 +33,13 @@ class Character:
 
         if action == "a":
             enemy.health -= 5
-            print(f"you attacked the enemy with 5 damage!")
+            print(f"you attacked the enemy with 5 damage! ٩(ˋᗣˊ*)و")
 
             if enemy.health <= 0:
                 #Not fully decided yet, just making sure it works first.
                 #Why does it interpret it as a "literal"?
                 exp = int(3)
-                print(f"enemy defeated! gained {exp} exp.")
+                print(f"enemy defeated! gained {exp} exp. ⋆⭒˚｡⋆")
                 
                 self.add_exp(exp)
         elif action == "d":
