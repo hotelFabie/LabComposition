@@ -42,37 +42,28 @@ def action_loop(character : characters.Character):
             case _:
                 print("not an available action.")
 
-def start():
-    # Ask user for name input. 
-    # Create a character.
-    # vvvvv i think like here, you give your character 
-    
+def start():    
     #Title
     print("಄⣀⣠MAGISTRIKE⣄⣀಄")
 
-    character_name = input("give your character a name: ").strip().lower()
-    #This one must exist outside, so 
+    character_name = input("give your character a name: ").strip().lower() 
     character = characters.Character(character_name)
 
     #Game description for user.
-    #it wraps it in double brick parentheses here... i wonder why...
     print("\n"
           f"welcome [{character}] to MAGISTRIKE!\n"
           "you are but a mere traveller in this dangerous world,\n"
           "and your only way out is by starting your path.\n"
           "be careful, and be courageous!\n")
-    #Test that we get what is intended
 
     menu()
     action_loop(character)
 
-
 #Everything related to the action: [w] walk
 def walk(character : characters.Character):
-    #should have a text indicator about what is happening...
-    possibly_cause_event(character)
     character.exp += 0.25
     print("\r +0.25 exp.⋆⭒˚｡⋆")
+    possibly_cause_event(character)
 
 #Could be smart to indicate that these are not to actually seen.
 def possibly_cause_event(character : characters.Character):
