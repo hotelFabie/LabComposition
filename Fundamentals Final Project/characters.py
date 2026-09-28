@@ -1,4 +1,6 @@
 class Character:
+    MAX_INVENTORY_SIZE = 3
+    
     def __init__(self, name):
         self.name = name
 
@@ -7,15 +9,19 @@ class Character:
         self.health = 20
         self.defense = 0
 
+        #Does not really have an inventory of sorts yet?:
+        #I guess if we add to, we will need to do a manual check when we add if 
+        self.inventory = []
+
         self.exp = 0
 
         #We'll see if this gets adjusted, or is fixed.
         self.exp_cap = self.level * 10
 
+    #AM I USING THIS???
     def get_level(self) -> int:
         return self.level
 
-    #Just testing
     def __str__(self):
         return f"{self.name}"
 
@@ -23,6 +29,9 @@ class Character:
         return (f"಄⣀⣠stats of player[{self.name}]⣄⣀಄\n"
         f"•level: {self.level} •health: {self.health} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}")
 
-#Exp cap of sorts.
-
-#Will probably need a singleton pattern, because we either have one, or nothing.
+    def add_to_inventory(self, item : Item):
+        if len(self.inventory) == self.MAX_INVENTORY_SIZE:
+            print("inventory is full!")
+            #NOT SURE ENTIRELY HOW TO BREAK THIS JUST YET...
+            return
+        self.inventory.append(item)

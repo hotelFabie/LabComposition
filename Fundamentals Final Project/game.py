@@ -1,5 +1,9 @@
 import characters
 
+#WIP: Maybe that this is to be renamed to "logic", and we have some other place to run all of this.
+
+#All the core parts for actually running everything is here below.
+#----------
 def menu():
     """
     Produces a menu of user actions.
@@ -10,6 +14,30 @@ def menu():
     print(f"[w] : walk")
     print(f"[p] : profile")
     print(f"[q] : quit")
+
+
+def action_loop(character : characters.Character):
+    choice : str = ""
+
+    while (choice != "q"):
+        choice = input("action>")
+        choice = choice.lower().strip()
+
+        match choice:
+            case "m":
+                menu()
+            case "c":
+                pass
+            case "w":
+                pass
+            case "p":
+                #Public method from Character
+                print(character.get_profile())
+            case "q":
+                print("shutting down...")
+                break
+            case _:
+                print("not an available action.")
 
 def start():
     # Ask user for name input. 
@@ -35,30 +63,15 @@ def start():
     menu()
     action_loop(character)
 
-def action_loop(character : characters.Character):
-    #Probably best to isolate this into its own separate loop.
-    choice : str = ""
+#IMPLEMENT THE CASE FOR WALKING HERE
+def walk():
+    #SHOULD BE A CASE THAT YOU ENCOUNTER AN ENEMY HERE, I THINK...
+    #PROBABLY THAT THE CHARACTER GETS A +1 EXP REGARDLESS OF WHAT THEY DO.
 
-    #A bit unsure about how this is intended to be.
-    while (choice != "q"):
-        choice = input("action>")
-        choice = choice.lower().strip()
+#REALLY BAD METHOD NAME, I KNOW.
+def rng():
+    #
 
-        match choice:
-            case "m":
-                menu()
-            case "c":
-                pass
-            case "w":
-                pass
-            case "p":
-                #Public method from Character
-                print(character.get_profile())
-            case "q":
-                print("shutting down...")
-                break
-            case _:
-                print("not an available action.")
 #--------------------
 #Actually running the game down here.
 
