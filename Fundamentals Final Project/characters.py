@@ -20,7 +20,7 @@ class Character:
         return f"{self.name}"
 
     def get_profile(self):
-        return (f"಄⣀⣠stats of player[{self.name}]⣄⣀಄\n"
+        return (f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n"
         f"•level: {self.level} •health: {self.health} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}")
 
     def choose_action(self, enemy : enemies.Enemy):
@@ -39,20 +39,23 @@ class Character:
                 #Not fully decided yet, just making sure it works first.
                 #Why does it interpret it as a "literal"?
                 exp = int(3)
-                print(f"enemy defeated! gained {exp} exp. ⋆⭒˚｡⋆")
+                print(f"enemy defeated! gained {exp} exp.⋆⭒˚｡⋆")
                 
                 self.add_exp(exp)
         elif action == "d":
+            #need some action that reduces...
             pass
 
-    def add_exp(self, exp : int):
+    def add_exp(self, exp : float):
 
         #May not work as intended immediately, might have to change some of the logic.
         if (self.exp + exp >= self.exp_cap):
             self.level += 1
             print(f"leveled up! {self.level - 1} → {self.level}")
 
-            self.exp = 0 + self.exp_cap % self.exp 
+            #it is here where the calculation does not go as intended
+
+            self.exp = (self.exp + exp) % self.exp_cap 
             self.exp_cap = 10 * self.level
         else:
             self.exp += exp

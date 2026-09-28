@@ -71,15 +71,23 @@ def start():
 def walk(character : characters.Character):
     #should have a text indicator about what is happening...
     possibly_cause_event(character)
-    character.exp += 1
+    character.exp += 0.25
+    print("\r +0.25 exp.⋆⭒˚｡⋆")
 
 #Could be smart to indicate that these are not to actually seen.
 def possibly_cause_event(character : characters.Character):
-    random_number = random.randint(1,3+1)
-    if random_number == 1:
-        #WIP: Should not always be a NormalEnemy.
-        enemy = enemies.NormalEnemy(character.level)
+    battle_chance_number = random.randint(1,3+1)
+    if battle_chance_number == 1:
+        #Does this work like intended?
+        enemy_chance_number = random.randint(1,10+1)
+        if enemy_chance_number >= 1 and enemy_chance_number <= 6:
+            enemy = enemies.NormalEnemy(character.level)
+        elif enemy_chance_number == 7 | 8:
+            enemy = enemies.WeirdEnemy(character.level)
+        elif enemy_chance_number == 9 | 10:
+            enemy = enemies.GreatEnemy(character.level)
         battle(character, enemy)
+    #Considering that we have another case, being or 2 or 3, depends e.g. if items are to be implemented.
 
 def battle(character : characters.Character, enemy : enemies.Enemy):
     print(f"a {enemy} approached! battled started!")
