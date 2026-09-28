@@ -33,11 +33,14 @@ class Character:
 
         if action == "a":
             enemy.health -= 5
+            print(f"you attacked the enemy with 5 damage!")
+
             if enemy.health <= 0:
                 #Not fully decided yet, just making sure it works first.
                 #Why does it interpret it as a "literal"?
                 exp = int(3)
-                print(f"enemy defeated! {exp}")
+                print(f"enemy defeated! gained {exp} exp.")
+                
                 self.add_exp(exp)
         elif action == "d":
             pass
@@ -47,6 +50,8 @@ class Character:
         #May not work as intended immediately, might have to change some of the logic.
         if (self.exp + exp >= self.exp_cap):
             self.level += 1
+            print(f"leveled up! {self.level - 1} → {self.level}")
+
             self.exp = 0 + self.exp_cap % self.exp 
             self.exp_cap = 10 * self.level
         else:

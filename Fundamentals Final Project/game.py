@@ -23,7 +23,7 @@ def action_loop(character : characters.Character):
     choice : str = ""
 
     while (choice != "q"):
-        choice = input("action>")
+        choice = input(">")
         choice = choice.lower().strip()
 
         match choice:
@@ -91,6 +91,7 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
             character.choose_action(enemy)
         else:
             enemy.attack(character)
+        current_turn += 1
 
 #--------------------
 #Actually running the game down here.
