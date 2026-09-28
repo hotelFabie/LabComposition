@@ -32,7 +32,7 @@ def action_loop(character : characters.Character):
             case "c":
                 pass
             case "w":
-                pass
+                walk(character)
             case "p":
                 #Public method from Character
                 print(character.get_profile())
@@ -69,28 +69,28 @@ def start():
 
 #Everything related to the action: [w] walk
 def walk(character : characters.Character):
-    possibly_cause_event()
+    #should have a text indicator about what is happening...
+    possibly_cause_event(character)
     character.exp += 1
 
 #Could be smart to indicate that these are not to actually seen.
 def possibly_cause_event(character : characters.Character):
-    #1 BY 3, AND WE'LL 
     random_number = random.randint(1,3+1)
     if random_number == 1:
-        #Should not always be a NormalEnemy.
-        enemy = enemies.NormalEnemy(character.get_level())
-        battle(enemy)
+        #WIP: Should not always be a NormalEnemy.
+        enemy = enemies.NormalEnemy(character.level)
+        battle(character, enemy)
 
-def battle(enemy : enemies.Enemy):
+def battle(character : characters.Character, enemy : enemies.Enemy):
     print(f"a {enemy} approached! battled started!")
     
     current_turn = 0
     #Main player
-    while (enemy.get_health() > 0):
+    while (enemy.health > 0):
         if current_turn % 2 == 0:
-
+            character.choose_action()
         else:
-            enemy.attack(character : characters.Character)
+            enemy.attack(character)
 
 #probably need some level_up logic as well.
 
