@@ -85,14 +85,12 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
     print(f"a {enemy} approached! battled started!")
     
     current_turn = 0
-    #Main player
+
     while (enemy.health > 0):
         if current_turn % 2 == 0:
-            character.choose_action()
+            character.choose_action(enemy)
         else:
             enemy.attack(character)
-
-#probably need some level_up logic as well.
 
 #--------------------
 #Actually running the game down here.

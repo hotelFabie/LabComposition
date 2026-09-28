@@ -23,31 +23,31 @@ class Character:
         return (f"಄⣀⣠stats of player[{self.name}]⣄⣀಄\n"
         f"•level: {self.level} •health: {self.health} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}")
 
-    def choose_action(enemy : enemies.Enemy):
+    def choose_action(self, enemy : enemies.Enemy):
         print("•[a] attack •[d] defend")
         action = input(">")
 
-        while action != "a" or action != "d":
+        while (action != "a") and (action != "d"):
             print("choose a or d!")
-            print(f"DEBUG: {action}")
             action = input(">")
 
         if action == "a":
             enemy.health -= 5
             if enemy.health <= 0:
                 #Not fully decided yet, just making sure it works first.
-                exp = 3
+                #Why does it interpret it as a "literal"?
+                exp = int(3)
                 print(f"enemy defeated! {exp}")
-                add_exp(exp)
+                self.add_exp(exp)
         elif action == "d":
             pass
 
-def add_exp(self, exp : int):
+    def add_exp(self, exp : int):
 
-    #May not work as intended immediately, might have to change some of the logic.
-    if (self.exp + exp >= self.exp_cap):
-        self.level += 1
-        self.exp = 0 + self.exp_cap % self.exp 
-        self.exp_cap = 10 * self.level
-    else:
-        self.exp += exp
+        #May not work as intended immediately, might have to change some of the logic.
+        if (self.exp + exp >= self.exp_cap):
+            self.level += 1
+            self.exp = 0 + self.exp_cap % self.exp 
+            self.exp_cap = 10 * self.level
+        else:
+            self.exp += exp
