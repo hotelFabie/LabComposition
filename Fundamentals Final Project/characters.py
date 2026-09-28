@@ -1,20 +1,18 @@
 import enemies
 
 class Character:
-    #MAX_INVENTORY_SIZE = 3
     
     def __init__(self, name):
         self.name = name
 
-        #Make sure these are private
+        #Consider protection level.
         self.level = 1
         self.health = 20
         self.defense = 0
 
         self.exp = 0
 
-        #We'll see if this gets adjusted, or is fixed.
-        self.exp_cap = self.level * 10
+        self.exp_cap = 10
 
     def __str__(self):
         return f"{self.name}"
@@ -44,6 +42,7 @@ class Character:
                 self.add_exp(exp)
         elif action == "d":
             #need some action that reduces...
+            #it should one hundred percent utilize the defense mechanic.
             pass
 
     def add_exp(self, exp : float):
@@ -52,8 +51,6 @@ class Character:
         if (self.exp + exp >= self.exp_cap):
             self.level += 1
             print(f"leveled up! {self.level - 1} → {self.level}")
-
-            #it is here where the calculation does not go as intended
 
             self.exp = (self.exp + exp) % self.exp_cap 
             self.exp_cap = 10 * self.level
