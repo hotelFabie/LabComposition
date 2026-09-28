@@ -10,8 +10,7 @@ class Character:
         self.defense = 0
 
         #Does not really have an inventory of sorts yet?:
-        #I guess if we add to, we will need to do a manual check when we add if 
-        self.inventory = []
+        # self.inventory = []
 
         self.exp = 0
 
@@ -29,9 +28,9 @@ class Character:
         return (f"಄⣀⣠stats of player[{self.name}]⣄⣀಄\n"
         f"•level: {self.level} •health: {self.health} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}")
 
-    def add_to_inventory(self, item : Item):
-        if len(self.inventory) == self.MAX_INVENTORY_SIZE:
-            print("inventory is full!")
-            #NOT SURE ENTIRELY HOW TO BREAK THIS JUST YET...
-            return
-        self.inventory.append(item)
+    # def add_to_inventory(self, item : Item):
+    #     if len(self.inventory) == self.MAX_INVENTORY_SIZE:
+    #         print("inventory is full!")
+    #         #NOT SURE ENTIRELY HOW TO BREAK THIS JUST YET...
+    #         return
+    #     self.inventory.append(item)

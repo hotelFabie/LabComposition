@@ -1,4 +1,5 @@
 import characters
+import random
 
 #WIP: Maybe that this is to be renamed to "logic", and we have some other place to run all of this.
 
@@ -65,12 +66,21 @@ def start():
 
 #IMPLEMENT THE CASE FOR WALKING HERE
 def walk():
+    possibly_cause_event()
     #SHOULD BE A CASE THAT YOU ENCOUNTER AN ENEMY HERE, I THINK...
     #PROBABLY THAT THE CHARACTER GETS A +1 EXP REGARDLESS OF WHAT THEY DO.
 
+def battle():
+    #an enemy will need to be spawned, with an incredibly low chance against a strong
+    #give info about the enemy.
+
 #REALLY BAD METHOD NAME, I KNOW.
-def rng():
-    #
+def possibly_cause_event():
+    #1 BY 3, AND WE'LL 
+    random_number = random.randint(1,3+1)
+    if random_number == 1:
+        battle()
+    elif random_number == 2:
 
 #--------------------
 #Actually running the game down here.
