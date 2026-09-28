@@ -1,4 +1,6 @@
 import characters
+import enemies
+#import items
 import random
 
 #WIP: Maybe that this is to be renamed to "logic", and we have some other place to run all of this.
@@ -64,23 +66,33 @@ def start():
     menu()
     action_loop(character)
 
-#IMPLEMENT THE CASE FOR WALKING HERE
-def walk():
+
+#Everything related to the action: [w] walk
+def walk(character : characters.Character):
     possibly_cause_event()
-    #SHOULD BE A CASE THAT YOU ENCOUNTER AN ENEMY HERE, I THINK...
-    #PROBABLY THAT THE CHARACTER GETS A +1 EXP REGARDLESS OF WHAT THEY DO.
+    character.exp += 1
 
-def battle():
-    #an enemy will need to be spawned, with an incredibly low chance against a strong
-    #give info about the enemy.
-
-#REALLY BAD METHOD NAME, I KNOW.
-def possibly_cause_event():
+#Could be smart to indicate that these are not to actually seen.
+def possibly_cause_event(character : characters.Character):
     #1 BY 3, AND WE'LL 
     random_number = random.randint(1,3+1)
     if random_number == 1:
-        battle()
-    elif random_number == 2:
+        #Should not always be a NormalEnemy.
+        enemy = enemies.NormalEnemy(character.get_level())
+        battle(enemy)
+
+def battle(enemy : enemies.Enemy):
+    print(f"a {enemy} approached! battled started!")
+    
+    current_turn = 0
+    #Main player
+    while (enemy.get_health() > 0):
+        if current_turn % 2 == 0:
+
+        else:
+            enemy.attack(character : characters.Character)
+
+#probably need some level_up logic as well.
 
 #--------------------
 #Actually running the game down here.

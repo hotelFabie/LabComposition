@@ -1,4 +1,5 @@
 from enum import Enum
+import characters
 
 #This difficulty level will be chosen based on a public method that character has to see its level.
 class _Difficulty(Enum):
@@ -27,7 +28,12 @@ class Enemy:
     #An __str__ is probably better, because it will already just format it, a getter would just get the entire object.
     #But we only want information to the user, so it wis most likely better to just format it.
     def __str__(self):
-        print(f"difficulty: {self.difficulty}")
+        print(f"name: {self.name} difficulty: {self.difficulty}")
+
+    #WIP: All character attributes are public, meaning that this is also seen in the game logic...
+    #We'll see if it is something worth polishing later on.
+    def attack(character : characters.Character):
+        character.health -= 5
 
 #Test
 print(Enemy.set_difficulty(7))
@@ -36,14 +42,13 @@ print(Enemy.set_difficulty(7))
 #------------------
 
 class NormalEnemy(Enemy):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, character_level):
+        super().__init__(character_level)
 
 class WeirdEnemy(Enemy):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, character_level):
+        super().__init__(character_level)
 
-#Stronger attacks, fewer turns
 class GreatEnemy(Enemy):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, character_level):
+        super().__init__(character_level)
