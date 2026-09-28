@@ -1,5 +1,3 @@
-#Base enemy needs to be implemented here...
-#Everything will be relational to the enum.
 from enum import Enum
 
 #This difficulty level will be chosen based on a public method that character has to see its level.
@@ -9,16 +7,8 @@ class _Difficulty(Enum):
     HARD = 30
     EX = 50
 
-#What if instead, we give it the player's difficulty level as input - dependency injection - and then compare it to the difficulty level?
-#There maybe probably not be any cleaner way than simply comparing, and I assume that we can do it on the actual name itself?
-
-#We will probably give it similar attacks, except that there is a highly unlikely risk that it does a high dealing attack.
-
-
 class Enemy:
-        #I assume this is str
     def __init__(self, character_level : int):
-        #High chance that this will NOT work as I think it will immediately
         self.difficulty : _Difficulty = self.set_difficulty(character_level)
 
     def set_difficulty(character_level : int) -> str:
@@ -28,14 +18,16 @@ class Enemy:
         new_difficulty = None
 
         for difficulty in _Difficulty:
-            #This logic is not done.
             if character_level <= difficulty.value:
                 new_difficulty = difficulty
                 break
 
         return new_difficulty
-
-    #Either a __str__ or a getter method.
+    
+    #An __str__ is probably better, because it will already just format it, a getter would just get the entire object.
+    #But we only want information to the user, so it wis most likely better to just format it.
+    def __str__(self):
+        print(f"difficulty: {self.difficulty}")
 
 #Test
 print(Enemy.set_difficulty(7))
@@ -51,6 +43,7 @@ class WeirdEnemy(Enemy):
     def __init__(self):
         super().__init__()
 
+#Stronger attacks, fewer turns
 class GreatEnemy(Enemy):
     def __init__(self):
         super().__init__()
