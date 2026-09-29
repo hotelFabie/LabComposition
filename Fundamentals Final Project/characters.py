@@ -24,9 +24,13 @@ class Character:
     def __str__(self):
         return f"{self.name}"
 
-    #OBS: Can't this be an __str__?
-    #Also, it might not write it out directly as I would think immediately.
-    def get_status(self):
+    #Highly unlikely that we every would need an __str__, unless you want to see this as it. 
+    #Felt the naming to be more understandable.
+    def get_status(self) -> str:
+        """
+        Gives a status overview of the player's character data and progress.
+        """
+
         status = f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n" 
         exp_str = f"{self.exp}/{self.exp_cap}"
 
@@ -39,7 +43,14 @@ class Character:
         status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}"
         return status
 
-    def choose_action(self, enemy : enemies.Enemy):
+    def choose_action(self, enemy : enemies.Enemy) -> None:
+        """
+        Gives user action choices while in battle.
+        Allowed actions are attacking and defending.
+        Attacking: Causes damage against enemy.
+        Defending: Heightens defense and heals. 
+        """
+
         print("\n•[a] attack •[d] defend")
         action = input(">")
 
@@ -47,13 +58,12 @@ class Character:
             print("\nchoose a or d!")
             action = input(">")
 
+        #This may be a little hardcoded, as we do not have any set damage for the character.
         if action == "a":
             enemy.health -= 5
             print(f"you attacked the enemy with 5 damage! ٩(ˋᗣˊ*)و")
 
             if enemy.health <= 0:
-                #Not fully decided yet, just making sure it works first.
-                #Why does it interpret it as a "literal"?
                 exp = enemy.difficulty.value + 1
                 print(f"enemy defeated! gained {exp} exp.⋆⭒˚｡⋆")
                 
@@ -67,7 +77,10 @@ class Character:
             self.temporary_defense += 1
 
     def add_exp(self, exp : float):
-        #A check for if it reaches beyond the MAX LEVEL or not.
+        """
+        Adds experience points to the character only if they are below the max level.
+        Updates the level if experience cap is reached, while increasing both the experience and health cap, plus restoring health.
+        """
         if not self.level < self.MAX_LEVEL:
             print("already max level, so no exp is gained.")
         else:
