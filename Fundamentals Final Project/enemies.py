@@ -37,10 +37,10 @@ class Enemy:
     
     #This behavior is how I intend it, but the weird enemy's random damage makes this logic a bit hard to transfer.
     def attack(self, character : characters.Character):
-        adjusted_damage = self.damage - character.defense
+        adjusted_damage = self.damage - (character.defense + character.temporary_defense)
         if adjusted_damage > 0:
-            character.health -= self.damage
-            print(f"{self.name} attacked you with {self.damage} damage.  \\(˚☐˚”)/")
+            character.health -= adjusted_damage
+            print(f"{self.name} attacked you with {adjusted_damage} damage.  \\(˚☐˚”)/")
         elif adjusted_damage == 0: 
             print(f"{self.name} attacked you... without damaging? (° ‸ °)?")
         else:

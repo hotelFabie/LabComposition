@@ -92,6 +92,9 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
             character.choose_action(enemy)
         else:
             enemy.attack(character)
+            print(f"BEFORE: {character.temporary_defense}")
+            character.temporary_defense = 0
+            print(f"AFTER: {character.temporary_defense}")
         current_turn += 1
 
 #--------------------

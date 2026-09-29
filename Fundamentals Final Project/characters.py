@@ -1,3 +1,5 @@
+#IMPORTANT: Give every method important comments.
+
 import enemies
 
 class Character:
@@ -9,6 +11,7 @@ class Character:
         self.level = 1
         self.health = 20
         self.defense = 0
+        self.temporary_defense = 0
 
         self.exp = 0
 
@@ -41,9 +44,10 @@ class Character:
                 
                 self.add_exp(exp)
         elif action == "d":
-            #we increase the defense shortly.
-            #and make sure the calculations decrease
-            pass
+            print(f"you defended with 1 defense!")
+            self.temporary_defense += 1
+            print(f"DEBUG: temporary defense is {self.temporary_defense}")
+            
 
     def add_exp(self, exp : float):
 
