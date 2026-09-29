@@ -3,10 +3,10 @@ import random
 import characters
 
 class _Difficulty(Enum):
-    EASY = 4
-    MEDIUM = 7
-    HARD = 10
-    EX = 13
+    EASY = 3
+    MEDIUM = 6
+    HARD = 9
+    EX = 12
 
 class Enemy:
     def __init__(self, character_level : int):

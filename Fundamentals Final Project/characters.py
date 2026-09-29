@@ -3,6 +3,7 @@
 import enemies
 
 class Character:
+    MAX_LEVEL = 15
     
     def __init__(self, name):
         self.name = name
@@ -16,6 +17,8 @@ class Character:
         self.exp = 0
         self.exp_cap = 10
 
+        self.steps = 1
+
         self.kills = {"normal enemy" : 0, "weird enemy" : 0, "great enemy" : 0}
 
     def __str__(self):
@@ -25,7 +28,7 @@ class Character:
     #Also, it might not write it out directly as I would think immediately.
     def get_profile(self):
         return (f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n"
-        f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}\n•kills {self.kills}")
+        f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}\n•kills {self.kills}\nsteps taken: {self.steps}")
 
     def choose_action(self, enemy : enemies.Enemy):
         print("•[a] attack •[d] defend")
@@ -55,6 +58,8 @@ class Character:
             self.temporary_defense += 1
 
     def add_exp(self, exp : float):
+        #A check for if it reaches beyond the MAX LEVEL or not.
+        
         if (self.exp + exp >= self.exp_cap):
             self.level += 1
             print(f"leveled up! {self.level - 1} → {self.level}")

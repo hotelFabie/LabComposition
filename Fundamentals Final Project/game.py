@@ -29,8 +29,8 @@ def action_loop(character : characters.Character):
         match choice:
             case "m":
                 menu()
-            case "c":
-                pass
+            # case "c":
+            #     pass
             case "w":
                 walk(character)
             case "p":
@@ -61,14 +61,15 @@ def start():
 
 #Everything related to the action: [w] walk
 def walk(character : characters.Character):
+    character.steps += 1
     character.exp += 0.25
-    print("+0.25 exp.⋆⭒˚｡⋆")
+    print("step taken! +0.25 exp.⋆⭒˚｡⋆")
     possibly_cause_event(character)
 
 #Could be smart to indicate that these are not to actually seen.
 def possibly_cause_event(character : characters.Character):
     battle_chance_number = random.randint(1,3+1)
-    if battle_chance_number == 1:
+    if battle_chance_number == 1 or battle_chance_number == 3:
         #Typically, "enemy" should have something as intended?
         enemy_chance_number = random.randint(1,10+1)
         if enemy_chance_number >= 1 and enemy_chance_number <= 6:
@@ -80,7 +81,6 @@ def possibly_cause_event(character : characters.Character):
         elif enemy_chance_number == 9 or enemy_chance_number == 10:
             enemy = enemies.GreatEnemy(character.level)
             battle(character, enemy)
-    #Considering that we have another case, being or 2 or 3, depends e.g. if items are to be implemented.
 
 def battle(character : characters.Character, enemy : enemies.Enemy):
     print(f"a {enemy} approached! battled started!")
