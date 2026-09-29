@@ -4,6 +4,8 @@ import enemies
 
 class Character:
     MAX_LEVEL = 15
+    EXP_BASE = 10
+    HEALTH_BASE = 20
     
     def __init__(self, name):
         self.name = name
@@ -11,11 +13,11 @@ class Character:
         self.defense = 0 + (self.level / 2) 
         self.temporary_defense = 0
 
-        self.health = 20.0
-        self.health_cap = 20.0
+        self.health = self.HEALTH_BASE
+        self.health_cap = self.HEALTH_BASE
 
         self.exp = 0
-        self.exp_cap = 10
+        self.exp_cap = self.EXP_BASE
 
         self.steps = 0
 
@@ -89,8 +91,9 @@ class Character:
                 print(f"leveled up! {self.level - 1} → {self.level}")
 
                 self.exp = (self.exp + exp) % self.exp_cap 
-                self.exp_cap = 10 * (self.level * 0.75)
-                self.health_cap = 20 + (self.level / 2)
+
+                self.exp_cap = self.EXP_BASE * (self.level * 0.75)
+                self.health_cap = self.HEALTH_BASE + (self.level / 2)
                 self.health = self.health_cap
             else:
                 self.exp += exp
