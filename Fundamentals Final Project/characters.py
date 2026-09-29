@@ -6,15 +6,12 @@ class Character:
     
     def __init__(self, name):
         self.name = name
-
-        #Consider protection level.
         self.level = 1
         self.health = 20
-        self.defense = 0
+        self.defense = 0 + (self.level / 2) 
         self.temporary_defense = 0
 
         self.exp = 0
-
         self.exp_cap = 10
 
     def __str__(self):
@@ -44,19 +41,18 @@ class Character:
                 
                 self.add_exp(exp)
         elif action == "d":
-            print(f"you defended with 1 defense!")
+            print(f"you defended with 1 defense, and healed 5 hp! ☥")
+            self.health += 5
             self.temporary_defense += 1
             print(f"DEBUG: temporary defense is {self.temporary_defense}")
             
 
     def add_exp(self, exp : float):
-
-        #May not work as intended immediately, might have to change some of the logic.
         if (self.exp + exp >= self.exp_cap):
             self.level += 1
             print(f"leveled up! {self.level - 1} → {self.level}")
 
             self.exp = (self.exp + exp) % self.exp_cap 
-            self.exp_cap = 10 * self.level
+            self.exp_cap = 10 * (self.level * 0.75)
         else:
             self.exp += exp

@@ -4,10 +4,10 @@ import characters
 
 #This difficulty level will be chosen based on a public method that character has to see its level.
 class _Difficulty(Enum):
-    EASY = 3
-    MEDIUM = 5
-    HARD = 7
-    EX = 10
+    EASY = 0
+    MEDIUM = 2
+    HARD = 4
+    EX = 6
 
 #Thought about this being an abstract class, but we haven't been going through that.
 class Enemy:
@@ -16,8 +16,7 @@ class Enemy:
         #Just to make sure that it works.
         self.health = 10
         self.name = "normal enemy"
-        #Should be in relation to the difficulty ENUM, so we should change the values so they actually make sense.
-        self.damage = 2
+        self.damage = 2 + self.difficulty.value
 
     def set_difficulty(self, character_level : int) -> str:
         if character_level < 1:
