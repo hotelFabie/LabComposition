@@ -34,8 +34,11 @@ class Character:
         if self.level >= self.MAX_LEVEL:
             health_str = f"MAX"    
             exp_str = f"MAX"
+
+        #Needed to search this up.
+        kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
         
-        status += f"•level: {self.level} •health: {health_str} •defense: {self.defense} •current exp: {exp_str}\n•kills: {self.kills}\nsteps taken: {self.steps}"
+        status += f"•level: {self.level} •health: {health_str} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\nsteps taken: {self.steps}"
         return status
 
     def choose_action(self, enemy : enemies.Enemy):
