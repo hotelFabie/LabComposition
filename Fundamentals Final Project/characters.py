@@ -3,10 +3,11 @@
 import enemies
 
 class Character:
+    MAX_LEVEL = 10 
+    
     DAMAGE_BASE = 5
     EXP_BASE = 10
     HEALTH_BASE = 20
-    MAX_LEVEL = 15 
 
     #The following constants are made in relation to...
     DAMAGE_INCREASE = 0.5
