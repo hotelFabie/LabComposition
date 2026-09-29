@@ -7,22 +7,25 @@ class Character:
     def __init__(self, name):
         self.name = name
         self.level = 1
-        self.health = 20
         self.defense = 0 + (self.level / 2) 
         self.temporary_defense = 0
+
+        self.health = 20.0
+        self.health_cap = 20.0
 
         self.exp = 0
         self.exp_cap = 10
 
-        self.kills = {"normal" : 0, "weird" : 0, "great" : 0}
+        self.kills = {"normal enemy" : 0, "weird enemy" : 0, "great enemy" : 0}
 
     def __str__(self):
         return f"{self.name}"
 
     #OBS: Can't this be an __str__?
+    #Also, it might not write it out directly as I would think immediately.
     def get_profile(self):
         return (f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n"
-        f"•level: {self.level} •health: {self.health} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}")
+        f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}\n•kills {self.kills}")
 
     def choose_action(self, enemy : enemies.Enemy):
         print("•[a] attack •[d] defend")
@@ -45,10 +48,11 @@ class Character:
                 self.add_exp(exp)
         elif action == "d":
             print(f"you defended with 1 defense, and healed 5 hp! ☥")
-            self.health += 5
+            if self.health + 5 > self.health_cap:
+                self.health = self.health_cap
+            else:
+                self.health += 5
             self.temporary_defense += 1
-            print(f"DEBUG: temporary defense is {self.temporary_defense}")
-            
 
     def add_exp(self, exp : float):
         if (self.exp + exp >= self.exp_cap):
@@ -57,5 +61,7 @@ class Character:
 
             self.exp = (self.exp + exp) % self.exp_cap 
             self.exp_cap = 10 * (self.level * 0.75)
+            self.health_cap = 20 + (self.level / 2)
+            self.health = self.health_cap
         else:
             self.exp += exp

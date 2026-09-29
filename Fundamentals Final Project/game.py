@@ -13,7 +13,7 @@ def menu():
     """
     print(f"಄⣀⣠ACTIONS⣄⣀಄")
     print(f"[m] : show this menu again")
-    print(f"[c] : inventory")
+    #print(f"[c] : inventory")
     print(f"[w] : walk")
     print(f"[p] : profile")
     print(f"[q] : quit")
@@ -62,7 +62,7 @@ def start():
 #Everything related to the action: [w] walk
 def walk(character : characters.Character):
     character.exp += 0.25
-    print("\r +0.25 exp.⋆⭒˚｡⋆")
+    print("+0.25 exp.⋆⭒˚｡⋆")
     possibly_cause_event(character)
 
 #Could be smart to indicate that these are not to actually seen.
@@ -95,13 +95,13 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
             check_game_over(character)
             character.temporary_defense = 0
         current_turn += 1
+    #Some sort of append will be needed here.
+    character.kills[enemy.name] += 1
 
 def check_game_over(character : characters.Character) -> None:
     if character.health <= 0:
         print("♰ YOU DIED : GAME OVER ♰")
         exit()
-
-#Need a health check here somewhere.
 
 #--------------------
 #Actually running the game down here.
