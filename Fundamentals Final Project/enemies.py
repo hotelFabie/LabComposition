@@ -16,6 +16,8 @@ class Enemy:
         #Just to make sure that it works.
         self.health = 10
         self.name = "normal enemy"
+        #Should be in relation to the difficulty ENUM, so we should change the values so they actually make sense.
+        self.damage = 2
 
     def set_difficulty(self, character_level : int) -> str:
         if character_level < 1:
@@ -32,15 +34,18 @@ class Enemy:
     
     def __str__(self):
         return f"{self.name} [{self.difficulty.name}]"
-
+    
     #This behavior is how I intend it, but the weird enemy's random damage makes this logic a bit hard to transfer.
     def attack(self, character : characters.Character):
-        damage = 2 
-        if not damage - character.defense < 0:
-            character.health - damage
-            print(f"{self.name} attacked you with {damage} damage.  \\(˚☐˚”)/")
+        adjusted_damage = self.damage - character.defense
+        if adjusted_damage > 0:
+            character.health -= self.damage
+            print(f"{self.name} attacked you with {self.damage} damage.  \\(˚☐˚”)/")
+        elif adjusted_damage == 0: 
+            print(f"{self.name} attacked you... without damaging? (° ‸ °)?")
         else:
             print("enemy's attack couldn't pierce through your strength. B-)")
+
 
 #------------------
 
@@ -48,22 +53,17 @@ class WeirdEnemy(Enemy):
     def __init__(self, character_level):
         super().__init__(character_level)
         self.name = "weird enemy"
+        #Should grow in relation to their level.
+        self.base_damage = 0
+        self.damage = 0
 
     def attack(self, character : characters.Character):
-        random_damage = random.randint(0,9) - character.defense
-        character.health -= random_damage - character.defense
-
-        if random_damage == 0:
-            print(f"{self.name} attacked you... without damaging? (° ‸ °)?")
-        else:
-            print(f"{self.name} attacked you with {random_damage} damage.  \\(˚☐˚”)/")
+        self.damage = random.randint(0 + self.base_damage, 9 + self.base_damage)
+        super().attack(character)
 
 class GreatEnemy(Enemy):
     def __init__(self, character_level):
         super().__init__(character_level)
         self.name = "great enemy"
         self.health = 20
-
-    def attack(self, character : characters.Character):
-        character.health -= 5 - character.defense
-        print(f"{self.name} attacked you with 5 damage.  \\(˚☐˚”)/")
+        self.damage = 5
