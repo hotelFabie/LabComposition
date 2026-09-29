@@ -2,6 +2,7 @@ from enum import Enum
 import random
 import characters
 
+#Mapping difficulty to a number.
 class _Difficulty(Enum):
     EASY = 2
     MEDIUM = 4
@@ -9,6 +10,7 @@ class _Difficulty(Enum):
     EX = 8
     MASTER = 10
 
+#Base class.
 class Enemy:
     #WE DO NEED SOME MORE PERMANENT VALUES AROUND HERE.
     HEALTH_BASE = 10
@@ -21,7 +23,9 @@ class Enemy:
         self.damage = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
 
     def set_difficulty(self, character_level : int) -> str:
+        """
         
+        """
         if character_level <= 0:
             raise ValueError("ERROR: character level cannot be 0 or lower.")
         elif character_level > characters.Character.MAX_LEVEL:
@@ -34,11 +38,16 @@ class Enemy:
 
         return new_difficulty
     
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        
+        """
         return f"{self.name} [{self.difficulty.name}]"
     
-    #This behavior is how I intend it, but the weird enemy's random damage makes this logic a bit hard to transfer.
     def attack(self, character : characters.Character):
+        """
+        
+        """
         adjusted_damage = self.damage - (character.defense + character.temporary_defense) 
         
         #Hit with damage.
@@ -60,20 +69,27 @@ class Enemy:
 class WeirdEnemy(Enemy):
     RANDOM_RANGE = 10
 
-    def __init__(self, character_level):
+    def __init__(self, character_level : int):
         super().__init__(character_level)
+        
         self.name = "weird enemy"
 
     def attack(self, character : characters.Character):
+        """
+        *EXPLANATION WHY THIS IS AN OVERWRITTEN METHOD*
+        """
         self.damage = random.randint(0, self.RANDOM_RANGE + 1)
         super().attack(character)
+
+#------------------
 
 class GreatEnemy(Enemy):
     DAMAGE_BASE = 5
     GREAT_ENEMY_FACTOR = 2
     
-    def __init__(self, character_level):
+    def __init__(self, character_level : int):
         super().__init__(character_level)
+
         self.name = "great enemy"
         self.health = self.HEALTH_BASE * self.GREAT_ENEMY_FACTOR
         self.damage = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)

@@ -1,12 +1,7 @@
 import characters
 import enemies
-#import items
 import random
 
-#WIP: Maybe that this is to be renamed to "logic", and we have some other place to run all of this.
-
-#All the core parts for actually running everything is here below.
-#----------
 def menu():
     """
     Produces a menu of user actions.
@@ -20,6 +15,9 @@ def menu():
 
 
 def action_loop(character : characters.Character):
+    """
+    Loop for main game logic, that will continue appearing under the condition that the user does not die, nor quits.
+    """
     choice : str = ""
 
     while (choice != "q"):
@@ -29,8 +27,6 @@ def action_loop(character : characters.Character):
         match choice:
             case "m":
                 menu()
-            # case "c":
-            #     pass
             case "w":
                 walk(character)
             case "s":
@@ -41,14 +37,16 @@ def action_loop(character : characters.Character):
             case _:
                 print("not an available action.")
 
-def start():    
-    #Title
+def start():
+    """
+    Game start function, taking a name to create a character.
+    Then proceeds to present a short story and options, before the game loop gets called.
+    """   
     print("಄⣀⣠MAGISTRIKE⣄⣀಄")
 
     character_name = input("give your character a name: ").strip().lower() 
     character = characters.Character(character_name)
 
-    #Game description for user.
     print("\n"
           f"welcome [{character}] to MAGISTRIKE!\n"
           "you are but a mere traveller in this dangerous world,\n"
@@ -58,7 +56,6 @@ def start():
     menu()
     action_loop(character)
 
-#Everything related to the action: [w] walk
 def walk(character : characters.Character):
     character.steps += 1
     character.exp += 0.25
