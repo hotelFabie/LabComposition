@@ -28,17 +28,15 @@ class Character:
     #Also, it might not write it out directly as I would think immediately.
     def get_status(self):
         status = f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n" 
-        health_str = f"{self.health}/{self.health_cap}"    
         exp_str = f"{self.exp}/{self.exp_cap}"
 
-        if self.level >= self.MAX_LEVEL:
-            health_str = f"MAX"    
+        if self.level >= self.MAX_LEVEL: 
             exp_str = f"MAX"
 
         #Needed to search this up.
         kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
         
-        status += f"•level: {self.level} •health: {health_str} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\nsteps taken: {self.steps}"
+        status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\nsteps taken: {self.steps}"
         return status
 
     def choose_action(self, enemy : enemies.Enemy):
@@ -70,14 +68,16 @@ class Character:
 
     def add_exp(self, exp : float):
         #A check for if it reaches beyond the MAX LEVEL or not.
-        
-        if (self.exp + exp >= self.exp_cap):
-            self.level += 1
-            print(f"leveled up! {self.level - 1} → {self.level}")
-
-            self.exp = (self.exp + exp) % self.exp_cap 
-            self.exp_cap = 10 * (self.level * 0.75)
-            self.health_cap = 20 + (self.level / 2)
-            self.health = self.health_cap
+        if not self.level < self.MAX_LEVEL:
+            print("already max level, so no exp is gained.")
         else:
-            self.exp += exp
+            if (self.exp + exp >= self.exp_cap):
+                self.level += 1
+                print(f"leveled up! {self.level - 1} → {self.level}")
+
+                self.exp = (self.exp + exp) % self.exp_cap 
+                self.exp_cap = 10 * (self.level * 0.75)
+                self.health_cap = 20 + (self.level / 2)
+                self.health = self.health_cap
+            else:
+                self.exp += exp
