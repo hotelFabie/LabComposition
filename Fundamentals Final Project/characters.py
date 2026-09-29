@@ -1,16 +1,29 @@
-#IMPORTANT: Give every method important comments.
+#IMPORTANT: Type hinting.
 
 import enemies
 
 class Character:
-    MAX_LEVEL = 15
+    DAMAGE_BASE = 5
     EXP_BASE = 10
     HEALTH_BASE = 20
+    MAX_LEVEL = 15 
+
+    #The following constants are made in relation to...
+    DAMAGE_INCREASE = 0.5
+    DEFENSE_INCREASE = 0.5
+    EXP_CAP_MULTIPLIER = 0.75
+    EXP_WALK_INCREASE = 0.25
+    HEALTH_FACTOR = 2
+    HEALTH_INCREASE = 5
+    
     
     def __init__(self, name):
         self.name = name
         self.level = 1
-        self.defense = 0 + (self.level / 2) 
+
+        self.damage = self.DAMAGE_BASE
+
+        self.defense = 0
         self.temporary_defense = 0
 
         self.health = self.HEALTH_BASE
@@ -20,14 +33,11 @@ class Character:
         self.exp_cap = self.EXP_BASE
 
         self.steps = 0
-
         self.kills = {"normal enemy" : 0, "weird enemy" : 0, "great enemy" : 0}
 
     def __str__(self):
         return f"{self.name}"
 
-    #Highly unlikely that we every would need an __str__, unless you want to see this as it. 
-    #Felt the naming to be more understandable.
     def get_status(self) -> str:
         """
         Gives a status overview of the player's character data and progress.
@@ -39,10 +49,9 @@ class Character:
         if self.level >= self.MAX_LEVEL: 
             exp_str = f"MAX"
 
-        #Needed to search this up.
         kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
         
-        status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}"
+        status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •damage: {self.damage} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}"
         return status
 
     def choose_action(self, enemy : enemies.Enemy) -> None:
@@ -60,23 +69,24 @@ class Character:
             print("\nchoose a or d!")
             action = input(">")
 
-        #This may be a little hardcoded, as we do not have any set damage for the character.
         if action == "a":
-            enemy.health -= 5
-            print(f"you attacked the enemy with 5 damage! ٩(ˋᗣˊ*)و")
+            enemy.health -= self.damage
+            print(f"you attacked the enemy with {self.damage} damage! ٩(ˋᗣˊ*)و")
 
             if enemy.health <= 0:
-                exp = enemy.difficulty.value + 1
+                exp = enemy.difficulty.value
+                self.add_exp(exp)
+                
                 print(f"enemy defeated! gained {exp} exp.⋆⭒˚｡⋆")
                 
-                self.add_exp(exp)
         elif action == "d":
-            print(f"you defended with 1 defense, and healed 5 hp! ☥")
-            if self.health + 5 > self.health_cap:
+            #Might need it to be HEALTH.
+            if self.health + self.HEALTH_INCREASE > self.health_cap:
                 self.health = self.health_cap
             else:
-                self.health += 5
+                self.health += self.HEALTH_INCREASE
             self.temporary_defense += 1
+            print(f"you defended with {self.temporary_defense} defense, and healed {self.HEALTH_INCREASE} hp! ☥")
 
     def add_exp(self, exp : float):
         """
@@ -92,8 +102,12 @@ class Character:
 
                 self.exp = (self.exp + exp) % self.exp_cap 
 
-                self.exp_cap = self.EXP_BASE * (self.level * 0.75)
-                self.health_cap = self.HEALTH_BASE + (self.level / 2)
+                #INCREASE THE DAMAGE AS WELL.
+                #Maybe that we break this out, so it becomes a bit less crowded.
+                self.exp_cap = self.EXP_BASE * (self.level * self.EXP_CAP_MULTIPLIER)
+                #Remaining magic number.
+                self.health_cap = self.HEALTH_BASE + (self.level / self.HEALTH_FACTOR)
                 self.health = self.health_cap
+                self.damage += self.DAMAGE_INCREASE
             else:
                 self.exp += exp
