@@ -64,4 +64,4 @@ class GreatEnemy(Enemy):
         super().__init__(character_level)
         self.name = "great enemy"
         self.health = 20
-        self.damage = 5 + (self.difficulty.value / 2)
+        self.damage = 5 + (self.difficulty.value * 1/8)

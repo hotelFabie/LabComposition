@@ -23,7 +23,7 @@ def action_loop(character : characters.Character):
     choice : str = ""
 
     while (choice != "q"):
-        choice = input(">")
+        choice = input("\n>")
         choice = choice.lower().strip()
 
         match choice:
@@ -47,9 +47,6 @@ def start():
 
     character_name = input("give your character a name: ").strip().lower() 
     character = characters.Character(character_name)
-
-    #This is normally not allowed to be done, just for debugging's sake:
-    character.level = 15
 
     #Game description for user.
     print("\n"

@@ -17,7 +17,7 @@ class Character:
         self.exp = 0
         self.exp_cap = 10
 
-        self.steps = 1
+        self.steps = 0
 
         self.kills = {"normal enemy" : 0, "weird enemy" : 0, "great enemy" : 0}
 
@@ -36,15 +36,15 @@ class Character:
         #Needed to search this up.
         kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
         
-        status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\nsteps taken: {self.steps}"
+        status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}"
         return status
 
     def choose_action(self, enemy : enemies.Enemy):
-        print("•[a] attack •[d] defend")
+        print("\n•[a] attack •[d] defend")
         action = input(">")
 
         while (action != "a") and (action != "d"):
-            print("choose a or d!")
+            print("\nchoose a or d!")
             action = input(">")
 
         if action == "a":
@@ -54,7 +54,7 @@ class Character:
             if enemy.health <= 0:
                 #Not fully decided yet, just making sure it works first.
                 #Why does it interpret it as a "literal"?
-                exp = int(3)
+                exp = enemy.difficulty.value + 1
                 print(f"enemy defeated! gained {exp} exp.⋆⭒˚｡⋆")
                 
                 self.add_exp(exp)
