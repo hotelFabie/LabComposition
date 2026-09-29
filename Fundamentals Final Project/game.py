@@ -15,7 +15,7 @@ def menu():
     print(f"[m] : show this menu again")
     #print(f"[c] : inventory")
     print(f"[w] : walk")
-    print(f"[p] : profile")
+    print(f"[s] : stats")
     print(f"[q] : quit")
 
 
@@ -33,9 +33,8 @@ def action_loop(character : characters.Character):
             #     pass
             case "w":
                 walk(character)
-            case "p":
-                #Public method from Character
-                print(character.get_profile())
+            case "s":
+                print(character.get_status())
             case "q":
                 print("shutting down...")
                 break
@@ -48,6 +47,9 @@ def start():
 
     character_name = input("give your character a name: ").strip().lower() 
     character = characters.Character(character_name)
+
+    #This is normally not allowed to be done, just for debugging's sake:
+    character.level = 15
 
     #Game description for user.
     print("\n"

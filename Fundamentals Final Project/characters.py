@@ -26,9 +26,17 @@ class Character:
 
     #OBS: Can't this be an __str__?
     #Also, it might not write it out directly as I would think immediately.
-    def get_profile(self):
-        return (f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n"
-        f"•level: {self.level} •health: {self.health}/{self.health_cap} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}\n•kills {self.kills}\nsteps taken: {self.steps}")
+    def get_status(self):
+        status = f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n" 
+        health_str = f"{self.health}/{self.health_cap}"    
+        exp_str = f"{self.exp}/{self.exp_cap}"
+
+        if self.level >= self.MAX_LEVEL:
+            health_str = f"MAX"    
+            exp_str = f"MAX"
+        
+        status += f"•level: {self.level} •health: {health_str} •defense: {self.defense} •current exp: {exp_str}\n•kills: {self.kills}\nsteps taken: {self.steps}"
+        return status
 
     def choose_action(self, enemy : enemies.Enemy):
         print("•[a] attack •[d] defend")
