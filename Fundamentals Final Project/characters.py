@@ -41,8 +41,8 @@ class Character:
                 
                 self.add_exp(exp)
         elif action == "d":
-            #need some action that reduces...
-            #it should one hundred percent utilize the defense mechanic.
+            #we increase the defense shortly.
+            #and make sure the calculations decrease
             pass
 
     def add_exp(self, exp : float):

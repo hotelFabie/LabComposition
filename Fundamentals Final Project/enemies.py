@@ -30,16 +30,17 @@ class Enemy:
 
         return new_difficulty
     
-    #An __str__ is probably better, because it will already just format it, a getter would just get the entire object.
-    #But we only want information to the user, so it wis most likely better to just format it.
-    #WIP FIX...
     def __str__(self):
         return f"{self.name} [{self.difficulty.name}]"
 
-    #They'll all need this, so maybe if we have 
+    #This behavior is how I intend it, but the weird enemy's random damage makes this logic a bit hard to transfer.
     def attack(self, character : characters.Character):
-        character.health -= 2
-        print(f"{self.name} attacked you with 2 damage.  \\(˚☐˚”)/")
+        damage = 2 
+        if not damage - character.defense < 0:
+            character.health - damage
+            print(f"{self.name} attacked you with {damage} damage.  \\(˚☐˚”)/")
+        else:
+            print("enemy's attack couldn't pierce through your strength. B-)")
 
 #------------------
 
@@ -49,15 +50,13 @@ class WeirdEnemy(Enemy):
         self.name = "weird enemy"
 
     def attack(self, character : characters.Character):
-        random_damage = random.randint(0,9)
-        character.health -= random_damage
+        random_damage = random.randint(0,9) - character.defense
+        character.health -= random_damage - character.defense
 
         if random_damage == 0:
             print(f"{self.name} attacked you... without damaging? (° ‸ °)?")
         else:
             print(f"{self.name} attacked you with {random_damage} damage.  \\(˚☐˚”)/")
-
-        #Thinking that this one will have some random damage thing going, making it a bit weirder.
 
 class GreatEnemy(Enemy):
     def __init__(self, character_level):
@@ -66,5 +65,5 @@ class GreatEnemy(Enemy):
         self.health = 20
 
     def attack(self, character : characters.Character):
-        character.health -= 5
+        character.health -= 5 - character.defense
         print(f"{self.name} attacked you with 5 damage.  \\(˚☐˚”)/")
