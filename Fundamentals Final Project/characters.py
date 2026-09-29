@@ -14,9 +14,12 @@ class Character:
         self.exp = 0
         self.exp_cap = 10
 
+        self.kills = {"normal" : 0, "weird" : 0, "great" : 0}
+
     def __str__(self):
         return f"{self.name}"
 
+    #OBS: Can't this be an __str__?
     def get_profile(self):
         return (f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n"
         f"•level: {self.level} •health: {self.health} •defense: {self.defense} •current exp: {self.exp}/{self.exp_cap}")

@@ -92,10 +92,16 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
             character.choose_action(enemy)
         else:
             enemy.attack(character)
-            print(f"BEFORE: {character.temporary_defense}")
+            check_game_over(character)
             character.temporary_defense = 0
-            print(f"AFTER: {character.temporary_defense}")
         current_turn += 1
+
+def check_game_over(character : characters.Character) -> None:
+    if character.health <= 0:
+        print("♰ YOU DIED : GAME OVER ♰")
+        exit()
+
+#Need a health check here somewhere.
 
 #--------------------
 #Actually running the game down here.
