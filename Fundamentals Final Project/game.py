@@ -1,6 +1,9 @@
 import characters
 import logic
 
+def story_introduction() -> str:
+    return ()
+
 def start():
     """
     Game start function, taking a name to create a character.

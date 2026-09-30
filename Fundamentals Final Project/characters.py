@@ -103,6 +103,16 @@ class Character:
         Adds experience points to the character only if they are below the max level.
         Updates the level if experience cap is reached, while increasing both the experience and health cap, plus restoring health.
         """
+        def update_status():
+            """
+            Internal function for adjusting all status values in the case of levelling up.
+            """
+            self.dmg += self.STATUS_FACTOR
+            self.main_def += self.STATUS_FACTOR
+            self.exp_cap = self.EXP_BASE * (self.level * self.STATUS_FACTOR)
+            self.health_cap = self.HEALTH_BASE + (self.level * self.STATUS_FACTOR)
+            self.health = self.health_cap
+
         if not self.level < self.MAX_LEVEL:
             print("already max level, so no exp is gained.")
         else:
@@ -113,11 +123,8 @@ class Character:
 
                 self.exp = (self.exp + exp) % self.exp_cap 
 
-                self.dmg += self.STATUS_FACTOR
-                self.defense += self.STATUS_FACTOR
-                self.exp_cap = self.EXP_BASE * (self.level * self.STATUS_FACTOR)
-                self.health_cap = self.HEALTH_BASE + (self.level * self.STATUS_FACTOR)
-                self.health = self.health_cap
+                update_status()
 
             else:
                 self.exp += exp
+
