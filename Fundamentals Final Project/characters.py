@@ -36,6 +36,9 @@ class Character:
         self.kills = {"normal enemy" : 0, "weird enemy" : 0, "great enemy" : 0}
 
     def __str__(self) -> str:
+        return self.name
+
+    def get_status(self) -> str:
         """
         Gives a status overview of the player's character data and progress.
         """

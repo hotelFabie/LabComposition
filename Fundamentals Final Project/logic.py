@@ -41,7 +41,7 @@ def action_loop(character : characters.Character):
             case "w":
                 __walk(character)
             case "s":
-                print(character)
+                print(character.get_status())
             case "t":
                 __present_tasks()
             case "q":
