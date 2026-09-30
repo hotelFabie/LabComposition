@@ -1,6 +1,10 @@
 import characters
 import enemies
+import items
 import random
+
+#Shield. Sword, Heart
+_store = []
 
 def menu():
     """
@@ -110,3 +114,5 @@ def check_game_over(character : characters.Character) -> None:
         exit()
 
 #def store():
+_store 
+#i think this should have a list, and we transfer it back and forth. 
