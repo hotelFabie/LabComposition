@@ -6,14 +6,12 @@ class Character:
     MAX_LEVEL = 10 
     DAMAGE_BASE = 5
     EXP_BASE = 10
-    HEALTH_BASE = 20
+    HEALTH_BASE = 50
     HEAL = 5
 
     #One universal factor for increasing status values when levelling up.
     STATUS_FACTOR = 0.5
 
-    
-    
     def __init__(self, name):
         self.name = name
         self.level = 1
@@ -72,6 +70,7 @@ class Character:
 
             if enemy.health <= 0:
                 exp = enemy.difficulty.value
+                self.health += self.HEAL
                 self.add_exp(exp)
                 
                 print(f"enemy defeated! gained {exp} exp.⋆⭒˚｡⋆")
@@ -94,17 +93,17 @@ class Character:
             print("already max level, so no exp is gained.")
         else:
             if (self.exp + exp >= self.exp_cap):
+                #In the case where you level up, stats get increased and health gets restored.
                 self.level += 1
                 print(f"leveled up! {self.level - 1} → {self.level}")
 
                 self.exp = (self.exp + exp) % self.exp_cap 
 
-                #INCREASE THE DAMAGE AS WELL.
-                #Maybe that we break this out, so it becomes a bit less crowded.
+                self.dmg += self.STATUS_FACTOR
+                self.defense += self.STATUS_FACTOR
                 self.exp_cap = self.EXP_BASE * (self.level * self.STATUS_FACTOR)
-                #Remaining magic number.
                 self.health_cap = self.HEALTH_BASE + (self.level * self.STATUS_FACTOR)
                 self.health = self.health_cap
-                self.damage += self.STATUS_FACTOR
+
             else:
                 self.exp += exp

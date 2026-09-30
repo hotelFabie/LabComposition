@@ -57,9 +57,11 @@ def start():
     action_loop(character)
 
 def walk(character : characters.Character):
+    walk_exp = 0.25
+    
     character.steps += 1
-    character.exp += 0.25
-    print("step taken! +0.25 exp.⋆⭒˚｡⋆")
+    character.exp += walk_exp
+    print(f"step taken! +{walk_exp} exp.⋆⭒˚｡⋆")
     possibly_cause_event(character)
 
 #Could be smart to indicate that these are not to actually seen.

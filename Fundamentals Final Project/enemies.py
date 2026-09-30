@@ -44,10 +44,13 @@ class Enemy:
         """
         return f"{self.name} [{self.difficulty.name}]"
     
-    def attack(self, character : characters.Character):
+    def attack(self, character : characters.Character, manual_dmg = 0):
         """
         
         """
+        if manual_dmg > 0:
+            self.dmg = manual_dmg
+
         adjusted_dmg = self.dmg - (character.main_def + character.temp_def) 
         
         #Hit with damage.
@@ -67,7 +70,7 @@ class Enemy:
 #------------------
 
 class WeirdEnemy(Enemy):
-    RANDOM_RANGE = 10
+    RANDOM_RANGE : int = 7
 
     def __init__(self, character_level : int):
         super().__init__(character_level)
@@ -75,11 +78,8 @@ class WeirdEnemy(Enemy):
         self.name = "weird enemy"
 
     def attack(self, character : characters.Character):
-        """
-        *EXPLANATION WHY THIS IS AN OVERWRITTEN METHOD*
-        """
-        self.damage = random.randint(0, self.RANDOM_RANGE + 1)
-        super().attack(character)
+        random_dmg = random.randint(0, self.RANDOM_RANGE)
+        super().attack(character, random_dmg)
 
 #------------------
 
@@ -92,4 +92,4 @@ class GreatEnemy(Enemy):
 
         self.name = "great enemy"
         self.health = self.HEALTH_BASE * self.GREAT_ENEMY_FACTOR
-        self.damage = self.DAMAGE_BASE
+        self.dmg = self.DAMAGE_BASE
