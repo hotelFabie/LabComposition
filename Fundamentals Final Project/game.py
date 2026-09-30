@@ -70,13 +70,13 @@ def possibly_cause_event(character : characters.Character):
     if battle_chance_number == 1 or battle_chance_number == 3:
         #Typically, "enemy" should have something as intended?
         enemy_chance_number = random.randint(1,10+1)
-        if enemy_chance_number >= 1 and enemy_chance_number <= 6:
+        if enemy_chance_number in range(1, 6+1):
             enemy = enemies.Enemy(character.level)
             battle(character, enemy)
-        elif enemy_chance_number == 7 or enemy_chance_number == 8:
+        elif enemy_chance_number in range(7, 8+1):
             enemy = enemies.WeirdEnemy(character.level)
             battle(character, enemy)
-        elif enemy_chance_number == 9 or enemy_chance_number == 10:
+        elif enemy_chance_number in range(9, 10+1):
             enemy = enemies.GreatEnemy(character.level)
             battle(character, enemy)
 
