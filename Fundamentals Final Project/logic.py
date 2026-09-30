@@ -116,19 +116,33 @@ def check_game_over(character : characters.Character) -> None:
     Method used in battle to check if the user's character has fainted.
     Game ends in this case, and progress will be have to be made from zero, by starting the game again.
     """
+
     if character.health <= 0:
         print("♰ YOU DIED : GAME OVER ♰")
         exit()
 
 def update_task(character : characters.Character, enemy) -> None:
+    """
+    Updates progress on a task. 
+    If the required amount of kills for completion is accomplished, 
+    the entire task is completed, and the user gets rewarded with an increased health cap.
+    """
     if not tasks[enemy.name]["completed"]: 
         tasks[enemy.name]["progress"] += 1
+        
+        #Completion scenario.
         if tasks[enemy.name]["progress"] == tasks[enemy.name]["requirement"]:
             tasks[enemy.name]["completed"] = True
             character.health_cap += tasks[enemy.name]["health_increase"] 
+            
+            #Display completion.
             print(f"࣪ ˖⊹ quest [{tasks[enemy.name]["description"]}] completed! ࣪ ˖⊹")
 
-def present_tasks():
+def present_tasks() -> None:
+    """
+    Prepares a presentable format of all tasks that can be done, called through a menu command.
+    """
+
     for number, task in enumerate(tasks.values(), start=1):
         if task["completed"]:
             completion_str = "completed" 
