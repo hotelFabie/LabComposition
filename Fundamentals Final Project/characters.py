@@ -33,7 +33,7 @@ class Character:
         self.exp_cap = self.EXP_BASE
 
         self.steps = 0
-        self.kills = {"normal enemy" : 0, "weird enemy" : 0, "great enemy" : 0}
+        self.kills = {"normal" : 0, "weird" : 0, "great" : 0}
 
     def __str__(self) -> str:
         return self.name

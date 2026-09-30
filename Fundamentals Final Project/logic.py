@@ -6,9 +6,9 @@ import random
 
 #With this, we can do a count of how many that are completed and display it later on.
 tasks = {
-    "normal enemy" : {"description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
-    "weird enemy" : {"description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 2, "completed" : False},
-    "great enemy" : {"description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 2, "completed" : False}
+    "normal" : {"description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
+    "weird" : {"description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 2, "completed" : False},
+    "great" : {"description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 2, "completed" : False}
 }
 
 def menu():

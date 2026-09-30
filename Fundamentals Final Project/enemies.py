@@ -18,7 +18,7 @@ class Enemy:
     def __init__(self, character_level : int):
         self.difficulty : _Difficulty = self.set_difficulty(character_level)
         self.health = self.HEALTH_BASE
-        self.name = "normal enemy"
+        self.name = "normal"
         self.dmg = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
 
     def set_difficulty(self, character_level : int) -> str:
@@ -45,7 +45,7 @@ class Enemy:
         Enemy formatted into a string, displayed when a battle is started.
         """
 
-        return f"{self.name} [{self.difficulty.name}]"
+        return f"{self.name} enemy [{self.difficulty.name}]"
     
     def attack(self, character : characters.Character, manual_dmg = 0):
         """
@@ -80,7 +80,7 @@ class WeirdEnemy(Enemy):
     def __init__(self, character_level : int):
         super().__init__(character_level)
         
-        self.name = "weird enemy"
+        self.name = "weird"
 
     def attack(self, character : characters.Character):
         """
@@ -100,6 +100,6 @@ class GreatEnemy(Enemy):
     def __init__(self, character_level : int):
         super().__init__(character_level)
 
-        self.name = "great enemy"
+        self.name = "great"
         self.health = self.HEALTH_BASE * self.GREAT_ENEMY_FACTOR
         self.dmg = self.DAMAGE_BASE
