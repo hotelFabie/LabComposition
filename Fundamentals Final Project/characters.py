@@ -88,7 +88,7 @@ class Character:
 
         if action == "a":
             enemy.health -= self.dmg
-            print(f"you attacked the enemy with {self.dmg} damage! ٩(ˋᗣˊ*)و [{enemy.health} hp left]")
+            print(f"you attacked the enemy with {self.dmg} damage! ٩(ˋᗣˊ*)و [enemy hp: {enemy.health}]")
 
             if enemy.health <= 0:
                 exp = enemy.difficulty.value
@@ -100,7 +100,7 @@ class Character:
         elif action == "d":
             assign_health()
             self.temp_def += self.STATUS_FACTOR
-            print(f"you defended with {self.temp_def} defense, and healed {self.HEAL} hp! ☥ [you have {self.health} hp left]")
+            print(f"you defended with {self.temp_def} defense, and healed {self.HEAL} hp! ☥")
 
     def add_exp(self, exp : float):
         """

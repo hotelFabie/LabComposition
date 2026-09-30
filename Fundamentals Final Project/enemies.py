@@ -62,7 +62,7 @@ class Enemy:
         #Hit with damage.
         if adjusted_dmg > 0:
             character.health -= adjusted_dmg
-            print(f"{self.name} attacked you with {adjusted_dmg} damage.  \\(˚☐˚”)/ [you have {character.health} hp left]")
+            print(f"{self.name} attacked you with {adjusted_dmg} damage.  \\(˚☐˚”)/ [your hp: {character.health}]")
         
         #Damaged evened out.
         elif adjusted_dmg == 0: 
