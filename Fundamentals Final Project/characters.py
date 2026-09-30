@@ -12,7 +12,7 @@ class Character:
     #One universal factor for increasing status values when levelling up.
     STATUS_FACTOR = 0.5
 
-    def __init__(self, name):
+    def __init__(self, name : str):
         """
         Constructor method for the character.
         Get initialized with start values that can gradually go up if user levels up through game progression.
@@ -35,10 +35,7 @@ class Character:
         self.steps = 0
         self.kills = {"normal enemy" : 0, "weird enemy" : 0, "great enemy" : 0}
 
-    def __str__(self):
-        return f"{self.name}"
-
-    def get_status(self) -> str:
+    def __str__(self) -> str:
         """
         Gives a status overview of the player's character data and progress.
         """
@@ -47,9 +44,10 @@ class Character:
         status = f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n" 
         
         #Experience formatted.
-        exp_str = f"{self.exp}/{self.exp_cap}"
         if self.level >= self.MAX_LEVEL: 
             exp_str = f"MAX"
+        else:
+            exp_str = f"{self.exp}/{self.exp_cap}"
 
         #Kills formatted.
         kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 

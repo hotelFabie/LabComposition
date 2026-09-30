@@ -15,7 +15,7 @@ def menu():
     """
     Produces a menu of user actions.
     """
-    
+
     print(f"಄⣀⣠ACTIONS⣄⣀಄")
     print(f"[m] : show this menu again")
     print(f"[w] : walk")
@@ -39,12 +39,11 @@ def action_loop(character : characters.Character):
             case "m":
                 menu()
             case "w":
-                walk(character)
+                __walk(character)
             case "s":
-                print(character.get_status())
-            # WIP
+                print(character)
             case "t":
-                present_tasks()
+                __present_tasks()
             case "q":
                 print("shutting down...")
                 break
@@ -52,7 +51,7 @@ def action_loop(character : characters.Character):
                 print("not an available action.")
 
 
-def walk(character : characters.Character):
+def __walk(character : characters.Character):
     """
     Small experience point increment per step taken.
     There is always a chance of a battle occurring.
@@ -64,10 +63,9 @@ def walk(character : characters.Character):
     character.exp += walk_exp
     print(f"step taken! +{walk_exp} exp.⋆⭒˚｡⋆")
     
-    possibly_cause_event(character)
+    __possibly_cause_event(character)
 
-#Could be smart to indicate that these are not to actually seen.
-def possibly_cause_event(character : characters.Character):
+def __possibly_cause_event(character : characters.Character):
     """
     2/3 pseudo-random chance that a battle is started.
     Furthermore, another pseudo-random number is generated, deciding which enemy type will be spawned.
@@ -76,22 +74,21 @@ def possibly_cause_event(character : characters.Character):
 
     battle_chance_number = random.randint(1,3+1)
     if battle_chance_number == 1 or battle_chance_number == 3:
-        #Typically, "enemy" should have something as intended?
         enemy_chance_number = random.randint(1,10+1)
 
         if enemy_chance_number in range(1, 6+1):
             enemy = enemies.Enemy(character.level)
-            battle(character, enemy)
+            __battle(character, enemy)
 
         elif enemy_chance_number in range(7, 8+1):
             enemy = enemies.WeirdEnemy(character.level)
-            battle(character, enemy)
+            __battle(character, enemy)
 
         elif enemy_chance_number in range(9, 10+1):
             enemy = enemies.GreatEnemy(character.level)
-            battle(character, enemy)
+            __battle(character, enemy)
 
-def battle(character : characters.Character, enemy : enemies.Enemy):
+def __battle(character : characters.Character, enemy : enemies.Enemy):
     """
     Takes turns between character and enemy.
     Character can either attack or defend, whereas the enemy always attacks.
@@ -108,15 +105,15 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
 
         else:
             enemy.attack(character)
-            check_game_over(character)
+            __check_game_over(character)
             character.temp_def = 0
 
         current_turn += 1
 
     character.kills[enemy.name] += 1
-    update_task(character, enemy)
+    __update_task(character, enemy)
 
-def check_game_over(character : characters.Character) -> None:
+def __check_game_over(character : characters.Character) -> None:
     """
     Method used in battle to check if the user's character has fainted.
     Game ends in this case, and progress will be have to be made from zero, by starting the game again.
@@ -126,7 +123,7 @@ def check_game_over(character : characters.Character) -> None:
         print("♰ YOU DIED : GAME OVER ♰")
         exit()
 
-def update_task(character : characters.Character, enemy) -> None:
+def __update_task(character : characters.Character, enemy) -> None:
     """
     Updates progress on a task. 
     If the required amount of kills for completion is accomplished, 
@@ -144,7 +141,7 @@ def update_task(character : characters.Character, enemy) -> None:
             #Display completion.
             print(f"࣪ ˖⊹ quest [{tasks[enemy.name]["description"]}] completed! ࣪ ˖⊹")
 
-def present_tasks() -> None:
+def __present_tasks() -> None:
     """
     Prepares a presentable format of all tasks that can be done, called through a menu command.
     """
