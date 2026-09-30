@@ -6,9 +6,9 @@ import random
 
 #With this, we can do a count of how many that are completed and display it later on.
 tasks = {
-    "normal" : {"description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
-    "weird" : {"description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 2, "completed" : False},
-    "great" : {"description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 2, "completed" : False}
+    "normal enemy" : {"description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
+    "weird enemy" : {"description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 2, "completed" : False},
+    "great enemy" : {"description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 2, "completed" : False}
 }
 
 def menu():
@@ -109,7 +109,7 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
         current_turn += 1
 
     character.kills[enemy.name] += 1
-    update_task(enemy)
+    update_task(character, enemy)
 
 def check_game_over(character : characters.Character) -> None:
     """
@@ -122,16 +122,16 @@ def check_game_over(character : characters.Character) -> None:
 
 #STILL WIPPY
 def update_task(character : characters.Character, enemy) -> None:
-    #probably that we have an internal function
     
-    #match to the name
-
-        # case enemies.Enemy:
-        #     tasks[0]["progress"] += 1
-        # case enemies.WeirdEnemy:
-        #     tasks[1]["progress"] += 1
-        # case enemies.GreatEnemy:
-        #     tasks[2]["progress"] += 1
+    
+    #probably that we have an internal function
+    #always check that it isn't completed.
+    if not tasks[enemy.name]["completed"]: 
+        tasks[enemy.name]["progress"] += 1
+        if tasks[enemy.name]["progress"] == tasks[enemy.name]["requirement"]:
+            tasks[enemy.name]["completed"] = True
+            character.health_cap += tasks[enemy.name]["health_increase"] 
+            #update the player that they did complete a task.
 
 def present_tasks():
     for number, task in enumerate(tasks.values(), start=1):

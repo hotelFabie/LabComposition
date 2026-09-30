@@ -23,7 +23,7 @@ class Character:
         #If we add this
         self.inventory = []
 
-        self.damage = self.DAMAGE_BASE
+        self.dmg = self.DAMAGE_BASE
 
         self.main_def = 0
         self.temp_def = 0
@@ -56,12 +56,18 @@ class Character:
         kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
         
         status += (f"•level: {self.level} •health: {self.health}/{self.health_cap} "
-            f"•damage: {self.damage} •defense: {self.main_def} "
+            f"•damage: {self.dmg} •defense: {self.main_def} "
             f"•current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}")
 
         return status
 
     def choose_action(self, enemy : enemies.Enemy) -> None:
+        def assign_health():
+            if self.health + self.HEAL > self.health_cap:
+                self.health = self.health_cap
+            else:
+                self.health += self.HEAL
+            
         """
         Gives user action choices while in battle.
         Allowed actions are attacking and defending.
@@ -77,21 +83,18 @@ class Character:
             action = input(">")
 
         if action == "a":
-            enemy.health -= self.damage
-            print(f"you attacked the enemy with {self.damage} damage! ٩(ˋᗣˊ*)و")
+            enemy.health -= self.dmg
+            print(f"you attacked the enemy with {self.dmg} damage! ٩(ˋᗣˊ*)و")
 
             if enemy.health <= 0:
                 exp = enemy.difficulty.value
-                self.health += self.HEAL
+                assign_health()
                 self.add_exp(exp)
                 
                 print(f"enemy defeated! gained {exp} exp.⋆⭒˚｡⋆")
                 
         elif action == "d":
-            if self.health + self.HEAL > self.health_cap:
-                self.health = self.health_cap
-            else:
-                self.health += self.HEAL
+            assign_health()
             self.temp_def += self.STATUS_FACTOR
             print(f"you defended with {self.temp_def} defense, and healed {self.HEAL} hp! ☥")
 
