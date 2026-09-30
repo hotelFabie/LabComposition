@@ -4,18 +4,14 @@ import enemies
 
 class Character:
     MAX_LEVEL = 10 
-    
     DAMAGE_BASE = 5
     EXP_BASE = 10
     HEALTH_BASE = 20
+    HEAL = 5
 
-    #The following constants are made in relation to...
-    DAMAGE_INCREASE = 0.5
-    DEFENSE_INCREASE = 0.5
-    EXP_CAP_MULTIPLIER = 0.75
-    EXP_WALK_INCREASE = 0.25
-    HEALTH_FACTOR = 2
-    HEALTH_INCREASE = 5
+    #One universal factor for increasing status values when levelling up.
+    STATUS_FACTOR = 0.5
+
     
     
     def __init__(self, name):
@@ -24,8 +20,8 @@ class Character:
 
         self.damage = self.DAMAGE_BASE
 
-        self.defense = 0
-        self.temporary_defense = 0
+        self.main_def = 0
+        self.temp_def = 0
 
         self.health = self.HEALTH_BASE
         self.health_cap = self.HEALTH_BASE
@@ -52,7 +48,7 @@ class Character:
 
         kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
         
-        status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •damage: {self.damage} •defense: {self.defense} •current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}"
+        status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •damage: {self.damage} •defense: {self.main_def} •current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}"
         return status
 
     def choose_action(self, enemy : enemies.Enemy) -> None:
@@ -82,12 +78,12 @@ class Character:
                 
         elif action == "d":
             #Might need it to be HEALTH.
-            if self.health + self.HEALTH_INCREASE > self.health_cap:
+            if self.health + self.HEAL > self.health_cap:
                 self.health = self.health_cap
             else:
-                self.health += self.HEALTH_INCREASE
-            self.temporary_defense += 1
-            print(f"you defended with {self.temporary_defense} defense, and healed {self.HEALTH_INCREASE} hp! ☥")
+                self.health += self.HEAL
+            self.temp_def += self.STATUS_FACTOR
+            print(f"you defended with {self.temp_def} defense, and healed {self.HEAL} hp! ☥")
 
     def add_exp(self, exp : float):
         """
@@ -105,10 +101,10 @@ class Character:
 
                 #INCREASE THE DAMAGE AS WELL.
                 #Maybe that we break this out, so it becomes a bit less crowded.
-                self.exp_cap = self.EXP_BASE * (self.level * self.EXP_CAP_MULTIPLIER)
+                self.exp_cap = self.EXP_BASE * (self.level * self.STATUS_FACTOR)
                 #Remaining magic number.
-                self.health_cap = self.HEALTH_BASE + (self.level / self.HEALTH_FACTOR)
+                self.health_cap = self.HEALTH_BASE + (self.level * self.STATUS_FACTOR)
                 self.health = self.health_cap
-                self.damage += self.DAMAGE_INCREASE
+                self.damage += self.STATUS_FACTOR
             else:
                 self.exp += exp

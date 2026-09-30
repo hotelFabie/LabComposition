@@ -20,7 +20,7 @@ class Enemy:
         self.difficulty : _Difficulty = self.set_difficulty(character_level)
         self.health = self.HEALTH_BASE
         self.name = "normal enemy"
-        self.damage = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
+        self.dmg = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
 
     def set_difficulty(self, character_level : int) -> str:
         """
@@ -48,15 +48,15 @@ class Enemy:
         """
         
         """
-        adjusted_damage = self.damage - (character.defense + character.temporary_defense) 
+        adjusted_dmg = self.dmg - (character.main_def + character.temp_def) 
         
         #Hit with damage.
-        if adjusted_damage > 0:
-            character.health -= adjusted_damage
-            print(f"{self.name} attacked you with {adjusted_damage} damage.  \\(˚☐˚”)/")
+        if adjusted_dmg > 0:
+            character.health -= adjusted_dmg
+            print(f"{self.name} attacked you with {adjusted_dmg} damage.  \\(˚☐˚”)/")
         
         #Damaged evened out.
-        elif adjusted_damage == 0: 
+        elif adjusted_dmg == 0: 
             print(f"{self.name} attacked you... without damaging? (° ‸ °)?")
         
         #Damage didn't pass a positive threshold.
@@ -92,4 +92,4 @@ class GreatEnemy(Enemy):
 
         self.name = "great enemy"
         self.health = self.HEALTH_BASE * self.GREAT_ENEMY_FACTOR
-        self.damage = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
+        self.damage = self.DAMAGE_BASE

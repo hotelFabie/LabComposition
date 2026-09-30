@@ -89,7 +89,7 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
         else:
             enemy.attack(character)
             check_game_over(character)
-            character.temporary_defense = 0
+            character.temp_def = 0
         current_turn += 1
     #Some sort of append will be needed here.
     character.kills[enemy.name] += 1
