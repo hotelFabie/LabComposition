@@ -129,17 +129,18 @@ def __update_task(character : characters.Character, enemy) -> None:
     If the required amount of kills for completion is accomplished, 
     the entire task is completed, and the user gets rewarded with an increased health cap.
     """
+    task = tasks[enemy.name]
 
-    if not tasks[enemy.name]["completed"]: 
-        tasks[enemy.name]["progress"] += 1
+    if not task["completed"]: 
+        task["progress"] += 1
         
         #Completion scenario.
-        if tasks[enemy.name]["progress"] == tasks[enemy.name]["requirement"]:
-            tasks[enemy.name]["completed"] = True
-            character.health_cap += tasks[enemy.name]["health_increase"] 
+        if task["progress"] == task["requirement"]:
+            task["completed"] = True
+            character.health_cap += tasks["health_increase"] 
             
             #Display completion.
-            print(f"࣪ ˖⊹ quest [{tasks[enemy.name]["description"]}] completed! ࣪ ˖⊹")
+            print(f"࣪ ˖⊹ quest [{task["description"]}] completed! ࣪ ˖⊹")
 
 def __present_tasks() -> None:
     """
