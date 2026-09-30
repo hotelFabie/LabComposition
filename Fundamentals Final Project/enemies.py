@@ -27,6 +27,7 @@ class Enemy:
         Each difficulty's value is used as comparison to the character's level, 
         ensuring that a spawned enemy scales alongside a player.
         """
+
         if character_level <= 0:
             raise ValueError("ERROR: character level cannot be 0 or lower.")
         elif character_level > characters.Character.MAX_LEVEL:
@@ -43,6 +44,7 @@ class Enemy:
         """
         Enemy formatted into a string, displayed when a battle is started.
         """
+        
         return f"{self.name} [{self.difficulty.name}]"
     
     def attack(self, character : characters.Character, manual_dmg = 0):
@@ -51,6 +53,7 @@ class Enemy:
         User gets informed whether they got HP taken away or not.
         Possibility for manually adding damage is for subclasses to insert damage that is unique/RNG every turn.
         """
+
         if manual_dmg > 0:
             self.dmg = manual_dmg
 
@@ -85,6 +88,7 @@ class WeirdEnemy(Enemy):
         Inserts randomly generated number (within range 0-7) as damage to the method with the same name in the base class.
         Therefore, this enemy has less predictable danger.
         """
+
         random_dmg = random.randint(0, self.RANDOM_RANGE)
         super().attack(character, random_dmg)
 

@@ -17,11 +17,9 @@ class Character:
         Constructor method for the character.
         Get initialized with start values that can gradually go up if user levels up through game progression.
         """
+
         self.name = name
         self.level = 1
-
-        #If we add this
-        self.inventory = []
 
         self.dmg = self.DAMAGE_BASE
 
@@ -44,6 +42,7 @@ class Character:
         """
         Gives a status overview of the player's character data and progress.
         """
+
         #Start of the string we'll add onto before we return.
         status = f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n" 
         
@@ -62,18 +61,22 @@ class Character:
         return status
 
     def choose_action(self, enemy : enemies.Enemy) -> None:
-        def assign_health():
-            if self.health + self.HEAL > self.health_cap:
-                self.health = self.health_cap
-            else:
-                self.health += self.HEAL
-            
         """
         Gives user action choices while in battle.
         Allowed actions are attacking and defending.
         Attacking: Causes damage against enemy.
         Defending: Heightens defense and heals. 
         """
+        
+        def assign_health():
+            """
+            Increases health to user within the limit of the health cap, so that it never exceeds the allowed health.
+            """
+            
+            if self.health + self.HEAL > self.health_cap:
+                self.health = self.health_cap
+            else:
+                self.health += self.HEAL
 
         print("\n•[a] attack •[d] defend")
         action = input(">")
@@ -103,6 +106,7 @@ class Character:
         Adds experience points to the character only if they are below the max level.
         Updates the level if experience cap is reached, while increasing both the experience and health cap, plus restoring health.
         """
+
         def update_status():
             """
             Internal function for adjusting all status values in the case of levelling up.
@@ -127,4 +131,3 @@ class Character:
 
             else:
                 self.exp += exp
-

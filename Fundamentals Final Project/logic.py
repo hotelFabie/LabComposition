@@ -15,6 +15,7 @@ def menu():
     """
     Produces a menu of user actions.
     """
+    
     print(f"಄⣀⣠ACTIONS⣄⣀಄")
     print(f"[m] : show this menu again")
     print(f"[w] : walk")
@@ -27,6 +28,7 @@ def action_loop(character : characters.Character):
     """
     Loop for main game logic, that will continue appearing under the condition that the user does not die, nor quits.
     """
+
     choice : str = ""
 
     while (choice != "q"):
@@ -55,6 +57,7 @@ def walk(character : characters.Character):
     Small experience point increment per step taken.
     There is always a chance of a battle occurring.
     """
+
     walk_exp = 0.25
     
     character.steps += 1
@@ -70,6 +73,7 @@ def possibly_cause_event(character : characters.Character):
     Furthermore, another pseudo-random number is generated, deciding which enemy type will be spawned.
     Biggest chance is a normal enemy. 
     """
+
     battle_chance_number = random.randint(1,3+1)
     if battle_chance_number == 1 or battle_chance_number == 3:
         #Typically, "enemy" should have something as intended?
@@ -93,6 +97,7 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
     Character can either attack or defend, whereas the enemy always attacks.
     Killed enemies gets added to a counter, which can be seen with the status command outside of battle.
     """
+
     print(f"a {enemy} approached! battled started!")
     
     current_turn = 0
@@ -127,6 +132,7 @@ def update_task(character : characters.Character, enemy) -> None:
     If the required amount of kills for completion is accomplished, 
     the entire task is completed, and the user gets rewarded with an increased health cap.
     """
+
     if not tasks[enemy.name]["completed"]: 
         tasks[enemy.name]["progress"] += 1
         

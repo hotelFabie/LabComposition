@@ -1,14 +1,12 @@
 import characters
 import logic
 
-def story_introduction() -> str:
-    return ()
-
 def start():
     """
     Game start function, taking a name to create a character.
     Then proceeds to present a short story and options, before the game loop gets called.
     """   
+
     print("಄⣀⣠MAGISTRIKE⣄⣀಄")
 
     character_name = input("give your character a name: ").strip().lower() 
