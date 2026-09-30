@@ -20,6 +20,7 @@ class Character:
         self.name = name
         self.level = 1
 
+        #If we add this
         self.inventory = []
 
         self.damage = self.DAMAGE_BASE
