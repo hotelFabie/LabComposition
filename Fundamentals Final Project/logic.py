@@ -120,18 +120,13 @@ def check_game_over(character : characters.Character) -> None:
         print("♰ YOU DIED : GAME OVER ♰")
         exit()
 
-#STILL WIPPY
 def update_task(character : characters.Character, enemy) -> None:
-    
-    
-    #probably that we have an internal function
-    #always check that it isn't completed.
     if not tasks[enemy.name]["completed"]: 
         tasks[enemy.name]["progress"] += 1
         if tasks[enemy.name]["progress"] == tasks[enemy.name]["requirement"]:
             tasks[enemy.name]["completed"] = True
             character.health_cap += tasks[enemy.name]["health_increase"] 
-            #update the player that they did complete a task.
+            print(f"࣪ ˖⊹ quest [{tasks[enemy.name]["description"]}] completed! ࣪ ˖⊹")
 
 def present_tasks():
     for number, task in enumerate(tasks.values(), start=1):
