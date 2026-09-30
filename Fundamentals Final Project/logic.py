@@ -5,10 +5,13 @@ import enemies
 import random
 
 #With this, we can do a count of how many that are completed and display it later on.
+
 tasks = {
-    "normal" : {"description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
-    "weird" : {"description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 2, "completed" : False},
-    "great" : {"description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 2, "completed" : False}
+    "kill_5_normals" : {"enemy_name" : "normal", "description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
+    "kill_20_normals" : {"enemy_name" : "normal", "description" : "kill 20 normal enemies", "progress" : 0, "requirement" : 20, "health_increase" : 1, "completed" : False}, 
+    "kill_2_weirds" : {"enemy_name" : "weird", "description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 1, "completed" : False},
+    "kill_1_great" : {"enemy_name" : "great", "description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 1, "completed" : False},
+    "kill_3_greats" : {"enemy_name" : "great", "description" : "kill 3 great enemies", "progress" : 0, "requirement" : 3, "health_increase" : 2, "completed" : False}
 }
 
 def menu():
@@ -129,18 +132,18 @@ def __update_task(character : characters.Character, enemy) -> None:
     If the required amount of kills for completion is accomplished, 
     the entire task is completed, and the user gets rewarded with an increased health cap.
     """
-    task = tasks[enemy.name]
 
-    if not task["completed"]: 
-        task["progress"] += 1
-        
-        #Completion scenario.
-        if task["progress"] == task["requirement"]:
-            task["completed"] = True
-            character.health_cap += tasks["health_increase"] 
-            
-            #Display completion.
-            print(f"࣪ ˖⊹ quest [{task["description"]}] completed! ࣪ ˖⊹")
+    for task in tasks.values():
+        if task["enemy_name"] == enemy.name and not task["completed"]:
+            task["progress"] += 1
+
+            #Completion scenario.
+            if task["progress"] >= task["requirement"]:
+                task["completed"] = True
+                character.health_cap += task["health_increase"] 
+                
+                #Display completion.
+                print(f"࣪ ˖⊹ quest [{task["description"]}] completed! ࣪ ˖⊹")
 
 def __present_tasks() -> None:
     """
