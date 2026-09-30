@@ -13,6 +13,10 @@ class Character:
     STATUS_FACTOR = 0.5
 
     def __init__(self, name):
+        """
+        Constructor method for the character.
+        Get initialized with start values that can gradually go up if user levels up through game progression.
+        """
         self.name = name
         self.level = 1
 
@@ -76,7 +80,6 @@ class Character:
                 print(f"enemy defeated! gained {exp} exp.⋆⭒˚｡⋆")
                 
         elif action == "d":
-            #Might need it to be HEALTH.
             if self.health + self.HEAL > self.health_cap:
                 self.health = self.health_cap
             else:
