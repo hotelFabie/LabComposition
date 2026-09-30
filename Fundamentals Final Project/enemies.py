@@ -44,7 +44,7 @@ class Enemy:
         """
         Enemy formatted into a string, displayed when a battle is started.
         """
-        
+
         return f"{self.name} [{self.difficulty.name}]"
     
     def attack(self, character : characters.Character, manual_dmg = 0):
@@ -62,7 +62,7 @@ class Enemy:
         #Hit with damage.
         if adjusted_dmg > 0:
             character.health -= adjusted_dmg
-            print(f"{self.name} attacked you with {adjusted_dmg} damage.  \\(˚☐˚”)/")
+            print(f"{self.name} attacked you with {adjusted_dmg} damage.  \\(˚☐˚”)/ [you have {character.health} hp left]")
         
         #Damaged evened out.
         elif adjusted_dmg == 0: 
@@ -71,7 +71,6 @@ class Enemy:
         #Damage didn't pass a positive threshold.
         else:
             print("enemy's attack couldn't pierce through your strength. B-)")
-
 
 #------------------
 

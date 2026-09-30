@@ -72,7 +72,7 @@ class Character:
             """
             Increases health to user within the limit of the health cap, so that it never exceeds the allowed health.
             """
-            
+
             if self.health + self.HEAL > self.health_cap:
                 self.health = self.health_cap
             else:
@@ -87,7 +87,7 @@ class Character:
 
         if action == "a":
             enemy.health -= self.dmg
-            print(f"you attacked the enemy with {self.dmg} damage! ٩(ˋᗣˊ*)و")
+            print(f"you attacked the enemy with {self.dmg} damage! ٩(ˋᗣˊ*)و [{enemy.health} hp left]")
 
             if enemy.health <= 0:
                 exp = enemy.difficulty.value
@@ -99,7 +99,7 @@ class Character:
         elif action == "d":
             assign_health()
             self.temp_def += self.STATUS_FACTOR
-            print(f"you defended with {self.temp_def} defense, and healed {self.HEAL} hp! ☥")
+            print(f"you defended with {self.temp_def} defense, and healed {self.HEAL} hp! ☥ [you have {self.health} hp left]")
 
     def add_exp(self, exp : float):
         """
