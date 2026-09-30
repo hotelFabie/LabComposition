@@ -1,3 +1,5 @@
+from re import match
+
 import characters
 import enemies
 import random
@@ -17,7 +19,7 @@ def menu():
     print(f"[m] : show this menu again")
     print(f"[w] : walk")
     print(f"[s] : stats")
-    print(f"[t] : tasks")
+    print(f"[t] : view task progress")
     print(f"[q] : quit")
 
 
@@ -38,8 +40,9 @@ def action_loop(character : characters.Character):
                 walk(character)
             case "s":
                 print(character.get_status())
+            # WIP
             case "t":
-                store()
+                print(tasks)
             case "q":
                 print("shutting down...")
                 break
@@ -106,6 +109,7 @@ def battle(character : characters.Character, enemy : enemies.Enemy):
         current_turn += 1
 
     character.kills[enemy.name] += 1
+    update_task(enemy)
 
 def check_game_over(character : characters.Character) -> None:
     """
@@ -115,3 +119,13 @@ def check_game_over(character : characters.Character) -> None:
     if character.health <= 0:
         print("♰ YOU DIED : GAME OVER ♰")
         exit()
+
+#STILL WIPPY
+def update_task(enemy):
+    match type(enemy):
+        case enemies.Enemy:
+            tasks[0]["progress"] += 1
+        case enemies.WeirdEnemy:
+            tasks[1]["progress"] += 1
+        case enemies.GreatEnemy:
+            tasks[2]["progress"] += 1
