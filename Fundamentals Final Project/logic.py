@@ -5,11 +5,11 @@ import enemies
 import random
 
 #With this, we can do a count of how many that are completed and display it later on.
-tasks = [
-    {"id" : 1, "description" : "Kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
-    {"id" : 2, "description" : "Kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 2, "completed" : False},
-    {"id" : 3, "description" : "Kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 2, "completed" : False}
-]
+tasks = {
+    "normal" : {"description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
+    "weird" : {"description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 2, "completed" : False},
+    "great" : {"description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 2, "completed" : False}
+}
 
 def menu():
     """
@@ -42,7 +42,7 @@ def action_loop(character : characters.Character):
                 print(character.get_status())
             # WIP
             case "t":
-                print(tasks)
+                present_tasks()
             case "q":
                 print("shutting down...")
                 break
@@ -121,11 +121,23 @@ def check_game_over(character : characters.Character) -> None:
         exit()
 
 #STILL WIPPY
-def update_task(enemy):
-    match type(enemy):
-        case enemies.Enemy:
-            tasks[0]["progress"] += 1
-        case enemies.WeirdEnemy:
-            tasks[1]["progress"] += 1
-        case enemies.GreatEnemy:
-            tasks[2]["progress"] += 1
+def update_task(character : characters.Character, enemy) -> None:
+    #probably that we have an internal function
+    
+    #match to the name
+
+        # case enemies.Enemy:
+        #     tasks[0]["progress"] += 1
+        # case enemies.WeirdEnemy:
+        #     tasks[1]["progress"] += 1
+        # case enemies.GreatEnemy:
+        #     tasks[2]["progress"] += 1
+
+def present_tasks():
+    for number, task in enumerate(tasks.values(), start=1):
+        if task["completed"]:
+            completion_str = "completed" 
+        else:
+            completion_str = f"uncompleted ({task["progress"]}/{task["requirement"]})"
+
+        print(f"task {number}: {task["description"]} - {completion_str}")
