@@ -1,10 +1,13 @@
 import characters
 import enemies
-import items
 import random
 
-#Shield. Sword, Heart
-_store = []
+#With this, we can do a count of how many that are completed and display it later on.
+tasks = [
+    {"id" : 1, "health_increase" : 1, "completed" : False}, 
+    {"id" : 2, "health_increase" : 2,},
+    {"id" : 3, "health_increase" : 2}
+]
 
 def menu():
     """
@@ -14,7 +17,7 @@ def menu():
     print(f"[m] : show this menu again")
     print(f"[w] : walk")
     print(f"[s] : stats")
-    print(f"[b] : buy items")
+    print(f"[t] : tasks")
     print(f"[q] : quit")
 
 
@@ -35,7 +38,7 @@ def action_loop(character : characters.Character):
                 walk(character)
             case "s":
                 print(character.get_status())
-            case "b":
+            case "t":
                 store()
             case "q":
                 print("shutting down...")
@@ -112,7 +115,3 @@ def check_game_over(character : characters.Character) -> None:
     if character.health <= 0:
         print("♰ YOU DIED : GAME OVER ♰")
         exit()
-
-#def store():
-_store 
-#i think this should have a list, and we transfer it back and forth. 
