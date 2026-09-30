@@ -20,6 +20,8 @@ class Character:
         self.name = name
         self.level = 1
 
+        self.inventory = []
+
         self.damage = self.DAMAGE_BASE
 
         self.main_def = 0
@@ -41,16 +43,21 @@ class Character:
         """
         Gives a status overview of the player's character data and progress.
         """
-
+        #Start of the string we'll add onto before we return.
         status = f"಄⣀⣠stats of player: [{self.name}]⣄⣀಄\n" 
+        
+        #Experience formatted.
         exp_str = f"{self.exp}/{self.exp_cap}"
-
         if self.level >= self.MAX_LEVEL: 
             exp_str = f"MAX"
 
+        #Kills formatted.
         kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
         
-        status += f"•level: {self.level} •health: {self.health}/{self.health_cap} •damage: {self.damage} •defense: {self.main_def} •current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}"
+        status += (f"•level: {self.level} •health: {self.health}/{self.health_cap} "
+            f"•damage: {self.damage} •defense: {self.main_def} "
+            f"•current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}")
+
         return status
 
     def choose_action(self, enemy : enemies.Enemy) -> None:
