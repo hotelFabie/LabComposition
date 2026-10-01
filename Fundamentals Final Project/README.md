@@ -1,23 +1,30 @@
 # MAGISTRIKE : A TURN-BASED RPG
 
 ## What my project does
-Magistrike is an turn-based game, with the goal of surviving as long as possible.
+Magistrike is a turn-based game, with the goal of surviving as long as possible.
 You encounter different enemies - normal, weird, and great.
-The longer you survive, the higher the level and stats.
-And endless game until you die.
+Keep fighting and try to survive, while improving your stats as you level up.
+Essentially an endless game until you die.
 
 ## Main functionality 
-As the main focus of the game is turn-based battling, you use a simple walk command to keep going.
-Everything you walk, you get a small amount of EXP, and a pseudo-random chance of meeting an enemy.
-Highest odds are that you meet a normal enemy, otherwise a weird or a great one.
+### Essentials
+The main mechanic is quite simple, which is the walk command. You gain a small amount of exp each time you take a step.
+Every time you walk, there is a pseudo-random chance of encountering one of three enemies (inheritance structure). 
 
-During a battle, you get two choices: 
-(1) Causing damage, and in return getting struck with no applied defense.
-(2) Defend and heal, with a chance of getting HP back if the enemy isn't strong enough.
+Enemy encounters causes a battle to start, where you as the player have two choices.
+A: Attack the enemy. 
+D: Defend, increasing health and defense. Depending on stats, you may block the enemy damage entirely.
 
-As you progress, you level up, which increases damage.
+The battle continues until either the enemy or you die, with the latter resulting in a GAME OVER.
+Winning a battle results in an EXP increase. 
+Reaching the current EXP cap makes you level up, which improves stats - damage, defense, health cap - just a little bit.
 
-*enemy difficulty*
+### Peripherals
+While walking is the main mechanic to make something happen,
+it is one of a few choices presented in a menu.
+- Show menu again.
+- Overview of character's current statistics.
+- Task overview. There are 5 tasks activated from the beginning, *google balls*
 
 ## How to run
 Run <code>python game.py</code> to start the game. 
