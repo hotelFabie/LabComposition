@@ -21,7 +21,7 @@ class Character:
         self.name : str = name
         self.level : int = 1
 
-        self.dmg : float = self.DAMAGE_BASE
+        self.damage : float = self.DAMAGE_BASE
 
         self.main_def : float = 0
         self.temp_def : float = 0
@@ -56,7 +56,7 @@ class Character:
         kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
         
         status += (f"•level: {self.level} •health: {self.health}/{self.health_cap} "
-            f"•damage: {self.dmg} •defense: {self.main_def} "
+            f"•damage: {self.damage} •defense: {self.main_def} "
             f"•current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}")
 
         return status
@@ -93,8 +93,8 @@ class Character:
         #Possibility for health increase in both cases.
 
         if action == "a":
-            enemy.health -= self.dmg
-            print(f"you attacked the enemy with {self.dmg} damage! ٩(ˋᗣˊ*)و [enemy hp: {enemy.health}]")
+            enemy.health -= self.damage
+            print(f"you attacked the enemy with {self.damage} damage! ٩(ˋᗣˊ*)و [enemy hp: {enemy.health}]")
 
             if enemy.health <= 0:
                 exp = enemy.difficulty.value
@@ -123,7 +123,7 @@ class Character:
             """
             Internal function for adjusting all status values in the case of levelling up.
             """
-            self.dmg += self.STATUS_FACTOR
+            self.damage += self.STATUS_FACTOR
             self.main_def += self.STATUS_FACTOR
             self.exp_cap = self.EXP_BASE * (self.level * self.STATUS_FACTOR)
             self.health_cap = self.HEALTH_BASE + (self.level * self.STATUS_FACTOR)

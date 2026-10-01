@@ -19,7 +19,7 @@ class Enemy:
         self.difficulty : _Difficulty = self.set_difficulty(character_level)
         self.health = self.HEALTH_BASE
         self.name = "normal"
-        self.dmg = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
+        self.damage = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
 
     def set_difficulty(self, character_level : int) -> str:
         """
@@ -47,27 +47,27 @@ class Enemy:
 
         return f"{self.name} enemy [{self.difficulty.name}]"
     
-    def attack(self, character : characters.Character, manual_dmg : float = 0) -> None:
+    def attack(self, character : characters.Character, manual_damage : float = 0) -> None:
         """
         Calculates damage with the user's ability to defend in consideration.
         User gets informed whether they got HP taken away or not.
         Possibility for manually adding damage is for subclasses to insert damage that is unique/RNG every turn.
         """
 
-        if manual_dmg < 0:
+        if manual_damage < 0:
             raise ValueError("cannot assign negative damage.")
-        elif manual_dmg > 0:
-            self.dmg = manual_dmg
+        elif manual_damage > 0:
+            self.damage = manual_damage
 
-        adjusted_dmg = self.dmg - (character.main_def + character.temp_def) 
+        adjusted_damage = self.damage - (character.main_def + character.temp_def) 
         
         #Hit with damage.
-        if adjusted_dmg > 0:
-            character.health -= adjusted_dmg
-            print(f"{self.name} attacked you with {adjusted_dmg} damage.  \\(˚☐˚”)/ [your hp: {character.health}]")
+        if adjusted_damage > 0:
+            character.health -= adjusted_damage
+            print(f"{self.name} attacked you with {adjusted_damage} damage.  \\(˚☐˚”)/ [your hp: {character.health}]")
         
         #Damaged evened out.
-        elif adjusted_dmg == 0: 
+        elif adjusted_damage == 0: 
             print(f"{self.name} attacked you... without damaging? (° ‸ °)?")
         
         #Damage didn't pass a positive threshold.
@@ -90,8 +90,8 @@ class WeirdEnemy(Enemy):
         Therefore, this enemy has less predictable danger.
         """
 
-        random_dmg = random.randint(0, self.RANDOM_RANGE)
-        super().attack(character, random_dmg)
+        random_damage = random.randint(0, self.RANDOM_RANGE)
+        super().attack(character, random_damage)
 
 #------------------
 
@@ -104,4 +104,4 @@ class GreatEnemy(Enemy):
 
         self.name = "great"
         self.health = self.HEALTH_BASE * self.GREAT_ENEMY_FACTOR
-        self.dmg = self.DAMAGE_BASE
+        self.damage = self.DAMAGE_BASE
