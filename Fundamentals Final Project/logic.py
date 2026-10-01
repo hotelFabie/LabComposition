@@ -20,12 +20,8 @@ def action_loop(character : characters.Character) -> None:
     Loop for main game logic, that will continue appearing under the condition that the user does not die, nor quits.
     """
 
-    choice : str = ""
-
-    while (choice != "q"):
-        choice = input("\n>")
-        choice = choice.lower().strip()
-
+    while True:
+        choice = input("\n>").lower().strip()
         match choice:
             case "m":
                 menu()
@@ -40,7 +36,6 @@ def action_loop(character : characters.Character) -> None:
                 break
             case _:
                 print("not an available action.")
-
 
 def __walk(character : characters.Character) -> None:
     """
@@ -91,12 +86,15 @@ def __battle(character : characters.Character, enemy : enemies.Enemy) -> None:
     current_turn = 0
 
     while (enemy.health > 0):
+        #Even - Character's turn
         if current_turn % 2 == 0:
             character.choose_action(enemy)
 
+        #Odd - Enemy's turn
         else:
             enemy.attack(character)
             __check_game_over(character)
+            #Remove the temporary defense after being attacked.
             character.temp_def = 0
 
         current_turn += 1
