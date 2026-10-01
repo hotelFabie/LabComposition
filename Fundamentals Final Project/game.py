@@ -9,11 +9,13 @@ def start():
 
     print("಄⣀⣠MAGISTRIKE⣄⣀಄")
 
-    character_name = input("give your character a name: ").strip().lower() 
-    
-    while not character_name:
-        print("name must consist of something other than spaces\n")
+    while True:
         character_name = input("give your character a name: ").strip().lower() 
+
+        if character_name:
+            break
+
+        print("name must consist of something other than spaces... (-`‸-\")\n")
 
     character = characters.Character(character_name)
 

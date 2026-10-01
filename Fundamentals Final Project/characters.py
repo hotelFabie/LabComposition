@@ -79,12 +79,14 @@ class Character:
             else:
                 self.health += self.HEAL
 
-        print("\n•[a] attack •[d] defend")
-        action = input(">")
-
-        while (action != "a") and (action != "d"):
-            print("\nchoose a or d!")
+        while True:            
+            print("\n•[a] attack •[d] defend")
             action = input(">")
+
+            if (action == "a") or (action == "d"):
+                break
+
+            print("invalid input!")
 
         if action == "a":
             enemy.health -= self.dmg
