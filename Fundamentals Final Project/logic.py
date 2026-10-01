@@ -2,7 +2,7 @@ import characters
 import enemies
 import random
 
-tasks = {
+_tasks = {
     "kill_5_normals" : {"enemy_name" : "normal", "description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
     "kill_20_normals" : {"enemy_name" : "normal", "description" : "kill 20 normal enemies", "progress" : 0, "requirement" : 20, "health_increase" : 1, "completed" : False}, 
     "kill_2_weirds" : {"enemy_name" : "weird", "description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 1, "completed" : False},
@@ -129,7 +129,7 @@ def __update_task(character : characters.Character, enemy) -> None:
     the entire task is completed, and the user gets rewarded with an increased health cap.
     """
 
-    for task in tasks.values():
+    for task in _tasks.values():
         if task["enemy_name"] == enemy.name and not task["completed"]:
             task["progress"] += 1
 
@@ -146,7 +146,7 @@ def __present_tasks() -> None:
     Prepares a presentable format of all tasks that can be done, called through a menu command.
     """
 
-    for number, task in enumerate(tasks.values(), start=1):
+    for number, task in enumerate(_tasks.values(), start=1):
         if task["completed"]:
             completion_str = "completed" 
         else:
