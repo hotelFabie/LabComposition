@@ -35,10 +35,10 @@ class Enemy:
 
         for difficulty in _Difficulty:
             if character_level <= difficulty.value:
-                new_difficulty = difficulty
+                assigned_difficulty = difficulty
                 break
 
-        return new_difficulty
+        return assigned_difficulty
     
     def __str__(self) -> str:
         """

@@ -44,10 +44,14 @@ def __walk(character : characters.Character) -> None:
     """
 
     walk_exp = 0.25
+    walk_str = "step taken!"
+
+    if character.level < character.MAX_LEVEL:
+        character.exp += walk_exp
+        walk_str += f" +{walk_exp}  exp.⋆⭒˚｡⋆"
     
     character.steps += 1
-    print(f"step taken! +{walk_exp} exp.⋆⭒˚｡⋆")
-    character.exp += walk_exp
+    print(walk_str)
     
     __possibly_cause_event(character)
 
