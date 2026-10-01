@@ -2,14 +2,6 @@ import characters
 import enemies
 import random
 
-_tasks = {
-    "kill_5_normals" : {"enemy_name" : "normal", "description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
-    "kill_20_normals" : {"enemy_name" : "normal", "description" : "kill 20 normal enemies", "progress" : 0, "requirement" : 20, "health_increase" : 1, "completed" : False}, 
-    "kill_2_weirds" : {"enemy_name" : "weird", "description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 1, "completed" : False},
-    "kill_1_great" : {"enemy_name" : "great", "description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 1, "completed" : False},
-    "kill_3_greats" : {"enemy_name" : "great", "description" : "kill 3 great enemies", "progress" : 0, "requirement" : 3, "health_increase" : 2, "completed" : False}
-}
-
 def menu() -> None:
     """
     Produces a menu of user actions.
@@ -121,6 +113,17 @@ def __check_game_over(character : characters.Character) -> None:
     if character.health <= 0:
         print("♰ YOU DIED : GAME OVER ♰")
         exit()
+
+#-------------------------
+
+#Enemy names here are for comparison to internal names of an Enemy object.
+_tasks = {
+    "kill_5_normals" : {"enemy_name" : "normal", "description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
+    "kill_20_normals" : {"enemy_name" : "normal", "description" : "kill 20 normal enemies", "progress" : 0, "requirement" : 20, "health_increase" : 1, "completed" : False}, 
+    "kill_2_weirds" : {"enemy_name" : "weird", "description" : "kill 2 weird enemies", "progress" : 0, "requirement" : 2, "health_increase" : 1, "completed" : False},
+    "kill_1_great" : {"enemy_name" : "great", "description" : "kill 1 great enemy", "progress" : 0, "requirement" : 1, "health_increase" : 1, "completed" : False},
+    "kill_3_greats" : {"enemy_name" : "great", "description" : "kill 3 great enemies", "progress" : 0, "requirement" : 3, "health_increase" : 2, "completed" : False}
+}
 
 def __update_task(character : characters.Character, enemy) -> None:
     """
