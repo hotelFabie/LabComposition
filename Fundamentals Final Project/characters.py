@@ -100,8 +100,13 @@ class Character:
                 exp = enemy.difficulty.value
                 assign_health()
                 self.add_exp(exp)
+
+                enemy_defeated_str = "enemy defeated!"
+
+                if self.level != self.MAX_LEVEL:
+                    enemy_defeated_str += f" gained {exp} exp.⋆⭒˚｡⋆"
                 
-                print(f"enemy defeated! gained {exp} exp.⋆⭒˚｡⋆")
+                print(enemy_defeated_str)
                 
         elif action == "d":
             assign_health()
