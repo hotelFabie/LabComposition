@@ -12,7 +12,7 @@ def start():
     while True:
         character_name = input("give your character a name: ").strip().lower() 
 
-        if character_name:
+        if character_name != "":
             break
 
         print("name must consist of something other than spaces... (-`‸-\")\n")
