@@ -17,9 +17,9 @@ class Enemy:
 
     def __init__(self, character_level : int):
         self.difficulty : _Difficulty = self.set_difficulty(character_level)
-        self.health = self.HEALTH_BASE
-        self.name = "normal"
-        self.damage = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
+        self.health : float = self.HEALTH_BASE
+        self.name : str = "normal"
+        self.damage : float = self.DAMAGE_BASE + (self.difficulty.value / self.DAMAGE_BASE)
 
     def set_difficulty(self, character_level : int) -> str:
         """
@@ -82,7 +82,7 @@ class WeirdEnemy(Enemy):
     def __init__(self, character_level : int):
         super().__init__(character_level)
         
-        self.name = "weird"
+        self.name : str = "weird"
 
     def attack(self, character : characters.Character) -> None:
         """
@@ -102,6 +102,6 @@ class GreatEnemy(Enemy):
     def __init__(self, character_level : int):
         super().__init__(character_level)
 
-        self.name = "great"
-        self.health = self.HEALTH_BASE * self.GREAT_ENEMY_FACTOR
-        self.damage = self.DAMAGE_BASE
+        self.name : str = "great"
+        self.health : float = self.HEALTH_BASE * self.GREAT_ENEMY_FACTOR
+        self.damage : float = self.DAMAGE_BASE
