@@ -88,6 +88,10 @@ class Character:
 
             print("invalid input!")
 
+        #----------
+        #Choice management.
+        #Possibility for health increase in both cases.
+
         if action == "a":
             enemy.health -= self.dmg
             print(f"you attacked the enemy with {self.dmg} damage! ٩(ˋᗣˊ*)و [enemy hp: {enemy.health}]")
@@ -122,6 +126,7 @@ class Character:
 
         if not self.level < self.MAX_LEVEL:
             print("already max level, so no exp is gained.")
+            
         else:
             if (self.exp + exp >= self.exp_cap):
                 #In the case where you level up, stats get increased and health gets restored.
