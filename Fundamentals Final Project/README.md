@@ -12,8 +12,8 @@ The main mechanic is quite simple, which is the walk command. You gain a small a
 Every time you walk, there is a pseudo-random chance of encountering one of three enemies (inheritance structure). 
 
 Enemy encounters causes a battle to start, where you as the player have two choices.
-A: Attack the enemy. 
-D: Defend, increasing health and defense. Depending on stats, you may block the enemy damage entirely.
+**A**: Attack the enemy. 
+**D**: Defend, increasing health and defense. Depending on stats, you may block the enemy damage entirely.
 
 The battle continues until either the enemy or you die, with the latter resulting in a GAME OVER.
 Winning a battle results in an EXP increase. 

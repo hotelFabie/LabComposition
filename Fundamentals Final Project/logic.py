@@ -1,10 +1,6 @@
-from re import match
-
 import characters
 import enemies
 import random
-
-#With this, we can do a count of how many that are completed and display it later on.
 
 tasks = {
     "kill_5_normals" : {"enemy_name" : "normal", "description" : "kill 5 normal enemies", "progress" : 0, "requirement" : 5, "health_increase" : 1, "completed" : False}, 
@@ -14,7 +10,7 @@ tasks = {
     "kill_3_greats" : {"enemy_name" : "great", "description" : "kill 3 great enemies", "progress" : 0, "requirement" : 3, "health_increase" : 2, "completed" : False}
 }
 
-def menu():
+def menu() -> None:
     """
     Produces a menu of user actions.
     """
@@ -27,7 +23,7 @@ def menu():
     print(f"[q] : quit")
 
 
-def action_loop(character : characters.Character):
+def action_loop(character : characters.Character) -> None:
     """
     Loop for main game logic, that will continue appearing under the condition that the user does not die, nor quits.
     """
@@ -54,7 +50,7 @@ def action_loop(character : characters.Character):
                 print("not an available action.")
 
 
-def __walk(character : characters.Character):
+def __walk(character : characters.Character) -> None:
     """
     Small experience point increment per step taken.
     There is always a chance of a battle occurring.
@@ -63,12 +59,12 @@ def __walk(character : characters.Character):
     walk_exp = 0.25
     
     character.steps += 1
-    character.exp += walk_exp
     print(f"step taken! +{walk_exp} exp.⋆⭒˚｡⋆")
+    character.exp += walk_exp
     
     __possibly_cause_event(character)
 
-def __possibly_cause_event(character : characters.Character):
+def __possibly_cause_event(character : characters.Character) -> None:
     """
     2/3 pseudo-random chance that a battle is started.
     Furthermore, another pseudo-random number is generated, deciding which enemy type will be spawned.
@@ -91,7 +87,7 @@ def __possibly_cause_event(character : characters.Character):
             enemy = enemies.GreatEnemy(character.level)
             __battle(character, enemy)
 
-def __battle(character : characters.Character, enemy : enemies.Enemy):
+def __battle(character : characters.Character, enemy : enemies.Enemy) -> None:
     """
     Takes turns between character and enemy.
     Character can either attack or defend, whereas the enemy always attacks.

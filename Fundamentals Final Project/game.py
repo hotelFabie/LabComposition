@@ -17,8 +17,6 @@ def start():
 
     character = characters.Character(character_name)
 
-    #IMPORTANT: we need a check here if the name is not valid, so it would be a while loop with a try and except.
-
     print("\n"
           f"welcome [{character}] to MAGISTRIKE!\n"
           "you are but a mere traveller in this dangerous world,\n"

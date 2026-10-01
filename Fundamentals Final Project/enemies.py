@@ -47,14 +47,16 @@ class Enemy:
 
         return f"{self.name} enemy [{self.difficulty.name}]"
     
-    def attack(self, character : characters.Character, manual_dmg = 0):
+    def attack(self, character : characters.Character, manual_dmg : float = 0) -> None:
         """
         Calculates damage with the user's ability to defend in consideration.
         User gets informed whether they got HP taken away or not.
         Possibility for manually adding damage is for subclasses to insert damage that is unique/RNG every turn.
         """
 
-        if manual_dmg > 0:
+        if manual_dmg < 0:
+            raise ValueError("cannot assign negative damage.")
+        elif manual_dmg > 0:
             self.dmg = manual_dmg
 
         adjusted_dmg = self.dmg - (character.main_def + character.temp_def) 
@@ -82,7 +84,7 @@ class WeirdEnemy(Enemy):
         
         self.name = "weird"
 
-    def attack(self, character : characters.Character):
+    def attack(self, character : characters.Character) -> None:
         """
         Inserts randomly generated number (within range 0-7) as damage to the method with the same name in the base class.
         Therefore, this enemy has less predictable danger.

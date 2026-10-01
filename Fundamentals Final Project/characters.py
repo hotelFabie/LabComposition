@@ -18,19 +18,19 @@ class Character:
         Get initialized with start values that can gradually go up if user levels up through game progression.
         """
 
-        self.name = name
-        self.level = 1
+        self.name : str = name
+        self.level : int = 1
 
-        self.dmg = self.DAMAGE_BASE
+        self.dmg : float = self.DAMAGE_BASE
 
-        self.main_def = 0
-        self.temp_def = 0
+        self.main_def : float = 0
+        self.temp_def : float = 0
 
-        self.health = self.HEALTH_BASE
-        self.health_cap = self.HEALTH_BASE
+        self.health : float = self.HEALTH_BASE
+        self.health_cap : float = self.HEALTH_BASE
 
-        self.exp = 0
-        self.exp_cap = self.EXP_BASE
+        self.exp : float = 0
+        self.exp_cap : float = self.EXP_BASE
 
         self.steps = 0
         self.kills = {"normal" : 0, "weird" : 0, "great" : 0}
@@ -69,7 +69,7 @@ class Character:
         Defending: Heightens defense and heals. 
         """
         
-        def assign_health():
+        def assign_health() -> None:
             """
             Increases health to user within the limit of the health cap, so that it never exceeds the allowed health.
             """
@@ -102,7 +102,7 @@ class Character:
             self.temp_def += self.STATUS_FACTOR
             print(f"you defended with {self.temp_def} defense, and healed {self.HEAL} hp! ☥")
 
-    def add_exp(self, exp : float):
+    def add_exp(self, exp : float) -> None:
         """
         Adds experience points to the character only if they are below the max level.
         Updates the level if experience cap is reached, while increasing both the experience and health cap, plus restoring health.
