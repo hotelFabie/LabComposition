@@ -133,14 +133,14 @@ class Character:
             print("already max level, so no exp is gained.")
             
         else:
-            if (self.exp + exp >= self.exp_cap):
+            self.exp += exp
+
+            #Though not to happen with the level cap we have now, we never want a case where XP would exceed; must result in level-up, so a while-loop is applicable regardless.
+            while self.exp >= self.exp_cap:
                 #In the case where you level up, stats get increased and health gets restored.
+                self.exp -= self.exp_cap
+
                 self.level += 1
                 print(f"leveled up! {self.level - 1} → {self.level}")
 
-                self.exp = (self.exp + exp) % self.exp_cap 
-
                 update_status()
-
-            else:
-                self.exp += exp
