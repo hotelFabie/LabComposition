@@ -27,7 +27,7 @@ While walking is the main mechanic to make something happen,
 it is one of a few choices presented in the game's menu.
 - **Show menu again**.
 - **Overview** of character's **current statistics**. Can be used as an indicator between battles how defensive to be to maintain the health.
-- **Task overview**. There are 5 tasks activated from the beginning, which reward the user with a slightly increased health cap if accomplished. All tasks focus on killing a certain amount of one type of enemy.
+- **Task overview**. There are 5 tasks activated from the beginning, which reward the user with a slightly increased health cap if accomplished. All tasks focus on killing a certain amount of one type of enemy. (If a task is completed, it will be displayed for the player.)
 - **Quit**. As data is not persistent in this game, your progress will not have been saved when you start again.
 
 ## How to run
