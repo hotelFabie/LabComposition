@@ -32,8 +32,8 @@ class Character:
         self.exp : float = 0
         self.exp_cap : float = self.EXP_BASE
 
-        self.steps = 0
-        self.kills = {"normal" : 0, "weird" : 0, "great" : 0}
+        self._steps = 0
+        self._kills = {"normal" : 0, "weird" : 0, "great" : 0}
 
     def __str__(self) -> str:
         return self.name
@@ -53,11 +53,11 @@ class Character:
             exp_str = f"{self.exp}/{self.exp_cap}"
 
         #Kills formatted.
-        kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self.kills.items()) 
+        kills_str = ", ".join(f"{enemy}: {amount}" for enemy, amount in self._kills.items()) 
         
         status += (f"•level: {self.level} •health: {self.health}/{self.health_cap} "
             f"•damage: {self.dmg} •defense: {self.main_def} "
-            f"•current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self.steps}")
+            f"•current exp: {exp_str}\n•kills: [{kills_str}]\n•steps taken: {self._steps}")
 
         return status
 
