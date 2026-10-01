@@ -81,7 +81,7 @@ class Character:
 
         while True:            
             print("\n•[a] attack •[d] defend")
-            action = input(">")
+            action = input(">").lower().strip()
 
             if (action == "a") or (action == "d"):
                 break
