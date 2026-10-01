@@ -22,10 +22,10 @@ Reaching the current EXP cap makes you level up, which improves stats - damage, 
 ### Peripherals
 While walking is the main mechanic to make something happen,
 it is one of a few choices presented in a menu.
-- Show menu again.
-- Overview of character's current statistics.
-- Task overview. There are 5 tasks activated from the beginning, which reward the user with a slightly increased health cap if accomplished. All tasks focus on killing a certain amount of one type of enemy.
-- Quit. As data is not persistent in this game, your progress will not have been saved when you start again.
+- **Show menu again**.
+- **Overview** of character's **current statistics**.
+- **Task overview**. There are 5 tasks activated from the beginning, which reward the user with a slightly increased health cap if accomplished. All tasks focus on killing a certain amount of one type of enemy.
+- **Quit**. As data is not persistent in this game, your progress will not have been saved when you start again.
 
 ## How to run
 Run <code>python game.py</code> to start the game. 
