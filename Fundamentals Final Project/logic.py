@@ -157,4 +157,4 @@ def __present_tasks() -> None:
         else:
             completion_str = f"uncompleted ({task["progress"]}/{task["requirement"]})"
 
-        print(f"task {number}: {task["description"]} - {completion_str} [REWARD: {task["health_increase"]} hp increase]")
+        print(f"task {number}: {task["description"]} - {completion_str} [REWARD: +{task["health_increase"]} hp cap]")
