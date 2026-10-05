@@ -104,14 +104,29 @@ LIMIT 3;
 
 --LEVEL 2
 --Exercise 5
+SELECT first_name || ', ' || last_name AS full_name FROM customers  
+ORDER BY last_name;
 
---Exercise 5
+--Exercise 6
+SELECT *, price,
+CASE
+	WHEN price < 200 THEN 'budget'
+	WHEN price >= 200 AND price <= 799 THEN 'mid' 
+	WHEN price > 800 THEN 'premium'
+END AS price_level
+FROM products; 
 
 --Exercise 7
+SELECT first_name, COALESCE(city, 'Unknown') AS city
+FROM customers;
 
 --Exercise 8
+SELECT *
+FROM customers
+WHERE strftime('%m', joined_date) BETWEEN '01' AND '06';
 
 --Exercise 9
+
 
 --Exercise 10
 
