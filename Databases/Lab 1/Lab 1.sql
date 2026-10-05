@@ -126,7 +126,9 @@ FROM customers
 WHERE strftime('%m', joined_date) BETWEEN '01' AND '06';
 
 --Exercise 9
-
+SELECT * FROM products
+ORDER BY LENGTH(name) DESC
+LIMIT 1;
 
 --Exercise 10
 
