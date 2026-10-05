@@ -141,6 +141,13 @@ FROM products
 WHERE price > (SELECT avg(price) FROM products);
 
 --Exercise 12
-
+SELECT name || ' costs ' || CAST(price as INT) || ' kr' AS price_list
+FROM products
+WHERE stock > 0
+ORDER BY price ASC;
 
 --Exercise 13
+SELECT city, COUNT(*) as number_of_customers
+FROM customers
+GROUP BY city
+ORDER BY number_of_customers DESC;
