@@ -79,3 +79,45 @@ ORDER BY city ASC, last_name DESC;
 
 --EXTRA CHALLENGES
 
+--LEVEL 1
+--Exercise 1
+SELECT * FROM products
+WHERE category != 'Accessories' AND stock > 0 AND name LIKE '% %'
+ORDER BY category, price DESC;
+
+--Exercise 2
+SELECT * FROM customers
+WHERE city LIKE 'S%' OR city LIKE 'M%' OR city IS NULL;
+
+--Exercise 3
+SELECT * FROM products 
+WHERE category = 'Shoes'
+ORDER BY price DESC
+LIMIT 1 OFFSET 1;
+
+--Exercise 4
+SELECT * FROM customers
+WHERE joined_date LIKE '2024%' OR joined_date LIKE '2025%'
+ORDER BY joined_date DESC
+LIMIT 3;
+
+
+--LEVEL 2
+--Exercise 5
+
+--Exercise 5
+
+--Exercise 7
+
+--Exercise 8
+
+--Exercise 9
+
+--Exercise 10
+
+--LEVEL 3
+--Exercise 11
+
+--Exercise 12
+
+--Exercise 13
