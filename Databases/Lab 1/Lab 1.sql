@@ -131,10 +131,16 @@ ORDER BY LENGTH(name) DESC
 LIMIT 1;
 
 --Exercise 10
+SELECT substr(email, 0, instr(email, '@')) AS 'email_username'
+FROM customers;
 
 --LEVEL 3
 --Exercise 11
+SELECT *
+FROM products
+WHERE price > (SELECT avg(price) FROM products);
 
 --Exercise 12
+
 
 --Exercise 13
