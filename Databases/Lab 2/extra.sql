@@ -105,15 +105,37 @@ VALUES (2, 'Subservient Lucy', 1);
 --Employee 2
 INSERT INTO employees (employee_id, name, manager_id)
 VALUES (3, 'Subservient Carl', 1);
+
 */
+--Exercise 12
+
+CREATE TABLE teams (
+	team_id INTEGER PRIMARY KEY,
+	name TEXT UNIQUE NOT NULL
+);
+
+
+CREATE TABLE players (
+	player_id INTEGER PRIMARY KEY,
+	name TEXT NOT NULL,
+	team_id INTEGER NOT NULL,
+	FOREIGN KEY (team_id) REFERENCES teams(team_id) ON DELETE CASCADE
+);
+
+--Team
+INSERT INTO teams (team_id, name)
+VALUES (1, 'Mario Bros. Fan Club');
+
+--Players
+INSERT INTO players (team_id, name, team_id)
+VALUES (1, 'Marimoto', 1);
+
+INSERT INTO players (team_id, name, team_id)
+VALUES (2, 'Mario Jr.', 1);
+
 
 /*
---Exercise 12
-CREATE teams (
-
-);
-
-CREATE players (
-
-);
+--Removal check:
+DROP TABLE teams;
+--Result:
 */
