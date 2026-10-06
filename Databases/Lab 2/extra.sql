@@ -67,13 +67,27 @@ CREATE TABLE campaigns (
 INSERT INTO campaigns (name, start_date, end_date) 
 VALUES ('kool-aid big pack', '2026-10-06', '2026-10-05');
 --Won't work, because of the constraint. In order words, it DOES work as we want it to! :D 
-*/
 
 --Level 3
 --Exercise 10
+CREATE TABLE product_sizes (
+	id INTEGER PRIMARY KEY,
+	product_id INTEGER UNIQUE NOT NULL,
+	size TEXT UNIQUE NOT NULL CHECK (size IN ('S', 'M', 'L', 'XL')),
+	stock INTEGER DEFAULT 0,
+	FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+--Test
+INSERT INTO product_sizes (id, product_id, size, stock) 
+VALUES (1, 1, 'S', 7);
+
+INSERT INTO product_sizes (id, product_id, size, stock) 
+VALUES (2, 1, 'S', 5);
+--This will not work - which is expected - since the product already has one size.
+*/
+
 
 --Exercise 11
 
 --Exercise 12
-
---Exercise 13
