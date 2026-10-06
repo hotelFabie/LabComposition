@@ -41,11 +41,33 @@ ALTER TABLE suppliers RENAME COLUMN email TO contact_email;
 
 --Exercise 7
 PRAGMA table_info(suppliers);
-*/
 
 --Exercise 8
+CREATE TABLE product_suppliers (
+	product_id INTEGER NOT NULL,
+	supplier_id INTEGER NOT NULL, 
+	purchase_price REAL NOT NULL CHECK (purchase_price > 0),
+	PRIMARY KEY (product_id, supplier_id),	
+	FOREIGN KEY (product_id) REFERENCES products(product_id),
+	FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id)
+);
+
+INSERT INTO product_suppliers (product_id, supplier_id, purchase_price) 
+VALUES (1, 99, 0.01);
+--It fails, because there is no supplier with id 99, so there can't be no tie to nothing.
 
 --Exercise 9
+CREATE TABLE campaigns (
+	name TEXT PRIMARY KEY, 
+	start_date TEXT,
+	end_date TEXT CHECK (end_date > start_date)
+);
+
+--Test
+INSERT INTO campaigns (name, start_date, end_date) 
+VALUES ('kool-aid big pack', '2026-10-06', '2026-10-05');
+--Won't work, because of the constraint. In order words, it DOES work as we want it to! :D 
+*/
 
 --Level 3
 --Exercise 10
