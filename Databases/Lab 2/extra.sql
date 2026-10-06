@@ -1,4 +1,3 @@
-/*
 --Level 1
 --Exercise 1
 CREATE TABLE suppliers (
@@ -105,8 +104,6 @@ VALUES (2, 'Subservient Lucy', 1);
 --Employee 2
 INSERT INTO employees (employee_id, name, manager_id)
 VALUES (3, 'Subservient Carl', 1);
-
-*/
 --Exercise 12
 
 CREATE TABLE teams (
@@ -127,15 +124,12 @@ INSERT INTO teams (team_id, name)
 VALUES (1, 'Mario Bros. Fan Club');
 
 --Players
-INSERT INTO players (team_id, name, team_id)
+INSERT INTO players (player_id, name, team_id)
 VALUES (1, 'Marimoto', 1);
 
-INSERT INTO players (team_id, name, team_id)
+INSERT INTO players (player_id, name, team_id)
 VALUES (2, 'Mario Jr.', 1);
 
-
-/*
 --Removal check:
 DROP TABLE teams;
---Result:
-*/
+--Result: As expected, there will be 0 players left, since ON DELETE CASCADE works like a waterfall in terms of removing sub-things.
