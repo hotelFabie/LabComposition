@@ -85,9 +85,35 @@ VALUES (1, 1, 'S', 7);
 INSERT INTO product_sizes (id, product_id, size, stock) 
 VALUES (2, 1, 'S', 5);
 --This will not work - which is expected - since the product already has one size.
-*/
-
 
 --Exercise 11
+CREATE TABLE employees (
+	employee_id INTEGER PRIMARY KEY, 
+	name TEXT NOT NULL, 
+	manager_id INTEGER, 
+	FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
+);
 
+--Boss
+INSERT INTO employees (employee_id, name) 
+VALUES (1, 'Jane Bossman');
+
+--Employee 1
+INSERT INTO employees (employee_id, name, manager_id)
+VALUES (2, 'Subservient Lucy', 1);
+
+--Employee 2
+INSERT INTO employees (employee_id, name, manager_id)
+VALUES (3, 'Subservient Carl', 1);
+*/
+
+/*
 --Exercise 12
+CREATE teams (
+
+);
+
+CREATE players (
+
+);
+*/
