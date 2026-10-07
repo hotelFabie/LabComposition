@@ -1,4 +1,3 @@
-/*
 --Exercise 1
 INSERT INTO customers VALUES (11, 'Fabian', 'V.', 'fbao@yo.kp', 'Stockholm', '2026-10-07');
 
@@ -52,7 +51,6 @@ DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE sta
 --Exercise 12
 --The incorrect column is customer_email, because you should be able to extract it with the customer_id, which should be a foreign key to a customer table, containing
 --all relevant information about the customer. 
-*/
 
 --Exercise 13
 --__Students__ take __lessons__ from __teachers__. 
@@ -116,7 +114,6 @@ CREATE TABLE teachers_instruments(
 	FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
 	FOREIGN KEY (instrument_id) REFERENCES instruments(instrument_id)
 );
---*/
 
 --In case something goes wrong.
 /*
