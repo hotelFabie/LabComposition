@@ -14,11 +14,14 @@ INSERT INTO order_items VALUES (16, 10, 2, 179);
 --Exercise 4
 INSERT INTO orders VALUES (17, 1, '2026-10-07', 0);
 --The rule that stops this from happening is the check on the quantity requiring it to be above 0, and we are currently inserting 0, which will be denied.
-*/
 
 --Exercise 5
+UPDATE orders SET status = 'shipped' WHERE order_id = 12;
 
 --Exercise 6
+--SELECT * FROM products WHERE product_id = 5;
+UPDATE products SET stock = 50 WHERE product_id = 5;
+*/
 
 --Exercise 7
 
