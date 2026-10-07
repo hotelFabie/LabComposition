@@ -70,6 +70,7 @@ DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE sta
 
 --Exercise 16
 --Result provided in music.db, in the same directory.
+
 /*
 CREATE TABLE students (
 	student_id INTEGER PRIMARY KEY,
@@ -81,6 +82,7 @@ CREATE TABLE teachers (
 	name TEXT NOT NULL
 );
 
+
 CREATE TABLE instruments (
 	instrument_id INTEGER PRIMARY KEY,
 	name TEXT UNIQUE NOT NULL
@@ -88,15 +90,13 @@ CREATE TABLE instruments (
 
 CREATE TABLE lessons ( 
 	lesson_id INTEGER PRIMARY KEY,
-	student_id INTEGER NOT NULL,
 	teacher_id INTEGER NOT NULL,
 	lesson_date TEXT NOT NULL,
 	lesson_time TEXT NOT NULL,
 	lesson_room TEXT NOT NULL,
-	FOREIGN KEY (student_id) REFERENCES students(student_id),
-	FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
+	FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id) 
 );
-*/
+--Had this table above get attribute names that were a bit long but cohesive, because date and time was marked as keywords.
 
 CREATE TABLE students_lessons(
 	student_id INTEGER NOT NULL,
@@ -113,3 +113,14 @@ CREATE TABLE teachers_instruments(
 	FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
 	FOREIGN KEY (instrument_id) REFERENCES instruments(instrument_id)
 );
+--*/
+
+--In case something goes wrong.
+/*
+DROP TABLE students;
+DROP TABLE teachers;
+DROP TABLE lessons;
+DROP TABLE instruments;
+DROP TABLE students_lessons;
+DROP TABLE teachers_instruments;
+*/
