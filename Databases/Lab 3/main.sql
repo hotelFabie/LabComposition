@@ -1,3 +1,4 @@
+/*
 --Exercise 1
 INSERT INTO customers VALUES (11, 'Fabian', 'V.', 'fbao@yo.kp', 'Stockholm', '2026-10-07');
 
@@ -38,8 +39,16 @@ DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE sta
 --There are 15 entries, so it is correct.
 
 --Exercise 10
+--First of all, there is nothing that clearly indicates of any identifier, considering that two students could have the same name.
+--Secondly, having the same type of item (within a arguably shared group) multiple times breaks the conditions for 1NF to hold. 
+--It would be smarter to have a middle/intermediate table having the primary key as a column consisting of both a student_id and a course.
 
 --Exercise 11
+--It breaks 1NF by representing quantity within products, and then having a total not based on a singular price.
+--There must be one value per cell in 1NF, so it would make more sense to also have a middle table (inventory),
+--where you can tie the order id (foreign key) to a product, and then also have price and quantity. All values are separated, 
+--and yet you can still get e.g. the total price by querying a multiplication between the price and quantity.
+*/
 
 --Exercise 12
 
@@ -50,3 +59,4 @@ DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE sta
 --Exercise 15
 
 --Exercise 16
+--WIP AS THE LAST THING, WE'VE GOT IT.
