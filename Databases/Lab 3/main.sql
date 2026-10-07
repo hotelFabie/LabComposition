@@ -66,7 +66,50 @@ DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE sta
 --Instrument-Lesson: 1:N (An instrument can be part of many lessons, and a lesson focuses on one instrument.)
 
 --Exercise 15
-
+--Written on paper, provided in the same directory as this file.
 
 --Exercise 16
---WIP AS THE LAST THING, WE'VE GOT IT.
+--Result provided in music.db, in the same directory.
+/*
+CREATE TABLE students (
+	student_id INTEGER PRIMARY KEY,
+	name TEXT NOT NULL
+);
+
+CREATE TABLE teachers (
+	teacher_id INTEGER PRIMARY KEY,
+	name TEXT NOT NULL
+);
+
+CREATE TABLE instruments (
+	instrument_id INTEGER PRIMARY KEY,
+	name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE lessons ( 
+	lesson_id INTEGER PRIMARY KEY,
+	student_id INTEGER NOT NULL,
+	teacher_id INTEGER NOT NULL,
+	lesson_date TEXT NOT NULL,
+	lesson_time TEXT NOT NULL,
+	lesson_room TEXT NOT NULL,
+	FOREIGN KEY (student_id) REFERENCES students(student_id),
+	FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
+);
+*/
+
+CREATE TABLE students_lessons(
+	student_id INTEGER NOT NULL,
+	lesson_id INTEGER NOT NULL, 
+	PRIMARY KEY (student_id, lesson_id),
+	FOREIGN KEY (student_id) REFERENCES students(student_id),
+	FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id)
+);
+
+CREATE TABLE teachers_instruments(
+	teacher_id INTEGER NOT NULL,
+	instrument_id INTEGER NOT NULL, 
+	PRIMARY KEY (teacher_id, instrument_id),
+	FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
+	FOREIGN KEY (instrument_id) REFERENCES instruments(instrument_id)
+);
