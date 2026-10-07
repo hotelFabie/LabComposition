@@ -72,7 +72,6 @@ DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE sta
 --Exercise 16
 --Result provided in music.db, in the same directory.
 
-/*
 CREATE TABLE students (
 	student_id INTEGER PRIMARY KEY,
 	name TEXT NOT NULL
