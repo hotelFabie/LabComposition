@@ -1,4 +1,3 @@
-/*
 --Exercise 1
 INSERT INTO customers VALUES (11, 'Fabian', 'V.', 'fbao@yo.kp', 'Stockholm', '2026-10-07');
 
@@ -21,13 +20,22 @@ UPDATE orders SET status = 'shipped' WHERE order_id = 12;
 --Exercise 6
 --SELECT * FROM products WHERE product_id = 5;
 UPDATE products SET stock = 50 WHERE product_id = 5;
-*/
 
 --Exercise 7
 
+UPDATE products SET price = price * 1.10 WHERE category = 'Accessories';
+
 --Exercise 8
+--SELECT * FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE status = 'cancelled');
+DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE status = 'cancelled');
+
+--SELECT * FROM orders WHERE status = 'cancelled';
+
+--Each order item has an order_id as a foreign key, so deleting an order will destroy the items' dependencies. Therefore, remove specifically those items first.
 
 --Exercise 9
+--SELECT COUNT(*) FROM orders;
+--There are 15 entries, so it is correct.
 
 --Exercise 10
 
