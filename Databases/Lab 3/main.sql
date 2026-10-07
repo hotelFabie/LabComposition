@@ -65,6 +65,9 @@ DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE sta
 --Teacher-Instrument: N:M (A teacher can play many instruments, and and instrument can be played by different teachers.)
 --Instrument-Lesson: 1:N (An instrument can be part of many lessons, and a lesson focuses on one instrument.)
 
+--***
+--Written answers on paper also exist in exercise10_to_14.jpg.
+--***
 --Exercise 15
 --Written on paper, provided in the same directory as this file.
 
