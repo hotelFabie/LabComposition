@@ -48,15 +48,25 @@ DELETE FROM order_items WHERE order_id IN (SELECT order_id FROM orders WHERE sta
 --There must be one value per cell in 1NF, so it would make more sense to also have a middle table (inventory),
 --where you can tie the order id (foreign key) to a product, and then also have price and quantity. All values are separated, 
 --and yet you can still get e.g. the total price by querying a multiplication between the price and quantity.
-*/
 
 --Exercise 12
+--The incorrect column is customer_email, because you should be able to extract it with the customer_id, which should be a foreign key to a customer table, containing
+--all relevant information about the customer. 
+*/
 
 --Exercise 13
+--__Students__ take __lessons__ from __teachers__. 
+--__Lesson__ has a date, time, room and __instrument__. 
+--One __teacher__ can teach many __instruments__.
 
 --Exercise 14
+--Student-Lesson: N:M (Students can have many lessons, and lessons can have many students.)
+--Teacher-Lesson: 1:N (A teacher can have many lessons, and a lesson is held by one teacher.)
+--Teacher-Instrument: N:M (A teacher can play many instruments, and and instrument can be played by different teachers.)
+--Instrument-Lesson: 1:N (An instrument can be part of many lessons, and a lesson focuses on one instrument.)
 
 --Exercise 15
+
 
 --Exercise 16
 --WIP AS THE LAST THING, WE'VE GOT IT.
