@@ -1,3 +1,4 @@
+/*
 --Exercise 1
 SELECT c.first_name, c.last_name, o.status
 FROM orders o
@@ -5,12 +6,21 @@ JOIN customers c ON o.customer_id = c.customer_id;
 --15 rows received.
 
 --Exercise 2
-SELECT *
+--Before:
+SELECT o.order_id, c.first_name
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+WHERE c.first_name = 'Erik'; 
+
+--After:
+SELECT o.order_id, c.first_name
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 WHERE c.first_name = 'Erik'; 
 --3 rows received.
+*/
 
+/*
 --Exercise 3
 SELECT *
 FROM orders o 
@@ -61,8 +71,11 @@ SELECT *
 FROM customers c
 LEFT JOIN orders o ON o.customer_id = c.customer_id;
 --17 rows received.
+*/
 
 --Exercise 9
+--Before
+/*
 SELECT *
 FROM products p
 LEFT JOIN order_items oi ON p.product_id = oi.product_id
@@ -70,7 +83,15 @@ WHERE p.product_id NOT IN
 	(SELECT product_id 
 	FROM order_items);
 --2 rows received.
-	
+*/
+
+--After
+SELECT p.product_id, p.name 
+FROM products p	
+LEFT JOIN order_items oi ON p.product_id = oi.product_id
+WHERE oi.product_id IS NULL;
+
+/*	
 --Exercise 10
 SELECT c.first_name, p.name, oi.quantity 
 FROM order_items oi
@@ -79,3 +100,4 @@ JOIN products p ON p.product_id = oi.product_id
 JOIN customers c ON c.customer_id = o.customer_id 
 WHERE c.city = 'Uppsala';
 --8 rows received.
+*/
