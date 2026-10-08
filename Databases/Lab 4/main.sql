@@ -75,7 +75,6 @@ WHERE p.name = 'Hoodie Black';
 --3 rows received. 
 
 --Exercise 8
---Could show the entire order with order_items, but 
 --Before
 SELECT *
 FROM customers c
