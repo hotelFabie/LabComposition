@@ -64,10 +64,10 @@ WHERE p.product_id NOT IN
 --2 rows received.
 	
 --Exercise 10
-/*
-
-
-SELECT * 
-
+SELECT c.first_name, p.name, oi.quantity 
+FROM order_items oi
+JOIN orders o ON o.order_id = oi.order_id
+JOIN products p ON p.product_id = oi.product_id
+JOIN customers c ON c.customer_id = o.customer_id 
 WHERE c.city = 'Uppsala';
-*/
+--8 rows received.
