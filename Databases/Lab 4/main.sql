@@ -49,10 +49,25 @@ WHERE oi.product_id = 1;
 --UNSURE IF WE NEED TO SPECIFICALLY SAY THE NAME OF THE PRODUCT, because we are already getting it regardless by checking the structure.
 
 --Exercise 8
-
-
+SELECT *
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.customer_id;
+--17 rows received.
 
 --Exercise 9
-
+SELECT *
+FROM products p
+LEFT JOIN order_items oi ON p.product_id = oi.product_id
+WHERE p.product_id NOT IN 
+	(SELECT product_id 
+	FROM order_items);
+--2 rows received.
+	
 --Exercise 10
+/*
 
+
+SELECT * 
+
+WHERE c.city = 'Uppsala';
+*/
