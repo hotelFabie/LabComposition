@@ -8,7 +8,7 @@ JOIN customers c ON o.customer_id = c.customer_id;
 
 --Exercise 2
 --Before:
-SELECT o.order_id, c.first_name
+SELECT *
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 WHERE c.first_name = 'Erik'; 
