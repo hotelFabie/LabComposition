@@ -1,4 +1,5 @@
-/*
+--NOTE: Some of these exercises have a before and after to avoid only utilizing wildcard, as well as producing a big, cluttered query result.
+
 --Exercise 1
 SELECT c.first_name, c.last_name, o.status
 FROM orders o
@@ -18,11 +19,18 @@ FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 WHERE c.first_name = 'Erik'; 
 --3 rows received.
-*/
 
-/*
 --Exercise 3
+--Before:
 SELECT *
+FROM orders o 
+JOIN customers c ON o.customer_id = c.customer_id
+WHERE c.city = 'Göteborg'
+ORDER BY o.order_date DESC;
+--3 rows received.
+
+--After:
+SELECT o.order_id, o.order_date
 FROM orders o 
 JOIN customers c ON o.customer_id = c.customer_id
 WHERE c.city = 'Göteborg'
@@ -67,15 +75,21 @@ WHERE p.name = 'Hoodie Black';
 --3 rows received. 
 
 --Exercise 8
+--Could show the entire order with order_items, but 
+--Before
 SELECT *
 FROM customers c
 LEFT JOIN orders o ON o.customer_id = c.customer_id;
 --17 rows received.
-*/
+
+--After
+SELECT c.customer_id, c.first_name, o.order_id 
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.customer_id;
+--17 rows received.
 
 --Exercise 9
 --Before
-/*
 SELECT *
 FROM products p
 LEFT JOIN order_items oi ON p.product_id = oi.product_id
@@ -83,15 +97,14 @@ WHERE p.product_id NOT IN
 	(SELECT product_id 
 	FROM order_items);
 --2 rows received.
-*/
 
 --After
 SELECT p.product_id, p.name 
 FROM products p	
 LEFT JOIN order_items oi ON p.product_id = oi.product_id
 WHERE oi.product_id IS NULL;
-
-/*	
+--2 rows received.
+	
 --Exercise 10
 SELECT c.first_name, p.name, oi.quantity 
 FROM order_items oi
@@ -100,4 +113,3 @@ JOIN products p ON p.product_id = oi.product_id
 JOIN customers c ON c.customer_id = o.customer_id 
 WHERE c.city = 'Uppsala';
 --8 rows received.
-*/
