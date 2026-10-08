@@ -40,13 +40,21 @@ WHERE oi.order_id = 10;
 --2 rows received.
 
 --Exercise 7
+--Alt. 1: Without name specified, going off of product_id.
 SELECT c.first_name, o.order_date
 FROM order_items oi
 JOIN orders o ON oi.order_id = o.order_id
 JOIN customers c ON c.customer_id = o.customer_id
 WHERE oi.product_id = 1;
+
+--Alt. 2: Specifically calling the product name.
+SELECT c.first_name, o.order_date
+FROM order_items oi
+JOIN orders o ON oi.order_id = o.order_id
+JOIN customers c ON c.customer_id = o.customer_id
+JOIN products p ON p.product_id = oi.product_id
+WHERE p.name = 'Hoodie Black';
 --3 rows received. 
---UNSURE IF WE NEED TO SPECIFICALLY SAY THE NAME OF THE PRODUCT, because we are already getting it regardless by checking the structure.
 
 --Exercise 8
 SELECT *
