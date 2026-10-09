@@ -28,29 +28,42 @@ FROM customers c
 JOIN orders o ON o.customer_id = c.customer_id
 WHERE c.city IN ('Stockholm', 'Uppsala');
 --Received 5 rows.
-
 */
 
 --LEVEL 2
 --Exercise 5
+INSERT INTO customers (first_name, last_name, email, city, joined_date) 
+VALUES ("Leo", "Falk", "leofalk@uppsalastad.se", "Uppsala", "2026-10-09");
 
---Numbers: 1 och 9
+--Using the email, because it is unique and a piece of imformation that we already have.
 
-/*
-INSERT INTO customers (first_name, last_name, email, city, joined_date) VALUES ("Leo", "Falk", "leofalk@uppsalastad.se", "Uppsala", "2026-10-09");
+INSERT INTO orders (customer_id, order_date)
+VALUES (
+	(SELECT customer_id 
+	FROM customers 
+	WHERE email = 'leofalk@uppsalastad.se'), 
+	'2026-10-09'
+);
 
---HERE 
-INSERT INTO orders (customer_id, order_date, status) VALUES ( ),
-*/
-
-INSERT INTO order_items(order_id, );
-
-SELECT * 
-
---Exercise 6
-
-
---Exercise 7
+INSERT INTO order_items
+	(order_id, product_id, quantity, unit_price) 
+VALUES 
+(
+	(SELECT o.order_id FROM orders o JOIN customers c ON o.customer_id = c.customer_id WHERE c.email = 'leofalk@uppsalastad.se' ORDER BY o.order_id),
+	(SELECT product_id FROM products WHERE name = 'Hoodie Black'),
+	1, 
+	(SELECT price FROM products WHERE name = 'Hoodie Black')
+);
 
 
---Exercise 8
+INSERT INTO order_items
+	(order_id, product_id, quantity, unit_price) 
+VALUES 
+(
+	(SELECT o.order_id FROM orders o JOIN customers c ON o.customer_id = c.customer_id WHERE c.email = 'leofalk@uppsalastad.se' ORDER BY o.order_id),
+	(SELECT product_id FROM products WHERE name = 'Socks 3-pack'),
+	2, 
+	(SELECT price * 2 FROM products WHERE name = 'Socks 3-pack')
+);
+
+--SELECT * 
