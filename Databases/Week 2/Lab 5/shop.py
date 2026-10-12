@@ -34,11 +34,13 @@ def add_product(conn):
         (name, category, price, stock))
     conn.commit()
     print("Saved!")
+#Exercise 7 WIP
+
 
 #Exercise 5
 def change_stock(conn):
-    stock = int(input("Stock: "))
     product_id = int(input("Product id: "))
+    stock = int(input("Stock: "))
     conn.execute(
         "UPDATE products SET stock = ? WHERE product_id = ?",
         (stock, product_id)
@@ -48,9 +50,12 @@ def change_stock(conn):
 
 def show_receipt(conn):
     order_id = int(input("Order id: "))
-    conn.execute(
-        "SELECT *"
+    cursor = conn.execute(
+        "SELECT p.name, oi.quantity, oi.unit_price FROM order_items oi JOIN products p ON p.product_id = oi.product_id WHERE oi.order_id = ?", (order_id,)
     )
+    #based on the results
+    for name, quantity, unit_price in cursor.fetchall():
+        print(f'{name}, quantity: {quantity}, unit price: {unit_price}')
 
 def main():
     conn = connect()
@@ -68,7 +73,7 @@ def main():
             change_stock(conn)
         #Exercise 6
         elif choice == "5":
-            show_receipt()
+            show_receipt(conn)
         elif choice == "0":
             break
     conn.close()
