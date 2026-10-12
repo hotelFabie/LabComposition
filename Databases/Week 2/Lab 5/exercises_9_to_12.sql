@@ -25,5 +25,5 @@ SELECT * FROM customer_overview;
 */
 
 --Exercise 12
---If you are to abide data laws here in Europe, you should always have a reason for storing the data, and not let it persist longer than necessary.
---Therefore, it should be added only if users are informed about a reason for it, and acknowledge it. 
+--Within Europe, if you are to follow GDPR, there should never be any reason to collect more data than what is needed, nor have it persist longer than needed.
+--Considering a case where date of birth is inserted, storing it without a clear motive also allows it to be used for malicious or external intents.
