@@ -63,10 +63,16 @@ def show_receipt(conn):
     for name, quantity, unit_price in cursor.fetchall():
         print(f'{name}, quantity: {quantity}, unit price: {unit_price}')
 
+#Exercise 8
+def show_top_3(conn):
+    cursor = conn.execute("SELECT p.name, COUNT(oi.quantity) AS amount FROM order_items oi JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_id ORDER BY amount DESC LIMIT 3;")
+    for (name, amount) in cursor.fetchall():
+        print(f"{name} - {amount} sold.")
+
 def main():
     conn = connect()
     while True:
-        print("\n1) List products  2) Search customers  3) Add product 4) Change product stock 5) Show order receipt 0) Quit")
+        print("\n1) List products  2) Search customers  3) Add product 4) Change product stock 5) Show order receipt 6) Show top 3 best-selling products 0) Quit")
         choice = input("> ")
         if choice == "1":
             list_products(conn)
@@ -80,6 +86,9 @@ def main():
         #Exercise 6
         elif choice == "5":
             show_receipt(conn)
+        #Exercise 8
+        elif choice == "6":
+            show_top_3(conn)
         elif choice == "0":
             break
     conn.close()
