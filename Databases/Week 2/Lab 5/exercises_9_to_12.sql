@@ -13,10 +13,8 @@ UPDATE customers
 SET email = 'erik.johansson@example.com'
 WHERE customer_id = 2;
 --Updated as expected.
-*/
 
 --Exercise 11
-
 CREATE VIEW customer_overview AS 
 SELECT c.customer_id, c.first_name, c.city, COUNT(o.order_id) AS number_of_orders
 FROM customers c 
@@ -24,6 +22,8 @@ LEFT JOIN orders o ON c.customer_id = o.customer_id
 GROUP BY c.customer_id;
 
 SELECT * FROM customer_overview;
-
+*/
 
 --Exercise 12
+--If you are to abide data laws here in Europe, you should always have a reason for storing the data, and not let it persist longer than necessary.
+--Therefore, it should be added only if users are informed about a reason for it, and acknowledge it. 
