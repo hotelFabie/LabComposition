@@ -13,14 +13,17 @@ UPDATE customers
 SET email = 'erik.johansson@example.com'
 WHERE customer_id = 2;
 --Updated as expected.
-
---Exercise 11
-CREATE VIEW customer_overview AS 
-SELECT c.customer_id, c.first_name, c.city, COUNT(*) AS number_of_orders
-FROM customers c 
-JOIN orders o ON c.customer_id = o.customer_id;
 */
 
+--Exercise 11
+
+CREATE VIEW customer_overview AS 
+SELECT c.customer_id, c.first_name, c.city, COUNT(o.order_id) AS number_of_orders
+FROM customers c 
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id;
+
 SELECT * FROM customer_overview;
+
 
 --Exercise 12
