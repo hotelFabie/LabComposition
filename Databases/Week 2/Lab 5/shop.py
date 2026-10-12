@@ -66,8 +66,8 @@ def show_receipt(conn):
 #Exercise 8
 def show_top_3(conn):
     cursor = conn.execute("SELECT p.name, COUNT(oi.quantity) AS amount FROM order_items oi JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_id ORDER BY amount DESC LIMIT 3;")
-    for (name, amount) in cursor.fetchall():
-        print(f"{name} - {amount} sold.")
+    for index, (name, amount) in enumerate(cursor.fetchall(), start = 1):
+        print(f"{index}. {name} - {amount} sold.")
 
 def main():
     conn = connect()
