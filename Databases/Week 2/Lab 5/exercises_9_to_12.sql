@@ -1,6 +1,5 @@
 --Exercise 9 
 
-/*
 --Since it is mentioned that Anna is customer 1, I go off of the id and skip a lookup based on her name.
 SELECT p.name FROM order_items oi 
 JOIN orders o ON o.order_id = oi.order_id
@@ -22,7 +21,6 @@ LEFT JOIN orders o ON c.customer_id = o.customer_id
 GROUP BY c.customer_id;
 
 SELECT * FROM customer_overview;
-*/
 
 --Exercise 12
 --Within Europe, if you are to follow GDPR, there should never be any reason to collect more data than what is needed, nor have it persist longer than needed.
