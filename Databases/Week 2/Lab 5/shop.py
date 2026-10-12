@@ -23,18 +23,24 @@ def search_customers(conn):
     for first, last in rows:
         print(first, last)
 
-
+#Exercise 7
+#abc cannot be converted to float, so it will throw a ValueError.
 def add_product(conn):
     name = input("Name: ")
     category = input("Category: ")
-    price = float(input("Price: "))
+    #Fix for Exercise 7.
+    while True: 
+        try:
+            price = float(input("Price: "))
+            break
+        except ValueError:
+            print("Enter a valid number.")
     stock = int(input("Stock: "))
     conn.execute(
         "INSERT INTO products (name, category, price, stock) VALUES (?, ?, ?, ?)",
         (name, category, price, stock))
     conn.commit()
     print("Saved!")
-#Exercise 7 WIP
 
 
 #Exercise 5
@@ -53,7 +59,7 @@ def show_receipt(conn):
     cursor = conn.execute(
         "SELECT p.name, oi.quantity, oi.unit_price FROM order_items oi JOIN products p ON p.product_id = oi.product_id WHERE oi.order_id = ?", (order_id,)
     )
-    #based on the results
+
     for name, quantity, unit_price in cursor.fetchall():
         print(f'{name}, quantity: {quantity}, unit price: {unit_price}')
 
