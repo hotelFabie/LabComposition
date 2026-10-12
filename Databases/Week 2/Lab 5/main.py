@@ -27,6 +27,6 @@ cursor = conn.cursor()
 
 #Exercise 5
 
-
 #Exercise 6
 
+conn.close()
