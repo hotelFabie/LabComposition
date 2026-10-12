@@ -35,11 +35,27 @@ def add_product(conn):
     conn.commit()
     print("Saved!")
 
+#Exercise 5
+def change_stock(conn):
+    stock = int(input("Stock: "))
+    product_id = int(input("Product id: "))
+    conn.execute(
+        "UPDATE products SET stock = ? WHERE product_id = ?",
+        (stock, product_id)
+    )
+    conn.commit()
+    print("Stock updated!")
+
+def show_receipt(conn):
+    order_id = int(input("Order id: "))
+    conn.execute(
+        "SELECT *"
+    )
 
 def main():
     conn = connect()
     while True:
-        print("\n1) List products  2) Search customers  3) Add product  0) Quit")
+        print("\n1) List products  2) Search customers  3) Add product 4) Change product stock 5) Show order receipt 0) Quit")
         choice = input("> ")
         if choice == "1":
             list_products(conn)
@@ -47,6 +63,12 @@ def main():
             search_customers(conn)
         elif choice == "3":
             add_product(conn)
+        #Exercise 5
+        elif choice == "4":
+            change_stock(conn)
+        #Exercise 6
+        elif choice == "5":
+            show_receipt()
         elif choice == "0":
             break
     conn.close()

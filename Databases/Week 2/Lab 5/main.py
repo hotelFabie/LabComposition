@@ -25,8 +25,7 @@ cursor = conn.cursor()
 #That means that a variable could have a query that allows unintended actions within the database, because you add behavior.
 #Using a placeholder "?" will instead make sure that whatever is passed is treated as data values, and not as something part of how the query is structured.
 
-#Exercise 5
-
-#Exercise 6
+#Exercises 5-8 are done in shop.py
+#Exercises 9-12 are done in exercises_9_to_12.sql
 
 conn.close()
