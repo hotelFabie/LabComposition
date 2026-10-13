@@ -1,5 +1,6 @@
-#--print(client.list_database_names())
+from pprint import pprint
 
+from datetime import datetime
 from pymongo import MongoClient
 
 client = MongoClient("mongodb://localhost:27017")
@@ -41,6 +42,12 @@ for customer in res_six:
 #Retrieved 3 results: Anna, Sara, Oskar.
 
 #Exercise 7
+res_seven = db.customers.insert_one({"first_name" : "Fabian", "last_name" : "V.", "email" : "fabianv@fabianworld.tv", "city" : "TV City", "joined" : datetime(2026, 10, 13), "phone" : "012-1212121"})
+
+print(f"Inserted id: {res_seven.inserted_id}")
+
+me = db.customers.find_one({'email': 'fabianv@fabianworld.tv'})
+pprint(me)
 
 #Exercise 8
 # products_eight = [
@@ -50,10 +57,11 @@ for customer in res_six:
 
 # db.products.insert_many(products_eight)
 
-res_eight = db.products.count_documents({})
-print(f"Amount of products after insertion: {res_eight}")
-#Result shows 14, which was expected.
+# res_eight = db.products.count_documents({})
+# print(f"Amount of products after insertion: {res_eight}")
+# #Result shows 14, which was expected.
 
 #Exercise 9
+#using dict.get()
 
 #Exercise 10
