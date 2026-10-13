@@ -34,20 +34,20 @@ db = client["webshop"]
 # print(f"Stock: {res_five.get('stock')}")
 # #Result shows 22, which was expected.
 
-#Exercise 6
-res_six = db.customers.find({"newsletter" : True})
+# #Exercise 6
+# res_six = db.customers.find({"newsletter" : True})
 
-for customer in res_six:
-    print(customer.get('first_name'))
-#Retrieved 3 results: Anna, Sara, Oskar.
+# for customer in res_six:
+#     print(customer.get('first_name'))
+# #Retrieved 3 results: Anna, Sara, Oskar.
 
-#Exercise 7
-res_seven = db.customers.insert_one({"first_name" : "Fabian", "last_name" : "V.", "email" : "fabianv@fabianworld.tv", "city" : "TV City", "joined" : datetime(2026, 10, 13), "phone" : "012-1212121"})
+# #Exercise 7
+# res_seven = db.customers.insert_one({"first_name" : "Fabian", "last_name" : "V.", "email" : "fabianv@fabianworld.tv", "city" : "TV City", "joined" : datetime(2026, 10, 13), "phone" : "012-1212121"})
 
-print(f"Inserted id: {res_seven.inserted_id}")
+# print(f"Inserted id: {res_seven.inserted_id}")
 
-me = db.customers.find_one({'email': 'fabianv@fabianworld.tv'})
-pprint(me)
+# me = db.customers.find_one({'email': 'fabianv@fabianworld.tv'})
+# pprint(me)
 
 #Exercise 8
 # products_eight = [
@@ -62,6 +62,9 @@ pprint(me)
 # #Result shows 14, which was expected.
 
 #Exercise 9
-#using dict.get()
+res_nine = db.customers.find() 
+for customer in res_nine:
+    print(f"{customer.get('first_name')} {customer.get('last_name')} ({customer.get('city', 'unknown')})")
+#Excluding inserted value(s) from exercise 7, there are 10 lines of original values.
 
 #Exercise 10
