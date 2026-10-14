@@ -60,14 +60,21 @@ db = client["webshop"]
 
 #Exercise 9
 #First of all, finding it.
-res_nine_before = db.products.find_one({"name" : "Rain Jacket"})
-print(res_nine_before)
+# res_nine_before = db.products.find_one({"name" : "Rain Jacket"})
+# print(res_nine_before)
 
-db.products.update_one({"name" : "Rain Jacket"}, {"$addToSet" : {"tags" : "new"}, "$set" : {"restock_date" : datetime.datetime.now()}})
-#This works BUT... we need to make sure that the tag does not get added again.
+# db.products.update_one({"name" : "Rain Jacket"}, {"$addToSet" : {"tags" : "new"}, "$set" : {"restock_date" : datetime.datetime.now()}})
 
-res_nine_after = db.products.find_one({"name" : "Rain Jacket"})
-print(res_nine_after)
+# res_nine_after = db.products.find_one({"name" : "Rain Jacket"})
+# print(res_nine_after)
+# #Added the new tag without duplicates - which didn't work before as another "new" was added every time this code ran.
+# #Date is represented as ISODate within MongoDB, which corresponds to the time format in the other collections.
 
 #Exercise 10
+#First do the check/count.
+print(db.orders.count_documents({'order_date' : {"$lt" : datetime.datetime(2026, 3, 20)}}))
 
+db.orders.delete_many({'order_date' : {"$lt" : datetime.datetime(2026, 3, 20)}})
+
+print(db.orders.count_documents({'order_date' : {"$lt" : datetime.datetime(2026, 3, 20)}}))
+#Now the count shows 0.
