@@ -47,16 +47,15 @@ for order in res_seven:
 
 #Exercise 8
 #Doing a check before the update to see what we will alter, instead of blindly committing an irreversible action.
-res_eight = db.products.find({'category' : 'Accessories'})
-for product in res_eight:
+res_eight_before = db.products.find({'category' : 'Accessories'})
+for product in res_eight_before:
      print(f"{product.get('name')} - {product.get('price')}")
 
 db.products.update_many({"category" : "Accessories"}, {"$inc" : {"price" : +20}})
-for product in res_eight:
+res_eight_after = db.products.find({'category' : 'Accessories'})
+for product in res_eight_after:
     print(f"{product.get('name')} - {product.get('price')}")
 #The same 4 rows retrieved BUT with an increment of 20 on their price.
-
-#The thing above is not working fully correctly.
 
 #Exercise 9
 #First of all, finding it.
