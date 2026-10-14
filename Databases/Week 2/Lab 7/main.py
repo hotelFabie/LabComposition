@@ -39,10 +39,21 @@ db = client["webshop"]
 # #5 rows retrieved.
 
 #Exercise 7
-
+# res_seven = db.orders.find({"items.product_id" : 2})
+# for order in res_seven: 
+#     print(f"Order {order.get('_id')}")
+# #4 rows retrieved.
 
 #Exercise 8
+#Doing a check before the update to see what we will alter, instead of blindly committing an unreversible action.
+# res_eight = db.products.find({'category' : 'Accessories'})
+# for product in res_eight:
+#      print(f"{product.get('name')} - {product.get('price')}")
 
+# db.products.update_many({"category" : "Accessories"}, {"$inc" : {"price" : +20}})
+# for product in res_eight:
+#     print(f"{product.get('name')} - {product.get('price')}")
+# #The same 4 rows retrieved BUT with an increment of 20 on their price.
 
 #Exercise 9
 
