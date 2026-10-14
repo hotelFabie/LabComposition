@@ -1,3 +1,4 @@
+import datetime
 from pymongo import MongoClient
 client = MongoClient("mongodb://localhost:27017/")
 db = client["webshop"]
@@ -55,8 +56,18 @@ db = client["webshop"]
 #     print(f"{product.get('name')} - {product.get('price')}")
 # #The same 4 rows retrieved BUT with an increment of 20 on their price.
 
-#Exercise 9
+#WIP: Gotta check if the thing above works as intended.
 
+#Exercise 9
+#First of all, finding it.
+res_nine_before = db.products.find_one({"name" : "Rain Jacket"})
+print(res_nine_before)
+
+db.products.update_one({"name" : "Rain Jacket"}, {"$addToSet" : {"tags" : "new"}, "$set" : {"restock_date" : datetime.datetime.now()}})
+#This works BUT... we need to make sure that the tag does not get added again.
+
+res_nine_after = db.products.find_one({"name" : "Rain Jacket"})
+print(res_nine_after)
 
 #Exercise 10
 
