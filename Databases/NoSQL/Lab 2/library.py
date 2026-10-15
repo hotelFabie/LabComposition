@@ -53,10 +53,16 @@ def borrow_book():
             break
         else:
             print("Number must be above 0")
-        
 
+    #WIP: Check if they even exist right down below here.
     current_member = db.members.find_one({'_id' : member_id})
+    if current_member is None:
+        print("Member with the provided id doesn't exist.")
     current_book = db.books.find_one({'_id' : book_id})
+    if current_book is None:
+        print("Book with the provided id doesn't exist.")
+        return
+        
 
     loan_count = db.members.count_documents({'loaned_books' : {'_id' : member_id}})
 
