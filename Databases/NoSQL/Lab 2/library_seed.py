@@ -9,10 +9,10 @@ db = client["library"]
 #Base books
 books = [
     {"_id": 1, "title": "Convenience Store Woman", "author": "Sayaka Murata", "genres": ["fiction", "slice-of-life"], "stock" : 3, "reviews": []},
-    {"_id": 2, "title": "x", "author": "y", "genres": ["z", "a"], "stock" : 1, "reviews": []},
-    {"_id": 3, "title": "x", "author": "y", "genres": ["z", "a"], "stock" : 1, "reviews": []},
-    {"_id": 4, "title": "x", "author": "y", "genres": ["z", "a"], "stock" : 2, "reviews": []},
-    {"_id": 5, "title": "x", "author": "y", "genres": ["z", "a"], "stock" : 1, "reviews": []}
+    {"_id": 2, "title": "Kitchen", "author": "Banana Yoshimoto", "genres": ["fiction", "short story"], "stock" : 1, "reviews": []},
+    {"_id": 3, "title": "Breasts and Eggs", "author": "Mieko Kawakami", "genres": ["fiction", "feminism"], "stock" : 1, "reviews": []},
+    {"_id": 4, "title": "Butter", "author": "Asako Yuzuki", "genres": ["fiction", "mystery", "thrill"], "stock" : 2, "reviews": []},
+    {"_id": 5, "title": "Strange Pictures", "author": "Uketsu", "genres": ["horror", "mystery", "thriller", "fiction"], "stock" : 1, "reviews": []}
 ]
 
 #Base members
