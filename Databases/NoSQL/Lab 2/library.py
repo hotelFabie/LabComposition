@@ -18,14 +18,12 @@
 #   Loaned books : list with many dictionaries, with each dictionary comprising: {book_id, loan_date (datetime), return_date (datetime)}. 
 #       A check consisting of two conditions. 1. Length must be 3 or more. 2. No borrow_date must give a difference of 14 days or more to today. | Inform the user.
 
+#Comments that will not be relevant later on:
 #We do not explicitly need to have these made beforehand, the functions will be able to take care of it.
 
 #Not implementing it from the perspective of having the member login and do options, because it is not smart to store passwords in plain-text.
 #In that case, an encryption algorithm would be beneficial, and then the program will become bigger.
 #So, for the scope of the project, you steer the members on your own, with them only serving as a representation of what they are to be. 
-
-#-----
-#We will
 
 #-----
 from datetime import datetime as dt, timedelta
@@ -34,9 +32,8 @@ from pymongo import MongoClient
 client = MongoClient("mongodb://localhost:27017")
 db = client["library"] 
 
-#NOT DONE. We must try adding a member first, that borrows.
 def borrow_book():
-    #Check on both of these...
+    #WIP: Check on both of these...
     member_id = int(input("Which member wants to borrow? (enter id): "))
     book_id = int(input("Which book do you want to borrow? (enter id): "))
 
@@ -57,18 +54,30 @@ def borrow_book():
     
     #Delayed return of loaned book
     loaned_books = current_member.get('loaned_books')
-    for book in loaned_books:
-        if book['return_date'] - dt.now < 0:    
-            print(f"Cannot borrow another book before your books currently borrowed past the expected return date has been given back.")
-            return
+    if len(loaned_books) > 0:
+        for book in loaned_books:
+            if book['return_date'] - dt.now() < timedelta(0):    
+                print(f"Cannot borrow another book before your books currently borrowed past the expected return date has been given back.")
+                return
         
-    
-    db.members.insert_one({'loaned_books' : {'book_id': book_id, 'loan_date': dt.now(), 'return_date': dt.now() + timedelta(days=14)}})
-    db.books.update_one({'_id' : book_id}, {"$inc" : {'stock' : -1}})
-    
-    current_member = db.members.find_one({'_id' : book_id})
+    #This does not target anything.
+    #We need to do a $set here.    
+    db.members.update_one(
+        {'_id': member_id}, 
+        {'$push': 
+            {
+            'loaned_books': 
+                {
+                    'book_id': book_id, 
+                    'loan_date': dt.now(), 
+                    'return_date': dt.now() + timedelta(days=14)
+                }
+            }
+        }
+    )
 
-        
+    db.books.update_one({'_id' : book_id}, {"$inc" : {'stock' : -1}})   
+
 
 def return_book():
     member_id = int(input("Which member wants to return? (enter id): "))
