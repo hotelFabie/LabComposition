@@ -33,9 +33,27 @@ client = MongoClient("mongodb://localhost:27017")
 db = client["library"] 
 
 def borrow_book():
-    #WIP: Check on both of these...
-    member_id = int(input("Which member wants to borrow? (enter id): "))
-    book_id = int(input("Which book do you want to borrow? (enter id): "))
+    #Somewhat redundant checks?
+    while True:
+        try:
+            member_id = int(input("Which member wants to borrow? (enter id): "))
+        except TypeError:
+            print("Not a number")
+        if book_id >= 0:
+            break
+        else:
+            print("Number must be above 0")
+
+    while True:
+        try: 
+            book_id = int(input("Which book do you want to borrow? (enter id): "))
+        except TypeError:
+            print("Not a number.")
+        if book_id >= 0:
+            break
+        else:
+            print("Number must be above 0")
+        
 
     current_member = db.members.find_one({'_id' : member_id})
     current_book = db.books.find_one({'_id' : book_id})
@@ -78,15 +96,26 @@ def borrow_book():
 
     db.books.update_one({'_id' : book_id}, {"$inc" : {'stock' : -1}})   
 
-
 def return_book():
     member_id = int(input("Which member wants to return? (enter id): "))
 
+    #Get...
+    #if ... is None:
+
+    #Case where it does not exist
+    #Case where the value is too low.
+
 def search_book():
-    pass
+    print("1. A specific book id 2. All books")
+    search_type = int(input(">"))
+    #Check that a correct choice is given:
+    
+    #Case 1: Iterate on a specific thing.
+    #Case 2: Iterate through everything.
 
 def show_member_status():
     member_id = int(input("Which member? (enter id): "))
+    #Needs to produce a readable format.
 
 def register_new_member():
     #Checks will be applied so that unexpected values aren't passed.
