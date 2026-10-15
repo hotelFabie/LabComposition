@@ -60,6 +60,7 @@ def register_new_member():
     
     #The _id should not have to be written.
     #The 'loaned_books' should work like tags has done before.
+    #The loaned books MAY be a dictionary instead.
     db.members.insert_one({"first_name" : first_name, "last_name" : last_name, "email" : email, "loaned_books" : []})
 
 def menu():
