@@ -1,3 +1,6 @@
+#This file was originally called shop.py, but I renamed it to match the name of 
+#all my files containing answers to the exercises.
+
 import sqlite3
 
 
