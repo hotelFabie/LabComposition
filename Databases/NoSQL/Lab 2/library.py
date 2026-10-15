@@ -54,7 +54,6 @@ def borrow_book():
         else:
             print("Number must be above 0")
 
-    #WIP: Check if they even exist right down below here.
     current_member = db.members.find_one({'_id' : member_id})
     if current_member is None:
         print("Member with the provided id doesn't exist.")
@@ -113,8 +112,23 @@ def return_book():
 
 def search_book():
     print("1. A specific book id 2. All books")
-    search_type = int(input(">"))
-    #Check that a correct choice is given:
+    
+    while True:
+        search_type = int(input(">"))
+        if search_type not in {1, 2}:
+            print("User input does not exist.")
+        else:
+            break
+
+    #Probably break these down into smaller, internal functions.
+    
+    #Case 1
+    if search_type == 1:
+        
+    #Case 2
+    if search_type == 2:
+        #This demands no check, so this one is easier to implement.
+    
     
     #Case 1: Iterate on a specific thing.
     #Case 2: Iterate through everything.
