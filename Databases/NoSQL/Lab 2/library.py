@@ -15,7 +15,7 @@
 #   First name: string/text
 #   Last name: string/text
 #   Mail: string/text (UNIQUE),
-#   Loaned books : dictionary comprised of {book_id, borrow_date (datetime)}. 
+#   Loaned books : list with many dictionaries, with each dictionary comprising: {book_id, loan_date (datetime), return_date (datetime)}. 
 #       A check consisting of two conditions. 1. Length must be 3 or more. 2. No borrow_date must give a difference of 14 days or more to today. | Inform the user.
 
 #We do not explicitly need to have these made beforehand, the functions will be able to take care of it.
@@ -28,6 +28,7 @@
 #We will
 
 #-----
+from datetime import datetime as dt, timedelta
 from pymongo import MongoClient
 
 client = MongoClient("mongodb://localhost:27017")
@@ -35,13 +36,30 @@ db = client["library"]
 
 #NOT DONE. We must try adding a member first, that borrows.
 def borrow_book():
+    #Check on both of these...
     member_id = int(input("Which member wants to borrow? (enter id): "))
-    #Borrow check.
-    #Possibly that we could use a try except here.
+    book_id = int(input("Which book do you want to borrow? (enter id): "))
+
     loan_count = db.members.count_documents({'loaned_books' : {'_id' : member_id}})
-    if (loan_count >= 3):
+    
+    
+    current_book = db.books.find_one({'_id' : book_id})
+    if current_book.get('stock') <= 0:
+        print(f"Book with id {book_id} is out of stock.")
+    elif loan_count >= 3:
+        print(f"User with id {member_id} is currently already borrowing 3 books.")
+    #Also, a comparison to the return_date of all books.
+    else if ():
+
+    else:
+        db.members.insert_one({'loaned_books' : {'book_id': book_id, 'loan_date': dt.now(), 'return_date': dt.now() + timedelta(days=14)}})
+        #$set
+        current_book.
         
-        #Deny input.
+        #Stock decrease.
+        current_member = db.members.find_one('_id' : book_id)
+
+        
 
 def return_book():
     member_id = int(input("Which member wants to return? (enter id): "))
