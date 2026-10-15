@@ -40,24 +40,33 @@ def borrow_book():
     member_id = int(input("Which member wants to borrow? (enter id): "))
     book_id = int(input("Which book do you want to borrow? (enter id): "))
 
-    loan_count = db.members.count_documents({'loaned_books' : {'_id' : member_id}})
-    
-    
+    current_member = db.members.find_one({'_id' : member_id})
     current_book = db.books.find_one({'_id' : book_id})
+
+    loan_count = db.members.count_documents({'loaned_books' : {'_id' : member_id}})
+
+    #Out of stock
     if current_book.get('stock') <= 0:
         print(f"Book with id {book_id} is out of stock.")
+        return
+
+    #Already loan limit
     elif loan_count >= 3:
         print(f"User with id {member_id} is currently already borrowing 3 books.")
-    #Also, a comparison to the return_date of all books.
-    else if ():
-
-    else:
-        db.members.insert_one({'loaned_books' : {'book_id': book_id, 'loan_date': dt.now(), 'return_date': dt.now() + timedelta(days=14)}})
-        #$set
-        current_book.
+        return
+    
+    #Delayed return of loaned book
+    loaned_books = current_member.get('loaned_books')
+    for book in loaned_books:
+        if book['return_date'] - dt.now < 0:    
+            print(f"Cannot borrow another book before your books currently borrowed past the expected return date has been given back.")
+            return
         
-        #Stock decrease.
-        current_member = db.members.find_one('_id' : book_id)
+    
+    db.members.insert_one({'loaned_books' : {'book_id': book_id, 'loan_date': dt.now(), 'return_date': dt.now() + timedelta(days=14)}})
+    db.books.update_one({'_id' : book_id}, {"$inc" : {'stock' : -1}})
+    
+    current_member = db.members.find_one({'_id' : book_id})
 
         
 
