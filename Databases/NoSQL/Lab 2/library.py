@@ -122,20 +122,27 @@ def search_book():
 
     #Probably break these down into smaller, internal functions.
     
-    #Case 1
+    #Iterate on a specific thing
     if search_type == 1:
+        #Does not have any checks just yet.
+        book_id = int(input("Book id: "))
+        specific_book = db.books.find_one({'_id' : book_id})
         
+        pass
+
+    #Iterate through everything
     #Case 2
     if search_type == 2:
-        #This demands no check, so this one is easier to implement.
-    
-    
-    #Case 1: Iterate on a specific thing.
-    #Case 2: Iterate through everything.
+        #This does not account for the fact if nothing is found yet.
+        all_books = db.books.find()
+        for book in all_books:
+            #This works, but it is not in a presentable format.
+            print(book)
 
 def show_member_status():
     member_id = int(input("Which member? (enter id): "))
-    #Needs to produce a readable format.
+    #db.members.find_one('_id': member_id)
+    #if found, produce a readable format.
 
 def register_new_member():
     #Checks will be applied so that unexpected values aren't passed.
