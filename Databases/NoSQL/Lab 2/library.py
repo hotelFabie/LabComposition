@@ -15,7 +15,7 @@
 #   First name: string/text
 #   Last name: string/text
 #   Mail: string/text (UNIQUE),
-#   Borrows : dictionary comprised of {book_id, borrow_date (datetime)}. 
+#   Loaned books : dictionary comprised of {book_id, borrow_date (datetime)}. 
 #       A check consisting of two conditions. 1. Length must be 3 or more. 2. No borrow_date must give a difference of 14 days or more to today. | Inform the user.
 
 #We do not explicitly need to have these made beforehand, the functions will be able to take care of it.
@@ -33,32 +33,43 @@ from pymongo import MongoClient
 client = MongoClient("mongodb://localhost:27017")
 db = client["library"] 
 
+#NOT DONE. We must try adding a member first, that borrows.
 def borrow_book():
-    member_id = int(input("Which member wants to borrow? (enter id)"))
+    member_id = int(input("Which member wants to borrow? (enter id): "))
     #Borrow check.
-    #amount needed.
-    db.members.count_documents({'_id' : member_id})').where('_id' == member_id) #within the borrows, if it even finds something to begin with.
-
+    #Possibly that we could use a try except here.
+    loan_count = db.members.count_documents({'loaned_books' : {'_id' : member_id}})
+    if (loan_count >= 3):
+        
+        #Deny input.
 
 def return_book():
-    member_id = int(input("Which member wants to return? (enter id)"))
-    #Must probably check within what it has borrowed.
+    member_id = int(input("Which member wants to return? (enter id): "))
 
 def search_book():
     pass
 
 def show_member_status():
-    member_id = int(input("Which member? (enter id)"))
+    member_id = int(input("Which member? (enter id): "))
 
+def register_new_member():
+    #Checks will be applied so that unexpected values aren't passed.
+    first_name = input("First name: ").strip().capitalize()
+    last_name = input("Last name: ").strip().capitalize()
+    email = input("Email: ").strip()
+    
+    #The _id should not have to be written.
+    #The 'loaned_books' should work like tags has done before.
+    db.members.insert_one({"first_name" : first_name, "last_name" : last_name, "email" : email, "loaned_books" : []})
 
 def menu():
-    print("1. Borrow book. 2. Return book. 3. Search for books 4. Show member status, 0. Quit")
+    print("1. Borrow book. 2. Return book. 3. Search for books 4. Show member status, 5. Register new member 0. Quit")
 
 def start():
     while True:
         menu()
         
-        option = input()
+        option = int(input(">"))
         match option:
             case 1:
                 borrow_book()
@@ -68,6 +79,13 @@ def start():
                 search_book()
             case 4:
                 show_member_status()
+            case 5:
+                register_new_member()
             case 0: 
                 print("Quitting...")
-                exit()
+                break
+            case _:
+                print("Not a valid input.")
+
+#-----
+start()
