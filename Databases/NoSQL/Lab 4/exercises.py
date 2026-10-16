@@ -36,25 +36,37 @@ db = client["webshop"]
 # db.newsletter_signups.insert_one({"source" : "forest"})
 
 #Exercise 4
-res_four = db.customers.aggregate([
+# res_four = db.customers.aggregate([
+#     {
+#         "$group" : {
+#             "_id": "$city", 
+#             "customers" : {"$sum" : 1}
+#         }
+#     },
+#     {
+#         "$sort" : {"city" : -1}
+#     }
+# ])
+
+# for city in res_four:
+#     print(city)
+
+#Exercise 5
+res_five = db.products.aggregate([
     {
-        "$group" : {
-            "_id": "$city", 
-            "customers" : {"$sum" : 1}
+        "$group": {
+            "_id" : "$category",
+            "maximum" : {"$max": "$price"},
+            "minimum" : {"$min": "$price"}
         }
-    },
-    {
-        "$sort" : {"city" : -1}
     }
 ])
 
-for city in res_four:
-    print(city)
-
-#Exercise 5
-
+for product in res_five:
+     print(product)
 
 #Exercise 6
+
 
 
 #Exercise 7
