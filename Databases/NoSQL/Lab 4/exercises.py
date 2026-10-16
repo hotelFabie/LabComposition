@@ -160,3 +160,18 @@ res_nine = [
 for order in db.orders.aggregate(res_nine):
     print(order)
 #4 rows retrieved.
+
+#Exercise 10
+#Do a count for each tag, and then we use sort(-1/1) (Can't remember which one right now)
+#Apply $sum for each tag
+#_id in the grouping will most likely be the tag name, then?
+res_ten = [{
+    {"$group" : 
+        {
+            
+        }
+    }
+}]
+
+for product in db.products.aggregate(res_ten):
+    print(product)
