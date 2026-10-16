@@ -36,26 +36,71 @@ db = client["webshop"]
 # db.newsletter_signups.insert_one({"source" : "forest"})
 
 #Exercise 4
-res_four = db.customers.aggregate([
+# res_four = db.customers.aggregate([
+#     {
+#         "$group" : {
+#             "_id": "$city", 
+#             "customers" : {"$sum" : 1}
+#         }
+#     },
+#     {
+#         "$sort" : {"city" : -1}
+#     }
+# ])
+
+# for city in res_four:
+#     print(city)
+# #6 rows retrieved, with giving None as a city.
+
+# #Exercise 5
+# res_five = db.products.aggregate([
+#     {
+#         "$group": {
+#             "_id" : "$category",
+#             "maximum" : {"$max": "$price"},
+#             "minimum" : {"$min": "$price"}
+#         }
+#     }
+# ])
+# #3 rows retrieved.
+
+# for product in res_five:
+#      print(product)
+
+#Exercise 6
+res_six = db.orders.aggregate([
+    {"$match" : {"orders" : {"$gte" : 2}}},
+    {"$group" : {
+        "_id" : "$customer_id",
+        "orders" : {"$sum" : 1}}},
+])
+
+for order in res_six:
+    print(order)
+#5 rows retrieved.
+
+#Exercise 7
+res_seven = db.orders.aggregate([
     {
-        "$group" : {
-            "_id": "$city", 
-            "customers" : {"$sum" : 1}
+        '$project': {
+            "_id" : "$_id",
+            "item_count" : {"$size" : "$items"}
         }
-    },
-    {
-        "$sort" : {"city" : -1}
     }
 ])
 
-for city in res_four:
-    print(city)
+for order in res_seven:
+    print(order)
+#15 rows retrieved.
 
-#Exercise 5
-
-
-#Exercise 6
-
-
-#Exercise 7
-
+#Exercise 8
+res_eight = db.orders.aggregate([
+    {"$lookup" : {
+        "from" : "products",
+        "localField": "items.product_id",
+        "foreignField": "_id",
+        "as": "product"
+    }},
+    {"$unwind" : "$product"},
+    #We need to do some sort of join here...
+])
