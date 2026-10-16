@@ -18,10 +18,38 @@ db = client["webshop"]
 #Disadvantage: If the product's name is altered, restructuring the order to adhere to the current name will be more tedious.
 
 #Exercise 3
-#db.
+# db.create_collection("newsletter_signups", validator={"$jsonSchema": { 
+#     "required" : ["email"],
+#     "properties" : {
+#         "_id" : {"bsonType" : "objectId"},
+#         "email" : {"bsonType" : "string"},
+#         "source" : {
+#             "enum": ["web", "store"]
+#         }
+#     }
+# }})
+
+#Valid insertion
+# db.newsletter_signups.insert_one({"email" : "valid@val.id", "source" : "store"})
+
+#Invalid insertion
+# db.newsletter_signups.insert_one({"source" : "forest"})
 
 #Exercise 4
+res_four = db.customers.aggregate([
+    {
+        "$group" : {
+            "_id": "$city", 
+            "customers" : {"$sum" : 1}
+        }
+    },
+    {
+        "$sort" : {"city" : -1}
+    }
+])
 
+for city in res_four:
+    print(city)
 
 #Exercise 5
 
