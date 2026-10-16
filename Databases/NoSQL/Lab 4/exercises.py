@@ -93,11 +93,50 @@ db = client["webshop"]
 #     print(order)
 # #15 rows retrieved.
 
-#Switched to writing the pipeline separately.
-#Exercise 8
-res_eight = [
-    {"$unwind" : "$items"},
+# #Switched to writing the pipeline separately.
+# #Exercise 8
+# res_eight = [
+#     {"$match" : {"status": {"$ne" : "cancelled"}}},
     
+#     {"$unwind" : "$items"},
+
+#     {
+#         "$lookup" : {
+#             "from" : "products",
+#             "localField": "items.product_id",
+#             "foreignField": "_id",
+#             "as": "product"
+#         }
+#     },
+    
+#     {"$unwind" : "$product"},
+    
+#     {
+#         "$group" : {
+#             "_id": "$product.category",
+#             "units" : {"$sum" : "$items.quantity"}
+#         }
+#     }
+# ]
+
+# for order in db.orders.aggregate(res_eight):
+#     print(order)
+# #Retrieved 3 rows. Decrease in 1 unit with the match for no cancellations.
+
+# {
+#     "$lookup" : {
+#         "from" : "products",
+#         "localField": "items.product_id",
+#         "foreignField": "_id",
+#         "as": "product"
+#     }
+# },
+
+#            "total" : {"$sum" : {"$multiply" : ["$items.quantity", "$items.unit_price"]}} 
+
+#Exercise 9
+res_nine = [
+    {"$unwind" : "$items"},    
     {
         "$lookup" : {
             "from" : "products",
@@ -106,16 +145,18 @@ res_eight = [
             "as": "product"
         }
     },
-    
-    {"$unwind" : "$product"},
-    
+    {
+        "$unwind" : "$product"
+    },
     {
         "$group" : {
-            "_id": "$product.category",
-            "units" : {"$sum" : "$items.quantity"}
-        }
+            "_id": "$status",
+            #This just might not be correct.
+            "total" : {"$sum" : {"$multiply" : ["$items.quantity", "$items.unit_price"]}} 
+        } 
     }
 ]
 
-for order in db.orders.aggregate(res_eight):
+for order in db.orders.aggregate(res_nine):
     print(order)
+#4 rows retrieved.
