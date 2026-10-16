@@ -67,40 +67,55 @@ db = client["webshop"]
 # for product in res_five:
 #      print(product)
 
-#Exercise 6
-res_six = db.orders.aggregate([
-    {"$match" : {"orders" : {"$gte" : 2}}},
-    {"$group" : {
-        "_id" : "$customer_id",
-        "orders" : {"$sum" : 1}}},
-])
+# #Exercise 6
+# res_six = db.orders.aggregate([
+#     {"$match" : {"orders" : {"$gte" : 2}}},
+#     {"$group" : {
+#         "_id" : "$customer_id",
+#         "orders" : {"$sum" : 1}}},
+# ])
 
-for order in res_six:
-    print(order)
-#5 rows retrieved.
+# for order in res_six:
+#     print(order)
+# #5 rows retrieved.
 
-#Exercise 7
-res_seven = db.orders.aggregate([
+# #Exercise 7
+# res_seven = db.orders.aggregate([
+#     {
+#         '$project': {
+#             "_id" : "$_id",
+#             "item_count" : {"$size" : "$items"}
+#         }
+#     }
+# ])
+
+# for order in res_seven:
+#     print(order)
+# #15 rows retrieved.
+
+#Switched to writing the pipeline separately.
+#Exercise 8
+res_eight = [
+    {"$unwind" : "$items"},
+    
     {
-        '$project': {
-            "_id" : "$_id",
-            "item_count" : {"$size" : "$items"}
+        "$lookup" : {
+            "from" : "products",
+            "localField": "items.product_id",
+            "foreignField": "_id",
+            "as": "product"
+        }
+    },
+    
+    {"$unwind" : "$product"},
+    
+    {
+        "$group" : {
+            "_id": "$product.category",
+            "units" : {"$sum" : "$items.quantity"}
         }
     }
-])
+]
 
-for order in res_seven:
+for order in db.orders.aggregate(res_eight):
     print(order)
-#15 rows retrieved.
-
-#Exercise 8
-res_eight = db.orders.aggregate([
-    {"$lookup" : {
-        "from" : "products",
-        "localField": "items.product_id",
-        "foreignField": "_id",
-        "as": "product"
-    }},
-    {"$unwind" : "$product"},
-    #We need to do some sort of join here...
-])
