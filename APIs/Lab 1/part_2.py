@@ -16,12 +16,17 @@ print(response_2)
 
 #3
 def find_city(name : str) -> dict: 
-    response = ac.get_json("https://geocoding-api.open-meteo.com/v1/search", params={"name" : city, "count" : 1})
+    response = ac.get_json("https://geocoding-api.open-meteo.com/v1/search", params={"name" : name, "count" : 1})
+    #Fix for #4
+    if response.get("results") == None:
+          print("Could not find this city.")
+          return
+    
     return response
 
 def get_weather(latitude : float, longitude : float) -> dict: 
-    response = ac.get_json("https://api.open-meteo.com/v1/forecast", params={"latitude" : latitude, "longitude" : longitude, "current": ["temperature_2m", "wind_speed_10m"]})
-    return response
+        response = ac.get_json("https://api.open-meteo.com/v1/forecast", params={"latitude" : latitude, "longitude" : longitude, "current": ["temperature_2m", "wind_speed_10m"]})
+        return response
 
 #_____
 
@@ -35,3 +40,5 @@ weather = get_weather(found_city['results'][0]['latitude'], found_city['results'
 print(f"{found_city['results'][0]['name']}, {found_city['results'][0]['country']}: {weather["current"]["temperature_2m"]}°C, wind: {weather["current"]["wind_speed_10m"]} km/h.")
 
 #4
+failing_city = find_city("asdfghjkl")
+working_city = find_city("Vienna")
