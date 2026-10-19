@@ -1,5 +1,4 @@
 import api_client as ac
-import requests
 
 #1
 response_1 = ac.get_json("https://geocoding-api.open-meteo.com/v1/search", params={"name" : "Stockholm", "count" : 1})

@@ -1,32 +1,32 @@
 import api_client as ac
 import requests
 
-# #1
-# products_1 = ac.get_json("https://fakestoreapi.com/products/")
+#1
+products_1 = ac.get_json("https://fakestoreapi.com/products/")
 
-# sorted_1 = sorted(products_1, key = lambda product : product['price'])
+sorted_1 = sorted(products_1, key = lambda product : product['price'])
 
-# for product in sorted_1:
-#     print(f"{product['title']} - {product['price']}") 
+for product in sorted_1:
+    print(f"{product['title']} - {product['price']}") 
 
-# #2
-# products_2 = ac.get_json("https://fakestoreapi.com/products/")
+#2
+products_2 = ac.get_json("https://fakestoreapi.com/products/")
 
-# for product in products_2:
-#     print(f"{product['title']} - {product['category']}") 
+for product in products_2:
+    print(f"{product['title']} - {product['category']}") 
 
-# category = input("give a category> ").strip()
-# products_2_specific = ac.get_json(f"https://fakestoreapi.com/products/category/{category}")
-# print(f"items in the {category} category: {len(products_2_specific)}")
+category = input("give a category> ").strip()
+products_2_specific = ac.get_json(f"https://fakestoreapi.com/products/category/{category}")
+print(f"items in the {category} category: {len(products_2_specific)}")
 
 
-# #Probably need to fix here so that it gives the correct error.
-# if products_2_specific:
-#     products_2_specific_sorted = sorted(products_2_specific, key = lambda product: product['price'])
-#     print(f"the cheapest is: {products_2_specific_sorted[0]['title']} - {products_2_specific_sorted[0]['price']}")
+#Probably need to fix here so that it gives the correct error.
+if products_2_specific:
+    products_2_specific_sorted = sorted(products_2_specific, key = lambda product: product['price'])
+    print(f"the cheapest is: {products_2_specific_sorted[0]['title']} - {products_2_specific_sorted[0]['price']}")
 
-# #3
-# #Was already done since the start.
+#3
+#Was already done since the start.
 
 #4
 product_4 = {
