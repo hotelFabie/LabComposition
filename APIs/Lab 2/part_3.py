@@ -20,3 +20,6 @@
 
 #6
 #Done in client.py
+
+#7
+#Only .gitignore is shown, and not .env.
