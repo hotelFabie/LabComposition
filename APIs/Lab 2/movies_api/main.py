@@ -1,7 +1,8 @@
+#This is essentially Part 1. The lab expected this naming.
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-#Part 1
 #1
 app = FastAPI()
 movies = [
@@ -48,6 +49,36 @@ class Movie(BaseModel):
 
 @app.post("/movies", status_code=201)
 def create_movie(movie : Movie):
-    new_movie = {'id' : , "" : movie.title, "" : movie.director, "year" : movie.year}
+    latest_id = max([movie["id"] for movie in movies], default=0) + 1
+    new_movie = {'id' : latest_id, "" : movie.title, "" : movie.director, "year" : movie.year}
     movies.append(new_movie)
     return new_movie
+
+#4
+#There will be two errors. First: missing director field - "type": "missing" - and Second: string cannot be parsed to integer - "type": "int_parsing"
+
+#5
+def find_movie(movie_id : int):
+    for movie in movies:
+        if movie["id"] == movie_id:
+            return movie
+    raise HTTPException(status_code=404, detail="The movie was not found.")
+
+@app.put("/movies/{movie_id}")
+def replace_movie(movie_id : int, movie : Movie):
+    current_movie = find_movie(movie_id)
+    current_movie['title'] = movie.title
+    current_movie['director'] = movie.director
+    current_movie['year'] = movie.year
+    return current_movie
+
+@app.delete("/movies/{movie_id}", status_code=204)
+def remove_book(movie_id : int):
+    movie = find_movie(movie_id)
+    movies.remove(movie)
+
+#Deleting the same movie - by the same id - two times leads to a detail message saying "The movie was not found."
+
+#6
+#Done in client.py
+
