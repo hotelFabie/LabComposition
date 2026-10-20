@@ -8,11 +8,12 @@ from dotenv import load_dotenv
 
 #____________________
 #Part 3 - #2
-load_dotenv("../Resources/API/.env")
+load_dotenv("D:/Programming/Lexicon/Resources/API2/.env")
 API_KEY = os.getenv("API_KEY")
 
 def check_key(x_api_key: str | None = Header(default=None)):
-    if x_api_key != API_KEY:
+    print(API_KEY)
+    if API_KEY is None or x_api_key != API_KEY:
         raise HTTPException(status_code=401)
 #Part 4 - Applying this function to all the CRUD methods/functions we implement (besides GET).
 #____________________
@@ -61,7 +62,8 @@ class Movie(BaseModel):
     director : str
     year : int
 
-@app.post("/movies", dependencies=[Depends(check_key)], status_code=201)
+#, status_code=201
+@app.post("/movies", dependencies=[Depends(check_key)])
 def create_movie(movie : Movie):
     latest_id = max([movie["id"] for movie in movies], default=0) + 1
     new_movie = {'id' : latest_id, "" : movie.title, "" : movie.director, "year" : movie.year}
@@ -78,7 +80,7 @@ def find_movie(movie_id : int):
             return movie
     raise HTTPException(status_code=404, detail="The movie was not found.")
 
-@app.put("/movies/{movie_id}, dependencies=[Depends(check_key)]")
+@app.put("/movies/{movie_id}", dependencies=[Depends(check_key)])
 def replace_movie(movie_id : int, movie : Movie):
     current_movie = find_movie(movie_id)
     current_movie['title'] = movie.title

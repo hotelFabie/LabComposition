@@ -9,7 +9,14 @@
 
 #3
 #If API_KEY is missing in .env, it will be equal to None.
-#The check_key-function always checks the case of the parameter x_api_key's argument not being to whatever API_KEY is.
-#Since a string will never be equal to None, this check will succeed, and it will throw the HTTPException.
+#So, the check will look like None != None, which is False, and therefore this will be bypassed
+#unless we add a check for this. 
 
 #4
+#Done
+
+#5
+#401 without a key. 200 with a key. 401 with an incorrect key.
+
+#6
+#Done in client.py
