@@ -82,3 +82,24 @@ def remove_book(movie_id : int):
 #6
 #Done in client.py
 
+#Part 2 
+#1
+class MovieUpdate(BaseModel):
+    title: str | None = None
+    director: str | None = None
+    year: int | None = None
+
+#Like PUT, but with the exclude_unset setting.
+@app.patch("/movies/{movie_id}")
+def patch_movie(movie_id : int, movie : MovieUpdate):
+    current_movie = find_movie(movie_id)
+    changes = movie.model_dump(exclude_unset=True)
+    current_movie.update(changes)
+
+    return current_movie
+
+#2
+#Only the year was changed.
+
+#3
+#"Test the edges"
