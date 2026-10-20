@@ -1,7 +1,21 @@
 #This is essentially Part 1. The lab expected this naming.
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Header, Depends
 from pydantic import BaseModel
+
+import os
+from dotenv import load_dotenv
+
+#____________________
+#Part 3 - #2
+load_dotenv("../Resources/API/.env")
+API_KEY = os.getenv("API_KEY")
+
+def check_key(x_api_key: str | None = Header(default=None)):
+    if x_api_key != API_KEY:
+        raise HTTPException(status_code=401)
+#Part 4 - Applying this function to all the CRUD methods/functions we implement (besides GET).
+#____________________
 
 #1
 app = FastAPI()
@@ -47,7 +61,7 @@ class Movie(BaseModel):
     director : str
     year : int
 
-@app.post("/movies", status_code=201)
+@app.post("/movies", dependencies=[Depends(check_key)], status_code=201)
 def create_movie(movie : Movie):
     latest_id = max([movie["id"] for movie in movies], default=0) + 1
     new_movie = {'id' : latest_id, "" : movie.title, "" : movie.director, "year" : movie.year}
@@ -64,7 +78,7 @@ def find_movie(movie_id : int):
             return movie
     raise HTTPException(status_code=404, detail="The movie was not found.")
 
-@app.put("/movies/{movie_id}")
+@app.put("/movies/{movie_id}, dependencies=[Depends(check_key)]")
 def replace_movie(movie_id : int, movie : Movie):
     current_movie = find_movie(movie_id)
     current_movie['title'] = movie.title
@@ -72,7 +86,7 @@ def replace_movie(movie_id : int, movie : Movie):
     current_movie['year'] = movie.year
     return current_movie
 
-@app.delete("/movies/{movie_id}", status_code=204)
+@app.delete("/movies/{movie_id}", dependencies=[Depends(check_key)], status_code=204)
 def remove_book(movie_id : int):
     movie = find_movie(movie_id)
     movies.remove(movie)
@@ -90,7 +104,7 @@ class MovieUpdate(BaseModel):
     year: int | None = None
 
 #Like PUT, but with the exclude_unset setting.
-@app.patch("/movies/{movie_id}")
+@app.patch("/movies/{movie_id}", dependencies=[Depends(check_key)])
 def patch_movie(movie_id : int, movie : MovieUpdate):
     current_movie = find_movie(movie_id)
     changes = movie.model_dump(exclude_unset=True)
@@ -108,4 +122,4 @@ def patch_movie(movie_id : int, movie : MovieUpdate):
 
 #4
 #PATCH: As the name suggests, you patch up (in other words, alter/change) something about an existing thing.
-#PUT: Replace everything in it; there is nothing to be patched. Or if you want to, you put a patch on everything. 
+#PUT: Replace everything in it; there is nothing to be patched. You alter the state completely. 
