@@ -16,7 +16,7 @@
 #Done
 
 #5
-#401 without a key. 200 with a key. 401 with an incorrect key.
+#401 without a key. 201 with a key. 401 with an incorrect key.
 
 #6
 #Done in client.py
