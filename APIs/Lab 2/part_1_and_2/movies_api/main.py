@@ -102,4 +102,10 @@ def patch_movie(movie_id : int, movie : MovieUpdate):
 #Only the year was changed.
 
 #3
-#"Test the edges"
+#Empty body: 200 (Nothing is changed)
+#Year written as text: 422 (It cannot take text for something meant as integer)
+#id that does not exist: 404 (The movie was not found)
+
+#4
+#PATCH: As the name suggests, you patch up (in other words, alter/change) something about an existing thing.
+#PUT: Replace everything in it; there is nothing to be patched. Or if you want to, you put a patch on everything. 
