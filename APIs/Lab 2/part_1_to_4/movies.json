@@ -22,5 +22,11 @@
     "title": "Snow White and the Seven Dwarfs",
     "director": "David Hand",
     "year": 1937
+  },
+  {
+    "id": 6,
+    "title": "The Worst Movie Ever",
+    "director": "John Terrible",
+    "year": 2026
   }
 ]

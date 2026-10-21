@@ -59,18 +59,15 @@ def home():
 #3
 @app.get("/movies")
 def get_movies(director : str | None = None, year: int | None = None): 
-    #Cover all bases.
-    if director and year:
-        return [movie for movie in movies 
-                if director.lower() in movies["director"].lower()
-                and year in movies["year"]]
-    elif director:
-        return [movie for movie in movies 
-            if director.lower() in movies["director"].lower()]
-    elif year:
-        return [movie for movie in movies 
-            if year == movie["year"]]
-    return movies
+    filtered_movies = movies
+
+    if director:
+        filtered_movies = [movie for movie in filtered_movies if director.lower() in movie["director"].lower()]
+
+    if year:
+        filtered_movies = [movie for movie in filtered_movies if year == movie["year"]]
+
+    return filtered_movies
 
 #2
 @app.get("/movies/{movie_id}")
