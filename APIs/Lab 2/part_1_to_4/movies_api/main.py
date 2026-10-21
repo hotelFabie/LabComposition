@@ -35,6 +35,7 @@ def check_key(x_api_key: str | None = Header(default=None)):
     print(API_KEY)
     if API_KEY is None or x_api_key != API_KEY:
         raise HTTPException(status_code=401)
+
 #Part 4 - Applying this function to all the CRUD methods/functions we implement (besides GET).
 #____________________
 
@@ -195,10 +196,9 @@ def patch_movie(movie_id : int, movie : MovieUpdate):
 #movies.json indeed stores all the changes I have done through the FastAPI page.
 
 #4
-#Considering it from the scope of this assignment, 
-#every user will only see their own changes... WIP
-#Alternatively, also a bad case, is file corruption.
-
+#The risk of two users adding a movie at the same time, since this program does not have async features in its current state,
+#is most likely that the new movie from only one user will be added, essentially rejecting actions from the other person. 
+#Alternatively, there is always the risk of file corruption.
 
 #The reason real applications preferably use databases is not only for data persistence, 
 #but also because some databases implement concurrency management on their own.
