@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "title": "Princess Mononoke",
+    "director": "Hayao Miyazaki",
+    "year": 1997
+  },
+  {
+    "id": 3,
+    "title": "Ponyo",
+    "director": "Hayao Miyazaki",
+    "year": 2008
+  },
+  {
+    "id": 4,
+    "title": "Nausica\u00e4 of the Valley of the Wind",
+    "director": "Hayao Miyazaki",
+    "year": 1984
+  },
+  {
+    "id": 5,
+    "": "My Father",
+    "year": 2025
+  }
+]

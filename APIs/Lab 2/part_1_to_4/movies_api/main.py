@@ -120,10 +120,10 @@ def replace_movie(movie_id : int, movie : Movie):
 @app.delete("/movies/{movie_id}", dependencies=[Depends(check_key)], status_code=204)
 def remove_book(movie_id : int):
     movie = find_movie(movie_id)
-
-    save_movies()
     
     movies.remove(movie)
+
+    save_movies()
 
 #Deleting the same movie - by the same id - two times leads to a detail message saying "The movie was not found."
 
@@ -185,14 +185,20 @@ def patch_movie(movie_id : int, movie : MovieUpdate):
 #Only .gitignore is shown, and not .env.
 
 #Part 4
-path : str = "./movies.json"
-
 #1
 #load_movies() and save_movies() are written at the top, for visibility to the rest of the program.
 
 #2
 #save_movies() added to all methods except GET.
 
+#3
+#movies.json indeed stores all the changes I have done through the FastAPI page.
+
 #4
-#*first part wip* 
-#Databases are used for both data persistence, and depending on which database (type), concurrency.
+#Considering it from the scope of this assignment, 
+#every user will only see their own changes... WIP
+#Alternatively, also a bad case, is file corruption.
+
+
+#The reason real applications preferably use databases is not only for data persistence, 
+#but also because some databases implement concurrency management on their own.
