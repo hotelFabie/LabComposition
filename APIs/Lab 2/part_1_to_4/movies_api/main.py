@@ -8,6 +8,24 @@ from dotenv import load_dotenv
 
 import json
 
+#Part 4 - #1
+path : str = "./movies.json"
+
+def load_movies():
+    #Read from file, if it exists.
+    if os.path.exists(path):
+        with open(path, "r") as f:
+            existing_movies : dict = json.load(f)
+            return existing_movies
+
+    #Takes starting list, if nothing is found.
+    return start_movies
+
+def save_movies():
+    #mo
+    with open(path, "w") as f:
+        json.dump(movies, f, indent = 2)
+
 #____________________
 #Part 3 - #2
 load_dotenv("D:/Programming/Lexicon/Resources/API2/.env")
@@ -22,12 +40,15 @@ def check_key(x_api_key: str | None = Header(default=None)):
 
 #1
 app = FastAPI()
-movies = [
+
+start_movies = [
     {"id": 1, "title": "Princess Mononoke", "director": "Hayao Miyazaki", "year": 1997},
     {"id": 2, "title": "Howl's Moving Castle", "director": "Hayao Miyazaki", "year": 2004},
     {"id": 3, "title": "Ponyo", "director": "Hayao Miyazaki", "year": 2008},
     {"id": 4, "title": "Nausicaä of the Valley of the Wind", "director": "Hayao Miyazaki", "year": 1984}
 ]
+
+movies = load_movies()
 
 @app.get("/")
 def home():
@@ -70,6 +91,9 @@ def create_movie(movie : Movie):
     latest_id = max([movie["id"] for movie in movies], default=0) + 1
     new_movie = {'id' : latest_id, "" : movie.title, "" : movie.director, "year" : movie.year}
     movies.append(new_movie)
+    
+    save_movies()
+    
     return new_movie
 
 #4
@@ -88,11 +112,17 @@ def replace_movie(movie_id : int, movie : Movie):
     current_movie['title'] = movie.title
     current_movie['director'] = movie.director
     current_movie['year'] = movie.year
+
+    save_movies()
+    
     return current_movie
 
 @app.delete("/movies/{movie_id}", dependencies=[Depends(check_key)], status_code=204)
 def remove_book(movie_id : int):
     movie = find_movie(movie_id)
+
+    save_movies()
+    
     movies.remove(movie)
 
 #Deleting the same movie - by the same id - two times leads to a detail message saying "The movie was not found."
@@ -113,6 +143,8 @@ def patch_movie(movie_id : int, movie : MovieUpdate):
     current_movie = find_movie(movie_id)
     changes = movie.model_dump(exclude_unset=True)
     current_movie.update(changes)
+
+    save_movies()
 
     return current_movie
 
@@ -156,19 +188,10 @@ def patch_movie(movie_id : int, movie : MovieUpdate):
 path : str = "./movies.json"
 
 #1
-def load_movies():
-    pass
-    #Should be a GET request.
-    #Since the Database will never really change, 
+#load_movies() and save_movies() are written at the top, for visibility to the rest of the program.
 
-#1
-def save_movies():
-    #...
-    with open(path, "w") as f:
-        json.dump(..., f, indent = 2)
-    
-
-movies = load_movies()
+#2
+#save_movies() added to all methods except GET.
 
 #4
 #*first part wip* 
