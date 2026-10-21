@@ -24,7 +24,7 @@ key = os.getenv("API_KEY")
 movie_key = {"title" : "Zootopia", "director" : "Rich Moore", "year" : 2016}
 response_with_key = requests.post(f"{BASE}/movies", json=movie_key, timeout=5, headers={"X-API-Key": key})
 print(response_with_key.status_code)
-#Gives 200
+#Gives 201
 
 #Without key
 movie_no_key = {"title" : "Zootopia 2", "director" : "Jared Bush", "year" : 2025}

@@ -28,5 +28,17 @@
     "title": "The Worst Movie Ever",
     "director": "John Terrible",
     "year": 2026
+  },
+  {
+    "id": 7,
+    "title": "Rain Jacket",
+    "director": "Zhao Rain",
+    "year": 2080
+  },
+  {
+    "id": 8,
+    "title": "Zootopia",
+    "director": "Rich Moore",
+    "year": 2016
   }
 ]
