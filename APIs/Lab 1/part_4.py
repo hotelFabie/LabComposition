@@ -14,24 +14,22 @@ def get_weather(latitude : float, longitude : float) -> dict:
         response = ac.get_json("https://api.open-meteo.com/v1/forecast", params={"latitude" : latitude, "longitude" : longitude, "current": ["temperature_2m", "wind_speed_10m"]})
         return response
 
-#DEBUGGING
-city = "Copenhagen"
-found_city = find_city(city)
-weather = get_weather(found_city["results"][0]["latitude"], found_city["results"][0]["longitude"])
-print(type(weather))
-json.dump(weather, "weather.json")
+#_____
 
-# path = "./weather.json"
+path = "./weather.json"
 
-# if os.path.exists(path) and (time.time() - os.path.getmtime(path)) <= (10 * 60):
-#     print("File existed and is not 10 minutes old yet.")
-#     weather = json.load(path)
-# else:
-#     print("...")
-#     city = "Copenhagen"
-#     found_city = find_city(city)
-#     weather = get_weather(found_city["results"][0]["latitude"], found_city["results"][0]["longitude"])
+#There may be something not fully correct with how I have structured the conditions here.
+if os.path.exists(path) and (time.time() - os.path.getmtime(path)) <= (10 * 60):
+    print("File existed and is not 10 minutes old yet.")
+    
+    #This needs some sort of loading...
+    with open(path, "r") as f:
+        weather : dict = json.load(path)
+else:
+    print("...")
+    city : str = "Copenhagen"
+    found_city : str = find_city(city)
+    weather : dict = get_weather(found_city["results"][0]["latitude"], found_city["results"][0]["longitude"])
 
-#     json.dump(weather, path)
-
-#COMMENT: We can not pass a path, we need to open a file with the string we pass.
+    with open(path, "w") as f:
+        json.dump(weather, f)
