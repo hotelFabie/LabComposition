@@ -6,6 +6,8 @@ from pydantic import BaseModel
 import os
 from dotenv import load_dotenv
 
+import json
+
 #____________________
 #Part 3 - #2
 load_dotenv("D:/Programming/Lexicon/Resources/API2/.env")
@@ -125,3 +127,49 @@ def patch_movie(movie_id : int, movie : MovieUpdate):
 #4
 #PATCH: As the name suggests, you patch up (in other words, alter/change) something about an existing thing.
 #PUT: Replace everything in it; there is nothing to be patched. You alter the state completely. 
+
+#Part 3
+#1
+#Stored the tokens in an external directory, as it does not need to be seen.
+
+#2
+#Added at the top of this file.
+
+#3
+#If API_KEY is missing in .env, it will be equal to None.
+#So, the check will look like None != None, which is False, and therefore this will be bypassed
+#unless we add a check for this. 
+
+#4
+#Added to all methods besides GET.
+
+#5
+#401 without a key. 201 with a key. 401 with an incorrect key.
+
+#6
+#Done in client.py
+
+#7
+#Only .gitignore is shown, and not .env.
+
+#Part 4
+path : str = "./movies.json"
+
+#1
+def load_movies():
+    pass
+    #Should be a GET request.
+    #Since the Database will never really change, 
+
+#1
+def save_movies():
+    #...
+    with open(path, "w") as f:
+        json.dump(..., f, indent = 2)
+    
+
+movies = load_movies()
+
+#4
+#*first part wip* 
+#Databases are used for both data persistence, and depending on which database (type), concurrency.

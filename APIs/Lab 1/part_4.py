@@ -17,7 +17,7 @@ def get_weather(latitude : float, longitude : float) -> dict:
 #_____
 #1 and 2 both at once.
 
-path = "./weather.json"
+path : str = "./weather.json"
 
 #os.path.getmtime() also considers time of most recent update, not just creation time.
 if os.path.exists(path) and (time.time() - os.path.getmtime(path)) <= (10 * 60):
