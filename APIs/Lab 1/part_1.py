@@ -50,5 +50,8 @@ print(response_4_patch.status_code)
 #Assuming a variety of incorrect sites to be inserted here.
 test_1 = ac.get_json("https://fakestoreapi.com/products/7", timeout=0.001)
 test_2 = ac.get_json("https://fagestoreapi.com/products/7")
-test_3 = ac.get_json("https://fagestoreapi.com/productzzzzzz")
-test_4 = ac.get_json("httbs://fagestoreapi.com/products")
+test_3 = ac.get_json("httbs://fagestoreapi.com/products")
+#Messages, in order:
+#The request took too long
+#Could not connect to the server
+#Something else went wrong: InvalidSchema
