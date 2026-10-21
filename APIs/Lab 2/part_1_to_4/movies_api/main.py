@@ -86,11 +86,10 @@ class Movie(BaseModel):
     director : str
     year : int
 
-#, status_code=201
-@app.post("/movies", dependencies=[Depends(check_key)])
+@app.post("/movies", status_code = 201, dependencies=[Depends(check_key)])
 def create_movie(movie : Movie):
     latest_id = max([movie["id"] for movie in movies], default=0) + 1
-    new_movie = {'id' : latest_id, "" : movie.title, "" : movie.director, "year" : movie.year}
+    new_movie = {'id' : latest_id, "title" : movie.title, "director" : movie.director, "year" : movie.year}
     movies.append(new_movie)
     
     save_movies()
