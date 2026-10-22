@@ -33,10 +33,10 @@ b) As a user, I want to be able to export all of my orders to Excel, so that I c
 c) As a user, I want the application to provide the option of a dark theme/mode, so that I don't get eye strain from doing simple tasks.
 
 ##Exercise 7##
-Acceptance criteria.
-1. 
-2.
-3. 
+Acceptance criteria for "As a customer, I want to see my order history, so that I can buy the same thing again."
+1. Order history is presented without faults when requesting access.
+2. Order displays order id, personal and delivery information, and items with their quantity price.
+3. Redirection available to resource where the specific item is.
 
 ##Exercise 8##
 (Since there is no specification about what the project is about, this will be pretty general.)
