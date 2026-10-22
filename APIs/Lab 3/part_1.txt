@@ -28,21 +28,30 @@ Ideally, everyone part of the Scrum team is involved for the sake of transparenc
 The work of the developers is a reflection of the product owner & scrum master, and the same thing the other way around.
 
 ##Exercise 6##
-a)
-b)
-c)
+a) As a user, I want a login feature added, so that I don't have to store all my history and data both manually and locally.
+b) As a user, I want to be able to export all of my orders to Excel, so that I can keep track of and sort my finances in one place. 
+c) As a user, I want the application to provide the option of a dark theme/mode, so that I don't get eye strain from doing simple tasks.
 
 ##Exercise 7##
-
+Acceptance criteria.
+1. 
+2.
+3. 
 
 ##Exercise 8##
-
+Definition of Done.
 
 ##Exercise 9##
-
+45 minutes for a Daily Scrum takes a lot of time that can be used for continuing the development/product.
+If the Daily Scrum is this long, chances are everything already went wrong in the Sprint Planning.
+It is more of a catch-up for everyone to get a general sense that things are going as planned, or if there are any concerns that
+can be dealt with together. If you already have a plan everyone has agreed and feel like they can follow, save 
+all the bigger thoughts for the Retrospective, so it can be aggregated, sorted and more easily understood across the entire team.
 
 ##Exercise 10##
-
+a) Scrum. [Motivate]
+b) Kanban. IT supports usually deal with tickets, which should have a ... scope.
+c) Kanban. [Motivate]
 
 ##Exercise 11##
 
