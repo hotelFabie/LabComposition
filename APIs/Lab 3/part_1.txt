@@ -39,7 +39,12 @@ Acceptance criteria.
 3. 
 
 ##Exercise 8##
-Definition of Done.
+(Since there is no specification about what the project is about, this will be pretty general.)
+1. All code has been reviewed by at least one member.
+2. All code has full coverage testing within its current state.
+3. No critical bug or vulnerability is found during testing.
+4. Proper documentation is provided for all methods.
+5. End user cannot access application without login and (specified) authentication.
 
 ##Exercise 9##
 45 minutes for a Daily Scrum takes a lot of time that can be used for continuing the development/product.
