@@ -1,0 +1,36 @@
+##Exercise 1##
+1. If every phase is set to be very long and monolithic, if something falls apart in a new step, all the exhaustive work before can fall apart altogether very quickly.
+2. Lack of client feedback and input means that you presume they will be content with the final product. This is a great risk in technology, where standards can change rapidly.
+
+##Exercise 2##
+1. [Working with the customer] - Instead of presuming that the client will be sufficient with the dashboard you have developed, 
+where you might have bias about how it should look, you keep the dialogue going with them so your presumptions about their needs aren't enforced.
+2. [Software that works] - Apps that are used by a great number of people allow you to mostly use your intuition to use or figure
+out what can be done. If Instagram had an entire manual for how to use it, there wouldn't be doomscrolling or easy navigation from videos to messaging. 
+
+##Exercise 3##
+
+
+##Exercise 4##
+
+
+##Exercise 5##
+
+
+##Exercise 6##
+
+
+##Exercise 7##
+
+
+##Exercise 8##
+
+
+##Exercise 9##
+
+
+##Exercise 10##
+
+
+##Exercise 11##
+
