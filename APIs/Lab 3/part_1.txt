@@ -9,16 +9,28 @@ where you might have bias about how it should look, you keep the dialogue going 
 out what can be done. If Instagram had an entire manual for how to use it, there wouldn't be doomscrolling or easy navigation from videos to messaging. 
 
 ##Exercise 3##
-
+a) Product Owner
+b) Developers
+c) Scrum Master
+d) Product Owner
+e) Scrum Master
 
 ##Exercise 4##
-
+The request from the CEO should be treated as one of however many that are currently inserted into the product backlog.
+It will be the responsibility of the Product Owner to add it, and when the new sprint starts, it can start becoming prioritized.
+Otherwise it will be in the way of the review and retrospective. So, take it during the Sprint Planning.
 
 ##Exercise 5##
+Sprint Review: Concerned about the product and implementations. Positives and negatives.
+Sprint Retrospective: Concerned about the workflow. What hinders the development from excelling?
 
+Ideally, everyone part of the Scrum team is involved for the sake of transparency.
+The work of the developers is a reflection of the product owner & scrum master, and the same thing the other way around.
 
 ##Exercise 6##
-
+a)
+b)
+c)
 
 ##Exercise 7##
 
