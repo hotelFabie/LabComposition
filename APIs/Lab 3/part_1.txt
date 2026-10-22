@@ -49,9 +49,12 @@ can be dealt with together. If you already have a plan everyone has agreed and f
 all the bigger thoughts for the Retrospective, so it can be aggregated, sorted and more easily understood across the entire team.
 
 ##Exercise 10##
-a) Scrum. [Motivate]
-b) Kanban. IT supports usually deal with tickets, which should have a ... scope.
-c) Kanban. [Motivate]
+a) Scrum. A mobile app consists of many steps and parts in order to be developed to something complete. If it is to be built by a team, division of workload will most likely work more smoothly in sprints.  
+b) Kanban. I believe that while a ticket may not just be as linear as it explains, I want to imagine that IT support focuses on one thing, and they are ticked off one by one.
+c) Most likely Kanban. If the webshop is live, it should have been argued stable enough to be worth having up. Bugs will most likely be discovered in the meantime.
+This question really depends on the vulnerability that the bug causes.  
 
 ##Exercise 11##
-
+Typically with a 13, the task should be divided first before being compared and prioritized between the other stories.
+I guess, however, that if the team for some reason comes to a conclusion that the 13 was measured as too high, 
+bring the story to the Sprint Planning, and see if it becomes part of the next Sprint by comparing to the other stories.
